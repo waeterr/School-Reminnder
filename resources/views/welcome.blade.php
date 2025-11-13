@@ -43,6 +43,48 @@
         .modal {
             transition: opacity 0.3s ease;
         }
+
+        .info-box {
+            border-left: 4px solid #f87171;
+        }
+
+        .deadline-badge {
+            font-size: 0.7rem;
+        }
+
+        .has-task::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+        }
+
+        .day-number {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .task-detail {
+            display: none;
+        }
+
+        .task-detail.active {
+            display: block;
+        }
+
+        .placeholder-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            padding: 2rem;
+        }
     </style>
 </head>
 
@@ -50,13 +92,14 @@
     <!-- Top Navigation Bar -->
     <nav class="bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-10">
         <div class="flex items-center">
-            <h1 class="text-xl font-bold text-primary">School Reminder</h1>
+            <!-- Ganti bagian ini dengan logo Anda -->
+            <img src="{{ asset('school-reminder-logo.jpg') }}" alt="School Reminder Logo" class="h-10">
         </div>
 
         <div class="hidden md:flex space-x-6">
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">Home</a>
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">Task</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">Calendar</a>
+            <a href="#" class="text-primary font-medium">Calendar</a>
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">Features</a>
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">How it Works</a>
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">About</a>
@@ -64,9 +107,7 @@
 
         <div class="flex items-center space-x-4">
             <!-- Dark/Light Mode Toggle -->
-            <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                <i class="fas fa-moon text-gray-600"></i>
-            </button>
+
 
             <!-- My Account Button -->
             <button
@@ -85,7 +126,7 @@
     <div id="mobile-menu" class="md:hidden bg-white shadow-md py-2 px-4 hidden">
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Home</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Task</a>
-        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Calendar</a>
+        <a href="#" class="block py-2 text-primary font-medium">Calendar</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Features</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">How it Works</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">About</a>
@@ -120,296 +161,366 @@
                 </div>
 
                 <!-- Calendar Grid -->
-                <div class="grid grid-cols-7 gap-2">
-                    <!-- Empty days before the month starts -->
-                    <div></div>
-                    <div></div>
-
-                    <!-- Calendar Days -->
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">1</div>
-                        <div class="mt-2 space-y-1">
-                            <span
-                                class="task-tag bg-math-green text-white text-xs px-2 py-1 rounded-full block">Math</span>
-                        </div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">2</div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">3</div>
-                        <div class="mt-2 space-y-1">
-                            <span
-                                class="task-tag bg-english-pink text-white text-xs px-2 py-1 rounded-full block">English</span>
-                        </div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">4</div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">5</div>
-                        <div class="mt-2 space-y-1">
-                            <span
-                                class="task-tag bg-informatics-red text-white text-xs px-2 py-1 rounded-full block">Informatics</span>
-                        </div>
-                    </div>
-
-                    <!-- More days would go here -->
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">6</div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">7</div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">8</div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">9</div>
-                        <div class="mt-2 space-y-1">
-                            <span
-                                class="task-tag bg-history-yellow text-white text-xs px-2 py-1 rounded-full block">History</span>
-                        </div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">10</div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">11</div>
-                        <div class="mt-2 space-y-1">
-                            <span
-                                class="task-tag bg-math-green text-white text-xs px-2 py-1 rounded-full block">Math</span>
-                            <span
-                                class="task-tag bg-english-pink text-white text-xs px-2 py-1 rounded-full block">English</span>
-                        </div>
-                    </div>
-
-                    <!-- Today's date highlighted -->
-                    <div
-                        class="calendar-day bg-primary-light rounded-lg p-3 h-28 cursor-pointer text-white hover:bg-primary">
-                        <div class="text-right font-medium">12</div>
-                        <div class="mt-2 space-y-1">
-                            <span
-                                class="task-tag bg-white text-primary text-xs px-2 py-1 rounded-full block">Informatics</span>
-                        </div>
-                    </div>
-
-                    <!-- More days would continue... -->
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">13</div>
-                    </div>
-
-                    <div class="calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100">
-                        <div class="text-right font-medium">14</div>
-                    </div>
-
-                    <!-- Continue with the rest of the month -->
+                <div class="grid grid-cols-7 gap-2" id="calendarGrid">
+                    <!-- Calendar days will be populated by JavaScript -->
                 </div>
             </div>
 
-            <!-- Right Column - Task Detail -->
+            <!-- Right Column - Task Details -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                <div class="bg-english-pink h-2 w-full"></div>
-                <div class="p-6">
-                    <h2 class="text-2xl font-bold mb-2">Essay: Modern Literature Analysis</h2>
-                    <p class="text-gray-600 mb-6">Write a 1500-word analysis of themes in contemporary literature,
-                        focusing on at least three works published in the last decade.</p>
+                <div id="taskPlaceholder" class="placeholder-message">
+                    <i class="fas fa-calendar-day text-4xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-500 mb-2">Select a date to view tasks</h3>
+                    <p class="text-gray-400">Click on a date with a red dot to see task details</p>
+                </div>
 
-                    <div class="mb-6">
-                        <h3 class="font-semibold text-gray-700 mb-2">Instructions:</h3>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Select three contemporary literary works</li>
-                            <li>Analyze common themes across these works</li>
-                            <li>Discuss how these themes reflect modern society</li>
-                            <li>Include proper citations and bibliography</li>
-                            <li>Submit in PDF format</li>
-                        </ul>
-                    </div>
-
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-gray-500"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">Dr. Sarah Johnson</h3>
-                            <p class="text-gray-600 text-sm">s.johnson@university.edu</p>
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <h3 class="font-semibold text-gray-700 mb-2">Due Date:</h3>
-                        <div class="flex items-center text-gray-600">
-                            <i class="far fa-calendar-alt mr-2"></i>
-                            <span>July 12, 2025 - 11:59 PM</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="font-semibold text-gray-700 mb-2">Attachments:</h3>
-                        <div class="space-y-2">
-                            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                <i class="far fa-file-pdf text-red-500 mr-3"></i>
-                                <div>
-                                    <p class="font-medium">Assignment Guidelines.pdf</p>
-                                    <p class="text-xs text-gray-500">245 KB</p>
-                                </div>
-                                <button class="ml-auto text-primary hover:text-primary-light">
-                                    <i class="fas fa-download"></i>
-                                </button>
+                <!-- English Project Task Detail -->
+                <div id="englishTask" class="task-detail">
+                    <div class="bg-english-pink h-2 w-full"></div>
+                    <div class="p-6">
+                        <!-- Task Header -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span
+                                    class="inline-block bg-english-pink text-white text-sm font-medium px-3 py-1 rounded-full">English</span>
+                                <span
+                                    class="inline-block bg-pink-100 text-pink-800 text-xs font-medium px-2 py-1 rounded deadline-badge">
+                                    <i class="fas fa-clock mr-1"></i>Due: Today 11.59 PM
+                                </span>
                             </div>
+                            <h2 class="text-2xl font-bold text-gray-800 mb-3">English Project</h2>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Exercise 1 on page 15 — Write all the questions and your answers neatly in your
+                                notebook. Then, take a clear picture of your work and upload it to the School Reminder
+                                website before Thursday at 11.59 PM. Make sure to use complete sentences and check your
+                                grammar before submitting.
+                            </p>
+                        </div>
 
-                            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                <i class="far fa-file-word text-blue-500 mr-3"></i>
-                                <div>
-                                    <p class="font-medium">Recommended Reading.docx</p>
-                                    <p class="text-xs text-gray-500">512 KB</p>
+                        <!-- Divider -->
+                        <div class="border-t border-gray-200 my-6"></div>
+
+                        <!-- Teacher Information -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold text-gray-700 mb-3">Teacher</h3>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
                                 </div>
-                                <button class="ml-auto text-primary hover:text-primary-light">
-                                    <i class="fas fa-download"></i>
-                                </button>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Mr. Bambang</h4>
+                                    <p class="text-gray-600 text-sm">englishteacher@gmail.com</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="mt-8 flex space-x-4">
-                        <button
-                            class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-light transition-colors flex-1">
-                            Mark as Complete
-                        </button>
-                        <button
-                            class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <i class="far fa-edit mr-2"></i> Edit
-                        </button>
+                        <!-- Divider -->
+                        <div class="border-t border-gray-200 my-6"></div>
+
+                        <!-- Deadline Information -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold text-gray-700 mb-3">Deadline</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">Date</div>
+                                    <div class="font-semibold text-gray-800">22-07-2025</div>
+                                </div>
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">Time</div>
+                                    <div class="font-semibold text-gray-800">11.59 PM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold text-gray-700 mb-3">Submission Details</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">File Type</div>
+                                    <div class="font-semibold text-gray-800">PNG, JPG, JPEG</div>
+                                </div>
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">Task Code</div>
+                                    <div class="font-semibold text-gray-800">H-T</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- View Details Button -->
+                        <div class="mt-8">
+                            <button
+                                class="w-full bg-english-pink text-white px-4 py-3 rounded-lg hover:bg-pink-500 transition-colors flex items-center justify-center">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                View Full Task Details
+                            </button>
+                        </div>
+
+                        <!-- Information Note -->
+                        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                            <div class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mr-2 mt-0.5"></i>
+                                <p class="text-xs text-blue-700">
+                                    This calendar view is for deadline tracking only. To submit your project, please go
+                                    to
+                                    the Tasks page.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informatics Project Task Detail -->
+                <div id="informaticsTask" class="task-detail">
+                    <div class="bg-informatics-red h-2 w-full"></div>
+                    <div class="p-6">
+                        <!-- Task Header -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span
+                                    class="inline-block bg-informatics-red text-white text-sm font-medium px-3 py-1 rounded-full">Informatics</span>
+                                <span
+                                    class="inline-block bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded deadline-badge">
+                                    <i class="fas fa-clock mr-1"></i>Due: 4 days
+                                </span>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800 mb-3">Informatics Project</h2>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Create a simple website layout using HTML and CSS — Write your code in Visual Studio
+                                Code
+                                and make sure your page includes a header, navigation bar, main content, and footer.
+                                Save
+                                your project folder with your name (example: Name_WebProject) and upload it to the
+                                School
+                                Reminder website.
+                            </p>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="border-t border-gray-200 my-6"></div>
+
+                        <!-- Teacher Information -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold text-gray-700 mb-3">Teacher</h3>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Mr. Mulyono</h4>
+                                    <p class="text-gray-600 text-sm">informaticsacher@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="border-t border-gray-200 my-6"></div>
+
+                        <!-- Deadline Information -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold text-gray-700 mb-3">Deadline</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">Date</div>
+                                    <div class="font-semibold text-gray-800">25-07-2025</div>
+                                </div>
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">Time</div>
+                                    <div class="font-semibold text-gray-800">9.00 PM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information -->
+                        <div class="mb-6">
+                            <h3 class="font-semibold text-gray-700 mb-3">Project Details</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">Code Platform</div>
+                                    <div class="font-semibold text-gray-800">Github</div>
+                                </div>
+                                <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                    <div class="text-sm text-gray-500 mb-1">Time Left</div>
+                                    <div class="font-semibold text-gray-800">H-4</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- View Details Button -->
+                        <div class="mt-8">
+                            <button
+                                class="w-full bg-informatics-red text-white px-4 py-3 rounded-lg hover:bg-red-500 transition-colors flex items-center justify-center">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                View Full Task Details
+                            </button>
+                        </div>
+
+                        <!-- Information Note -->
+                        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                            <div class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mr-2 mt-0.5"></i>
+                                <p class="text-xs text-blue-700">
+                                    This calendar view is for deadline tracking only. To submit your project, please go
+                                    to
+                                    the Tasks page.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer with Contact Form -->
-
-
-    <div class="text-center mt-8 text-gray-600">
-        <p>© 2025 School Reminder. All rights reserved.</p>
-    </div>
-    </div>
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-6 px-4 border-t border-gray-200">
+        <div class="text-center text-gray-600">
+            <p>© 2025 School Reminder. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- Task Detail Modal -->
-    <div id="task-modal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20 modal hidden">
-        <div class="bg-white rounded-xl shadow-lg max-w-md w-full mx-4">
-            <div class="bg-math-green h-2 w-full"></div>
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xl font-bold">Algebra Homework</h3>
-                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-
-                <p class="text-gray-600 mb-4">Complete exercises 1-20 from chapter 5 on quadratic equations.</p>
-
-                <div class="flex items-center mb-4">
-                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
-                        <i class="fas fa-user text-gray-500"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold">Mr. Davis</h4>
-                        <p class="text-gray-600 text-sm">mdavis@school.edu</p>
-                    </div>
-                </div>
-
-                <div class="mb-4">
-                    <h4 class="font-semibold text-gray-700 mb-1">Due Date:</h4>
-                    <p class="text-gray-600">July 11, 2025</p>
-                </div>
-
-                <button
-                    class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-light transition-colors w-full">
-                    View Full Details
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
+        // Calendar data
+        const calendarData = {
+            month: "July 2025",
+            days: [
+                // Week 1 (29 June - 5 July)
+                { day: 29, otherMonth: true },
+                { day: 30, otherMonth: true },
+                { day: 1 },
+                { day: 2 },
+                { day: 3 },
+                { day: 4 },
+                { day: 5 },
 
+                // Week 2 (6-12 July)
+                { day: 6 },
+                { day: 7 },
+                { day: 8 },
+                { day: 9 },
+                { day: 10 },
+                { day: 11 },
+                { day: 12 },
+
+                // Week 3 (13-19 July)
+                { day: 13 },
+                { day: 14 },
+                { day: 15 },
+                { day: 16 },
+                { day: 17 },
+                { day: 18 },
+                { day: 19 },
+
+                // Week 4 (20-26 July)
+                { day: 20 },
+                { day: 21 },
+                { day: 22, hasTask: true, taskId: "englishTask" },
+                { day: 23 },
+                { day: 24 },
+                { day: 25, hasTask: true, taskId: "informaticsTask" },
+                { day: 26 },
+
+                // Week 5 (27 July - 2 August)
+                { day: 27 },
+                { day: 28 },
+                { day: 29 },
+                { day: 30 },
+                { day: 31 },
+                { day: 1, otherMonth: true },
+                { day: 2, otherMonth: true }
+            ]
+        };
+
+        // Function to render calendar
+        function renderCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '';
+
+            calendarData.days.forEach(dayData => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100 relative';
+
+                if (dayData.otherMonth) {
+                    dayElement.classList.add('text-gray-400');
+                }
+
+                if (dayData.hasTask) {
+                    dayElement.classList.add('has-task');
+                }
+
+                // Highlight today's date (12th)
+                if (dayData.day === 12) {
+                    dayElement.classList.remove('bg-gray-50', 'hover:bg-gray-100');
+                    dayElement.classList.add('bg-primary-light', 'text-white', 'hover:bg-primary');
+                }
+
+                dayElement.innerHTML = `
+                    <div class="day-number">${dayData.day}</div>
+                `;
+
+                // Add event listener for clicking on a day
+                dayElement.addEventListener('click', () => {
+                    // Remove active class from all days
+                    document.querySelectorAll('.calendar-day').forEach(day => {
+                        day.classList.remove('ring-2', 'ring-primary');
+                    });
+
+                    // Add active class to clicked day
+                    dayElement.classList.add('ring-2', 'ring-primary');
+
+                    // Show task details if available
+                    if (dayData.hasTask && dayData.taskId) {
+                        showTaskDetail(dayData.taskId);
+                    } else {
+                        showTaskPlaceholder();
+                    }
+                });
+
+                calendarGrid.appendChild(dayElement);
+            });
+        }
+
+        // Function to show task placeholder
+        function showTaskPlaceholder() {
+            document.getElementById('taskPlaceholder').style.display = 'flex';
+            document.querySelectorAll('.task-detail').forEach(task => {
+                task.classList.remove('active');
+            });
+        }
+
+        // Function to show task detail
+        function showTaskDetail(taskId) {
+            document.getElementById('taskPlaceholder').style.display = 'none';
+            document.querySelectorAll('.task-detail').forEach(task => {
+                task.classList.remove('active');
+            });
+            document.getElementById(taskId).classList.add('active');
+        }
+
+        // Initialize calendar when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCalendar();
+        });
+
+        // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
-
-
-
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const message = document.getElementById('message');
-            let isValid = true;
-
-
-            document.getElementById('name-error').classList.add('hidden');
-            document.getElementById('email-error').classList.add('hidden');
-            document.getElementById('message-error').classList.add('hidden');
-
-
-            if (!name.value.trim()) {
-                document.getElementById('name-error').classList.remove('hidden');
-                isValid = false;
-            }
-
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email.value)) {
-                document.getElementById('email-error').classList.remove('hidden');
-                isValid = false;
-            }
-
-
-            if (!message.value.trim()) {
-                document.getElementById('message-error').classList.remove('hidden');
-                isValid = false;
-            }
-
-            if (isValid) {
-                alert('Message sent successfully!');
-                form.reset();
-            }
-        });
-
-        // Modal functionality
-        const calendarDays = document.querySelectorAll('.calendar-day');
-        const modal = document.getElementById('task-modal');
-        const closeModal = document.getElementById('close-modal');
-
-        calendarDays.forEach(day => {
-            day.addEventListener('click', function () {
-                modal.classList.remove('hidden');
-            });
-        });
-
-        closeModal.addEventListener('click', function () {
-            modal.classList.add('hidden');
-        });
-
-        // Close modal when clicking outside
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
+        // Theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-moon')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                document.body.classList.add('bg-gray-900', 'text-white');
+                document.body.classList.remove('bg-gray-50', 'text-gray-800');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                document.body.classList.remove('bg-gray-900', 'text-white');
+                document.body.classList.add('bg-gray-50', 'text-gray-800');
             }
         });
     </script>
