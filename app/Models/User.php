@@ -18,9 +18,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'role',
+        'photo',
+        'gender',
     ];
 
     /**
@@ -45,4 +48,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function classesTeaching()
+    {
+        return $this->hasMany(classes::class, 'teacher_id');
+    }
+
+    public function classesJoined()
+    {
+        return $this->belongsToMany(classes::class, 'class_student', 'student_id', 'class_id');
+    }
+
+    public function submissions()
+    {
+        return $this->hasMany(taskSubmissions::class, 'student_id');
+    }
+
 }
