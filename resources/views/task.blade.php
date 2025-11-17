@@ -57,9 +57,9 @@
         </div>
 
         <div class="hidden md:flex space-x-6">
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-            <a href="#" class="text-primary font-medium">Task</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">Calendar</a>
+            <a href="{{ route('welcome') }}" class="text-gray-600 hover:text-primary transition-colors">Home</a>
+            <a href="{{ route('task') }}" class="text-primary font-medium">Task</a>
+            <a href="{{ route('calendar') }}" class="text-gray-600 hover:text-primary transition-colors">Calendar</a>
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">Features</a>
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">How it Works</a>
             <a href="#" class="text-gray-600 hover:text-primary transition-colors">About</a>

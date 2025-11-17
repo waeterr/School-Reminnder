@@ -5,16 +5,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-route::get('/onboard', function () {
+Route::get('/onboard', function () {
     return view('onboard');
-});
+})->name('onboard');
 
-route::get('/task', function () {
+Route::get('/task', function () {
     return view('task');
-});
+})->name('task');
 
+Route::get('/calendar', function () {
+    return view('welcome');
+})->name('calendar');
+
+Route::get('/homestudent', function () {
+    return view('homestudent');
+})->name('homestudent');
+
+Route::get('/signup', function () {
+    return view('signup');
+})->name('signup');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

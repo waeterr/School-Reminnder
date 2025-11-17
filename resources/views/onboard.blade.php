@@ -52,18 +52,18 @@
                 </h1>
             </div>
             <div class="flex space-x-6 text-[#1B2A4E]">
-                <a href="#" class="hover:text-[#3A71C1]">Home</a>
-                <a href="#" class="hover:text-[#3A71C1]">Task</a>
-                <a href="#" class="hover:text-[#3A71C1]">Calendar</a>
+                <a href="{{ route('welcome') }}" class="hover:text-[#3A71C1]">Home</a>
+                <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
+                <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
                 <a href="#" class="hover:text-[#3A71C1]">Features</a>
                 <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
                 <a href="#" class="hover:text-[#3A71C1]">About</a>
             </div>
             <div class="flex items-center space-x-3">
-                <a href="#" class="text-[#1B2A4E] hover:text-[#3A71C1]">Login</a>
-                <button
+                <a href="{{ route('login') }}" class="text-[#1B2A4E] hover:text-[#3A71C1]">Login</a>
+                <a href="{{ route('signup') }}"
                     class="border border-[#3A71C1] text-[#3A71C1] px-4 py-1 rounded-full hover:bg-[#3A71C1] hover:text-white transition">Get
-                    Started</button>
+                    Started</a>
             </div>
         </nav>
 
