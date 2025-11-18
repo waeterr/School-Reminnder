@@ -3,33 +3,38 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// Public Routes - Onboarding Flow
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('onboard');
+})->name('home');
 
 Route::get('/onboard', function () {
     return view('onboard');
 })->name('onboard');
 
-Route::get('/task', function () {
-    return view('task');
-})->name('task');
-
-Route::get('/calendar', function () {
-    return view('welcome');
-})->name('calendar');
+Route::get('/signup', function () {
+    return view('signup');
+})->name('signup');
 
 Route::get('/homestudent', function () {
     return view('homestudent');
 })->name('homestudent');
 
-Route::get('/signup', function () {
-    return view('signup');
-})->name('signup');
+// Protected Routes - User harus sudah login
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/welcome', function () {
+        return view('welcome');
+    })->name('welcome');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+    Route::get('/calendar', function () {
+        return view('welcome');
+    })->name('calendar');
+
+    Route::get('/task', function () {
+        return view('task');
+    })->name('task');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

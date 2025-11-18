@@ -107,6 +107,12 @@
       <input type="checkbox" class="mr-2 accent-[#132442]"> Remember me
     </label>
 
+    <!-- Sign Up Button -->
+    <button onclick="handleSignUp()"
+      class="bg-[#132442] text-white w-full py-2 rounded-full font-medium text-[14px] hover:opacity-90 transition">
+      Sign Up
+    </button>
+
     <!-- Login Link -->
     <p class="text-graycustom text-[14px] font-medium mt-4">
       Already have an account?
@@ -161,6 +167,12 @@
     togglePassword.onclick = () => {
       password.type = password.type === "password" ? "text" : "password";
     };
+
+    // Handle Sign Up
+    function handleSignUp() {
+      // Redirect ke login page setelah signup
+      window.location.href = "{{ route('login') }}";
+    }
   </script>
 
 </body>

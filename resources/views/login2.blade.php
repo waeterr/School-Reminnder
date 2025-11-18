@@ -32,7 +32,8 @@
 
   <!-- Logo -->
   <div class="mb-6">
-    <img src="{{ asset('images/school reminder.png') }}" class="w-24 h-auto mx-auto" alt="School Reminder">
+    <img src="{{ asset('school-reminder-logo.jpg') }}" alt="School Reminder Logo" class="h-10">
+
   </div>
 
   <!-- Card -->

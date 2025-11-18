@@ -51,36 +51,39 @@
 
 <body class="bg-gray-50 text-gray-800">
 
-    <nav class="bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-10">
-        <div class="flex items-center">
-            <h1 class="text-xl font-bold text-primary">School Reminder</h1>
+    <nav class="w-full flex justify-between items-center px-10 py-4 shadow-sm">
+        <div class="flex items-center space-x-2">
+
+            <!-- LOGO -->
+            <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
+            <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
+
+            <h1 class="font-semibold text-[#1B2A4E] text-lg">
+                School <span class="text-[#3A71C1]">Reminder</span>
+            </h1>
         </div>
 
-        <div class="hidden md:flex space-x-6">
-            <a href="{{ route('welcome') }}" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-            <a href="{{ route('task') }}" class="text-primary font-medium">Task</a>
-            <a href="{{ route('calendar') }}" class="text-gray-600 hover:text-primary transition-colors">Calendar</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">Features</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">How it Works</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">About</a>
+        <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
+            <a href="{{ route('welcome') }}" class="hover:text-[#3A71C1]">Home</a>
+            <a href="{{ route('task') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Task</a>
+            <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
+            <a href="#" class="hover:text-[#3A71C1]">Features</a>
+            <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
+            <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
         </div>
 
-        <div class="flex items-center space-x-4">
-
-            <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                <i class="fas fa-moon text-gray-600"></i>
-            </button>
 
 
-            <button
-                class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                My Account
-            </button>
+
+        <button
+            class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+            My Account
+        </button>
 
 
-            <button id="mobile-menu-button" class="md:hidden text-gray-600">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+        <button id="mobile-menu-button" class="md:hidden text-gray-600">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
         </div>
     </nav>
 

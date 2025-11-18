@@ -47,25 +47,37 @@
         <!-- NAVBAR -->
         <nav class="w-full flex justify-between items-center px-10 py-4 shadow-sm">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-gray-200 rounded"></div> <!-- Logo Placeholder -->
-                <h1 class="font-semibold text-[#1B2A4E] text-lg">School <span class="text-[#3A71C1]">Reminder</span>
+
+                <!-- LOGO -->
+                <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
+                <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
+
+                <h1 class="font-semibold text-[#1B2A4E] text-lg">
+                    School <span class="text-[#3A71C1]">Reminder</span>
                 </h1>
             </div>
-            <div class="flex space-x-6 text-[#1B2A4E]">
-                <a href="{{ route('welcome') }}" class="hover:text-[#3A71C1]">Home</a>
-                <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
-                <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
+
+            <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
+                <a href="#" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Home</a>
+                <a href="#" class="hover:text-[#3A71C1]">Task</a>
+                <a href="#" class="hover:text-[#3A71C1]">Calendar</a>
                 <a href="#" class="hover:text-[#3A71C1]">Features</a>
                 <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
-                <a href="#" class="hover:text-[#3A71C1]">About</a>
+                <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
             </div>
+
             <div class="flex items-center space-x-3">
-                <a href="{{ route('login') }}" class="text-[#1B2A4E] hover:text-[#3A71C1]">Login</a>
+                <a href="{{ route('login') }}"
+                    class="border border-[#3A71C1] px-4 py-1 rounded-full hover:bg-[#3A71C1] hover:text-white transition">
+                    Log in
+                </a>
                 <a href="{{ route('signup') }}"
-                    class="border border-[#3A71C1] text-[#3A71C1] px-4 py-1 rounded-full hover:bg-[#3A71C1] hover:text-white transition">Get
-                    Started</a>
+                    class="bg-[#1B2A4E] text-white px-4 py-1 rounded-full hover:opacity-80 transition">
+                    Get Started
+                </a>
             </div>
         </nav>
+
 
         <!-- ONBOARDING SECTION -->
         <section class="flex flex-col justify-center items-start px-20 flex-grow relative overflow-hidden h-screen">
