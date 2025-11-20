@@ -44,8 +44,9 @@
 
     <!-- SPLASH SCREEN -->
     <div id="splash" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 splash-animate">
-        <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
-        <h1 class="text-2xl font-semibold text-[#1B2A4E] mt-3">School Reminder</h1>
+        <!-- Ganti logo splash -->
+        <div class="w-20 h-20 bg-gray-200 rounded-full"></div>
+
     </div>
 
     <!-- MAIN CONTENT -->
@@ -56,10 +57,8 @@
             <div class="flex items-center space-x-2">
 
                 <!-- LOGO -->
-                <div class="w-10 h-10 bg-gray-300 rounded-md">
-                    <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
-                </div>
-
+                <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
+                <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
 
                 <h1 class="font-semibold text-[#1B2A4E] text-lg">
                     School <span class="text-[#3A71C1]">Reminder</span>
@@ -71,11 +70,11 @@
                 <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
                 <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
                 <a href="#" class="hover:text-[#3A71C1]">Features</a>
+                <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
                 <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
             </div>
 
             <div class="flex items-center space-x-3">
-                <span id="sr-username" class="hidden text-sm font-medium text-[#1B2A4E]"></span>
                 <a href="#"
                     class="border border-[#3A71C1] px-4 py-1 rounded-full hover:bg-[#3A71C1] hover:text-white transition">
                     Sign In
@@ -109,15 +108,15 @@
                 </p>
             </div>
 
-
+            <!-- RIGHT IMAGE -->
             <div class="mt-10 md:mt-0 md:ml-10">
-
+                <!-- Placeholder gambar anime -->
                 <img src="{{ asset('images/hero-image.png') }}" alt="Hero Image"
                     class="w-[330px] h-[330px] object-cover rounded-lg">
-
+                <!-- GANTI dengan <img src=""> -->
             </div>
         </section>
-
+        <!-- OUR SERVICE SECTION -->
         <section class="bg-[#1A2E4F] w-full py-16 mt-20">
 
             <h2 class="text-center text-white text-2xl font-semibold mb-10">
@@ -142,7 +141,7 @@
                         class="w-16 h-16 mx-auto rounded-full bg-gradient-to-b from-white to-gray-300 flex items-center justify-center shadow">
                         <img src="{{ asset('images/bell.png') }}" alt="Bell" class="w-8">
                     </div>
-                    <p class="#1E505E font-semibold mt-4">DeadlineBuzz</p>
+                    <p class="text-white font-semibold mt-4">DeadlineBuzz</p>
                     <p class="text-gray-300 text-sm mt-2">Reminder otomatis disaat dekat deadline tugas siswa!</p>
                 </div>
 
@@ -188,96 +187,15 @@
 
             </div>
         </section>
-        <!-- DEADLINE SECTION -->
-        <section class="px-10 mt-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                <!-- CARD 1 -->
-                <div class="bg-white shadow-lg rounded-2xl p-6">
-                    <p class="font-semibold text-red-600">Do it now</p>
-                    <h3 class="text-xl font-bold mt-1">Deadline Alert</h3>
-                    <p class="text-sm text-gray-700 mt-3">
-                        Task : Essay PAI <br>
-                        Deadline : Tomorrow <br>
-                        Progress : Not done
-                    </p>
-                    <button class="mt-4 bg-[#1B2A4E] text-white px-4 py-1 rounded-lg">
-                        View Task
-                    </button>
-                </div>
 
-                <!-- CARD 2 -->
-                <div class="bg-white shadow-lg rounded-2xl p-6">
-                    <p class="font-semibold text-yellow-600">Do it immediately</p>
-                    <h3 class="text-xl font-bold mt-1">Last Minute Tasks</h3>
-                    <p class="text-sm text-gray-700 mt-3 leading-relaxed">
-                        Informatics Report – 2 days left <br>
-                        Social Studies Presentation – 3 days left <br>
-                        Math Quiz – 1 day left
-                    </p>
-                    <button class="mt-4 bg-[#1B2A4E] text-white px-4 py-1 rounded-lg">
-                        View Task
-                    </button>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- TODAY CLASSES -->
-        <section class="px-10 mt-16">
-            <div class="bg-white shadow-lg rounded-2xl py-10">
-
-                <h2 class="text-center text-2xl font-semibold mb-8">Today’s Classes</h2>
-
-                <div class="flex gap-6 overflow-x-auto px-6 pb-4">
-
-                    <!-- CARD 1 -->
-                    <div class="min-w-[180px] bg-[#8DB9D6] rounded-2xl p-6 text-center text-white">
-                        <h3 class="text-lg font-semibold">Mathematics</h3>
-                        <p class="mt-1">7.00 am</p>
-                        <div class="mt-4 bg-white text-[#1B2A4E] px-3 py-1 rounded-full text-sm">
-                            Mr. Bambang
-                        </div>
-                    </div>
-
-                    <!-- CARD 2 -->
-                    <div class="min-w-[180px] bg-[#8DB9D6] rounded-2xl p-6 text-center text-white">
-                        <h3 class="text-lg font-semibold">English</h3>
-                        <p class="mt-1">9.00 am</p>
-                        <div class="mt-4 bg-white text-[#1B2A4E] px-3 py-1 rounded-full text-sm">
-                            Mr. Aji
-                        </div>
-                    </div>
-
-                    <!-- CARD 3 -->
-                    <div class="min-w-[180px] bg-[#8DB9D6] rounded-2xl p-6 text-center text-white">
-                        <h3 class="text-lg font-semibold">Informatics</h3>
-                        <p class="mt-1">11.00 am</p>
-                        <div class="mt-4 bg-white text-[#1B2A4E] px-3 py-1 rounded-full text-sm">
-                            Mrs. Dian
-                        </div>
-                    </div>
-
-                    <!-- CARD 4 -->
-                    <div class="min-w-[180px] bg-[#8DB9D6] rounded-2xl p-6 text-center text-white">
-                        <h3 class="text-lg font-semibold">Physics</h3>
-                        <p class="mt-1">1.00 pm</p>
-                        <div class="mt-4 bg-white text-[#1B2A4E] px-3 py-1 rounded-full text-sm">
-                            Mrs. Lina
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
 
         <!-- FOOTER (LIKE THE PICTURE) -->
         <footer class="bg-[#E4E4E4] py-10 text-center">
 
             <!-- TITLE "School" -->
             <h3 class="text-2xl font-semibold mb-3">
-                <span class="text-[#132442]">School</span>
-                <span class="text-[#2CB4DE]">Reminder</span>
+                <span class="text-[#132442]">Schoo</span><span class="text-[#F4C542]">L</span>
             </h3>
 
             <!-- MENU -->
@@ -294,6 +212,7 @@
                 <img src="{{ asset('images/instagram.png') }}" alt="Instagram" class="w-6">
                 <img src="{{ asset('images/facebook.png') }}" alt="Facebook" class="w-6">
             </div>
+
             <!-- COPYRIGHT -->
             <p class="text-[#132442] text-sm mt-6">
                 All Rights Reserved
@@ -308,19 +227,6 @@
                 splash.classList.add('hidden');
                 main.classList.remove('hidden');
             }, 2500);
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const username = localStorage.getItem('sr_user');
-                if (username) {
-                    const el = document.getElementById('sr-username');
-                    if (el) {
-                        el.textContent = `Welcome, ${username}`;
-                        el.classList.remove('hidden');
-                    }
-                }
-            });
         </script>
 
 </body>

@@ -32,7 +32,7 @@
 
     <!-- Logo -->
     <div class="mb-6">
-        <img src="{{ asset('school-reminder-logo.jpg') }}" alt="School Reminder Logo" class="h-10">
+        <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
 
     </div>
 
@@ -46,43 +46,49 @@
             make your school schedule,<br> assignments and exams easy to do.
         </p>
 
-        <!-- Username -->
-        <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-4">
-            <img src="{{ asset('icons/gridicons_user.png') }}" class="w-5 h-5 mr-2">
-            <input type="text" id="username" placeholder="Username"
-                class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium">
-        </div>
+        <form method="POST" action="{{ route('login') }}" class="w-full">
+            @csrf
 
-        <!-- Password -->
-        <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-2">
-            <img src="{{ asset('icons/ri_lock-password-line.png') }}" class="w-5 h-5 mr-2">
-            <input id="password" type="password" placeholder="Password"
-                class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium">
+            <!-- Email -->
+            <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-4">
+                <img src="{{ asset('images/gridicons_user.png') }}" class="w-5 h-5 mr-2">
+                <input type="email" name="email" id="email" placeholder="Email"
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
+                    required>
+            </div>
 
-            <button type="button" id="togglePassword">
-                <img id="eyeIcon" src="{{ asset('icons/solar_eye-bold.png') }}" class="w-5 h-5 ml-2">
+            <!-- Password -->
+            <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-2">
+                <img src="{{ asset('images/ri_lock-password-line.png') }}" class="w-5 h-5 mr-2">
+                <input id="password" name="password" type="password" placeholder="Password"
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
+                    required>
+
+                <button type="button" id="togglePassword">
+                    <img id="eyeIcon" src="{{ asset('images/solar_eye-bold.png') }}" class="w-5 h-5 ml-2">
+                </button>
+            </div>
+
+            <!-- Remember me + Forgot -->
+            <div class="flex justify-between items-center w-full mb-4 text-[14px] font-medium">
+                <label class="flex items-center text-graycustom">
+                    <input type="checkbox" name="remember" class="mr-2 accent-[#132442]"> Remember me
+                </label>
+                <a href="#" class="text-graycustom hover:text-[#132442]">Forgot password?</a>
+            </div>
+
+            <!-- Button -->
+            <button type="submit"
+                class="bg-[#132442] text-white w-full py-2 rounded-full font-medium text-[14px] hover:opacity-90 transition">
+                Login
             </button>
-        </div>
 
-        <!-- Remember me + Forgot -->
-        <div class="flex justify-between items-center w-full mb-4 text-[14px] font-medium">
-            <label class="flex items-center text-graycustom">
-                <input type="checkbox" class="mr-2 accent-[#132442]"> Remember me
-            </label>
-            <a href="#" class="text-graycustom hover:text-[#132442]">Forgot password?</a>
-        </div>
-
-        <!-- Button -->
-        <button onclick="handleLogin()"
-            class="bg-[#132442] text-white w-full py-2 rounded-full font-medium text-[14px] hover:opacity-90 transition">
-            Login
-        </button>
-
-        <!-- Sign Up -->
-        <p class="text-graycustom text-[14px] font-medium mt-4">
-            Don't have an account?
-            <a href="{{ route('signup') }}" class="text-[#132442] font-medium">Sign Up</a>
-        </p>
+            <!-- Sign Up -->
+            <p class="text-graycustom text-[14px] font-medium mt-4">
+                Don't have an account?
+                <a href="{{ route('signup') }}" class="text-[#132442] font-medium">Sign Up</a>
+            </p>
+        </form>
 
     </div>
 
@@ -98,18 +104,6 @@
             visible = !visible;
             passwordInput.type = visible ? 'text' : 'password';
         });
-
-        function handleLogin() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username && password) {
-                // Redirect ke homestudent setelah login
-                window.location.href = "{{ route('homestudent') }}";
-            } else {
-                alert('Please enter username and password');
-            }
-        }
     </script>
 
 </body>

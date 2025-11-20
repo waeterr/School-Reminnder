@@ -37,8 +37,8 @@
     <!-- SPLASH SCREEN -->
     <div id="splash" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 splash-animate">
         <!-- Ganti src dengan logo kamu -->
-        <img src="{{ asset('school-reminder-logo.jpg') }}" alt="School Reminder Logo" class="h-10">
-        <h1 class="text-2xl font-semibold text-[#1B2A4E]">School Reminder</h1>
+        <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
+
     </div>
 
     <!-- MAIN CONTENT (HIDDEN BY DEFAULT) -->
@@ -48,10 +48,7 @@
         <nav class="w-full flex justify-between items-center px-10 py-4 shadow-sm">
             <div class="flex items-center space-x-2">
 
-                <!-- LOGO -->
-                <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
-                <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
-
+                <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
                 <h1 class="font-semibold text-[#1B2A4E] text-lg">
                     School <span class="text-[#3A71C1]">Reminder</span>
                 </h1>
@@ -62,7 +59,7 @@
                 <a href="#" class="hover:text-[#3A71C1]">Task</a>
                 <a href="#" class="hover:text-[#3A71C1]">Calendar</a>
                 <a href="#" class="hover:text-[#3A71C1]">Features</a>
-                <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
+
                 <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
             </div>
 

@@ -16,24 +16,37 @@ Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
-Route::get('/homestudent', function () {
+// Public guest view (optional)
+Route::get('/homestudent-guest', function () {
     return view('homestudent');
-})->name('homestudent');
+})->name('homestudent.guest');
+
+route::get('/log2', function () {
+    return view('login2');
+});
+// homestudent for logged-in users will be defined inside the protected group
+// Protected Routes - User harus sudah login
+// Public pages (accessible without login)
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
+Route::get('/calendar', function () {
+    return view('welcome');
+})->name('calendar');
+
+Route::get('/task', function () {
+    return view('task');
+})->name('task');
 
 // Protected Routes - User harus sudah login
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/welcome', function () {
-        return view('welcome');
-    })->name('welcome');
-
-    Route::get('/calendar', function () {
-        return view('welcome');
-    })->name('calendar');
-
-    Route::get('/task', function () {
-        return view('task');
-    })->name('task');
+    // Protected homestudent for logged-in users
+    Route::get('/homestudent', function () {
+        return view('homestudentlog');
+    })->name('homestudent');
 });
+
 
 
 Route::get('/dashboard', function () {

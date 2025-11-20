@@ -93,7 +93,6 @@
         <a href="#" class="block py-2 text-primary font-medium">Task</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Calendar</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Features</a>
-        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">How it Works</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">About</a>
     </div>
 
