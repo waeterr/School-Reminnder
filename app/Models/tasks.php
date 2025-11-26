@@ -18,7 +18,7 @@ class tasks extends Model
 
     public function classRoom()
     {
-        return $this->belongsTo(classes::class, 'class_id');
+        return $this->belongsTo(classroom::class, 'class_id');
     }
 
     public function submissions()

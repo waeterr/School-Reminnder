@@ -18,12 +18,18 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'username',
+        'name',
         'email',
         'password',
         'role',
         'photo',
         'gender',
+        'address',
+        'phone_number',
+        'date_of_birth',
+        'school',
+        'status',
+        'last_seen_at',
     ];
 
     /**
@@ -49,19 +55,29 @@ class User extends Authenticatable
         ];
     }
 
-    public function classesTeaching()
+    public function classroomTeaching()
     {
-        return $this->hasMany(classes::class, 'teacher_id');
+        return $this->hasMany(classroom::class, 'teacher_id');
     }
 
-    public function classesJoined()
+    public function classroomJoined()
     {
-        return $this->belongsToMany(classes::class, 'class_student', 'student_id', 'class_id');
+        return $this->belongsToMany(classroom ::class, 'classroom_students', 'student_id', 'class_id');
     }
 
     public function submissions()
     {
         return $this->hasMany(taskSubmissions::class, 'student_id');
+
+    }
+        public function isActive()
+    {
+        return $this->status === 'active';
+    }
+
+    public function lastSeenHuman()
+    {
+        return $this->last_seen ? $this->last_seen->diffForHumans() : 'Never';
     }
 
 }

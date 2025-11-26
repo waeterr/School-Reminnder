@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
 
-            $table->string('file_path', 255)->nullable();
-            $table->enum('status', ['submitted', 'late', 'missing'])->default('missing');
+            $table->string('file_path', 500)->nullable();
+            $table->enum('status', ['done', 'not_done', 'late', 'graded'])->default('not_done');
             $table->timestamp('submitted_at')->nullable();
 
             $table->integer('grade')->nullable();

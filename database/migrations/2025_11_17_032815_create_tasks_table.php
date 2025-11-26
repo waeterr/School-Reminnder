@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
-            $table->string('title', 100);
+            $table->foreignId('classroom_id')->constrained('classroom')->onDelete('cascade');
+            $table->string('title',100);
             $table->text('description')->nullable();
             $table->dateTime('deadline');
             $table->timestamps();

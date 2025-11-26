@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class classes extends Model
+class classroom extends Model
 {
     use HasFactory;
 
-    protected $table = 'classes';
+    protected $table = 'classroom';
 
     protected $fillable = [
         'teacher_id',
@@ -24,7 +24,7 @@ class classes extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class, 'class_student', 'class_id', 'student_id');
+        return $this->belongsToMany(User::class, 'classroom_students', 'class_id', 'student_id');
     }
 
 
