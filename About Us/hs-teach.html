@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Reminder - Homescreen Teacher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif !important;">
+
+  <!-- NAVBAR -->
+  <nav class="flex justify-between items-center px-6 py-4 shadow md:px-12 md:py-6">
+    <div class="text-xl flex items-center gap-2">
+        <img src="pic/logo.png" alt="school logo" class="h-10 w-auto md:h-12" />
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex gap-10 font-semibold">
+      <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white rounded-full">Home</a></li>
+      <li><a href="task2.html" class="hover:text-blue-600">Task</a></li>
+      <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
+      <li><a href="#" class="hover:text-blue-600">Features</a></li>
+      <li><a href="about-us.html" class="hover:text-blue-600">About Us</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden border border-gray-800 px-4 py-2 rounded-lg">Menu</button>
+
+    <!-- Desktop My Account -->
+    <a class="hidden md:block border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition" href="#">My Account</a>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden flex flex-col bg-gray-100 px-6 py-4 shadow md:hidden text-sm font-semibold">
+      <a href="#" class="py-2">Home</a>
+      <a href="task.html" class="py-2">Task</a>
+      <a href="#" class="py-2">Calendar</a>
+      <a href="#" class="py-2">Features</a>
+      <a href="as.html" class="py-2">About Us</a>
+      <a href="#" class="py-2 border border-gray-800 rounded-lg text-center mt-2">My Account</a>
+  </div>
+
+
+  <!-- Welcome Section -->
+  <h1 class="font-bold text-3xl ml-6 mt-10 md:text-4xl md:ml-16 md:mt-16">Welcome,<br>Mrs. Cantik!</h1>
+
+  <!-- Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 mt-6 mx-4 mb-10 md:mx-6 gap-4 md:gap-8">
+
+    <!-- My Classes -->
+    <div class="bg-gray-200 rounded-xl h-[420px] md:h-[520px] flex flex-col text-center p-6 mx-4">
+      <h2 class="text-xl font-bold text-gray-800 mt-2 md:mt-8">My Classes</h2>
+      <div class="flex flex-col items-center justify-center flex-1">
+        <p class="text-sm md:text-base text-[#8D8D8D] mb-4">Looks like you don't have any class yet</p>
+        <a href="hs-teach1.html">
+          <button class="bg-[#132442] text-white text-sm px-5 py-3 rounded-lg flex items-center gap-2 hover:scale-110 transition duration-300 font-bold">
+            <img src="pic/+.png" alt="" class="w-5">Create New Class
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Assignment to Review -->
+    <div class="bg-gray-200 rounded-xl h-[420px] md:h-[520px] flex flex-col text-center p-6 mx-4">
+      <h2 class="text-xl font-bold text-gray-800 mt-2 md:mt-8">Assignment to review</h2>
+      <div class="flex flex-col items-center justify-center flex-1">
+        <img src="pic/12.png" alt="" class="w-16 md:w-20">
+        <p class="text-sm md:text-base text-[#8D8D8D] mb-4">No assignment to review yet</p>
+      </div>
+    </div>
+
+    <!-- Student Performance Overview -->
+    <div class="bg-gray-200 rounded-xl h-[420px] md:h-[520px] flex flex-col text-center p-6 mx-4">
+      <h2 class="text-xl font-bold text-gray-800 mt-2 md:mt-8">Student Performance Overview</h2>
+      <div class="flex flex-col items-center justify-center flex-1">
+        <img src="pic/13.png" alt="" class="w-16 md:w-20">
+        <p class="text-sm md:text-base text-[#8D8D8D] mb-4">Nothing to report yet</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP NEW CLASS -->
+<div id="popupClass" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden">
+  <div class="bg-white w-[90%] max-w-2xl rounded-xl shadow-lg p-6 md:p-10">
+
+    <h2 class="text-2xl font-bold text-center mb-6">New Class</h2>
+
+    <!-- Class Name -->
+    <label class="font-semibold text-sm">Class Name:</label>
+    <input 
+      type="text" 
+      placeholder="Enter your class here…" 
+      class="w-full border rounded-md mt-1 mb-4 px-3 py-2 outline-none"
+    >
+
+    <!-- Subject -->
+    <label class="font-semibold text-sm">Subject:</label>
+    <input 
+      type="text" 
+      placeholder="Enter subject here…" 
+      class="w-full border rounded-md mt-1 mb-4 px-3 py-2 outline-none"
+    >
+
+    <!-- Teacher (Auto, tidak bisa edit) -->
+    <label class="font-semibold text-sm">Teacher:</label>
+    <p class="w-full border rounded-md mt-1 mb-6 px-3 py-2 bg-gray-100">
+      Mrs. Cantik
+    </p>
+
+    <!-- Save Button -->
+    <div class="flex justify-end">
+      <a href="hs-teach2.html">
+      <button id="closePopup" class="bg-[#28477E] text-white px-8 py-2 rounded-lg">
+        Save
+      </button>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  // tombol "Create New Class" diarahkan buka popup
+  const popupClass = document.getElementById('popupClass');
+
+  // default button di halaman sebelumnya
+  const createBtn = document.querySelector('a[href="hs-teach1.html"] button');
+
+  if(createBtn){
+    createBtn.addEventListener('click', function(event){
+      event.preventDefault(); 
+      popupClass.classList.remove('hidden');
+    });
+  }
+
+  // tombol save = tutup popup
+  document.getElementById('closePopup').addEventListener('click', () => {
+    popupClass.classList.add('hidden');
+  });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
