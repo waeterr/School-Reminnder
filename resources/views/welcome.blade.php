@@ -90,35 +90,37 @@
 
 <body class="bg-gray-50 text-gray-800">
     <!-- Top Navigation Bar -->
-    <nav class="bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-10">
-        <div class="flex items-center">
-            <!-- Ganti bagian ini dengan logo Anda -->
-            <img src="{{ asset('school-reminder-logo.jpg') }}" alt="School Reminder Logo" class="h-10">
+    <nav class="w-full flex justify-between items-center px-10 py-4 shadow-sm">
+        <div class="flex items-center space-x-2">
+
+            <!-- LOGO -->
+            <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
+            <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
+
+            <h1 class="font-semibold text-[#1B2A4E] text-lg">
+                School <span class="text-[#3A71C1]">Reminder</span>
+            </h1>
         </div>
 
-        <div class="hidden md:flex space-x-6">
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">Task</a>
-            <a href="#" class="text-primary font-medium">Calendar</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">Features</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">How it Works</a>
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors">About</a>
+        <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
+            <a href="{{ route('welcome') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Home</a>
+            <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
+            <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
+            <a href="#" class="hover:text-[#3A71C1]">Features</a>
+            <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
+            <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
         </div>
 
-        <div class="flex items-center space-x-4">
-            <!-- Dark/Light Mode Toggle -->
+        <!-- My Account Button -->
+        <button
+            class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+            My Account
+        </button>
 
-
-            <!-- My Account Button -->
-            <button
-                class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                My Account
-            </button>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-600">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-600">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
         </div>
     </nav>
 
@@ -247,129 +249,115 @@
                             </div>
                         </div>
 
-                        <!-- View Details Button -->
-                        <div class="mt-8">
-                            <button
-                                class="w-full bg-english-pink text-white px-4 py-3 rounded-lg hover:bg-pink-500 transition-colors flex items-center justify-center">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                View Full Task Details
-                            </button>
-                        </div>
+
 
                         <!-- Information Note -->
-                        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                            <div class="flex items-start">
-                                <i class="fas fa-info-circle text-blue-500 mr-2 mt-0.5"></i>
-                                <p class="text-xs text-blue-700">
-                                    This calendar view is for deadline tracking only. To submit your project, please go
-                                    to
-                                    the Tasks page.
-                                </p>
+
+                        <!-- Informatics Project Task Detail -->
+                        <div id="informaticsTask" class="task-detail">
+                            <div class="bg-informatics-red h-2 w-full"></div>
+                            <div class="p-6">
+                                <!-- Task Header -->
+                                <div class="mb-6">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span
+                                            class="inline-block bg-informatics-red text-white text-sm font-medium px-3 py-1 rounded-full">Informatics</span>
+                                        <span
+                                            class="inline-block bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded deadline-badge">
+                                            <i class="fas fa-clock mr-1"></i>Due: 4 days
+                                        </span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-3">Informatics Project</h2>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        Create a simple website layout using HTML and CSS — Write your code in Visual
+                                        Studio
+                                        Code
+                                        and make sure your page includes a header, navigation bar, main content, and
+                                        footer.
+                                        Save
+                                        your project folder with your name (example: Name_WebProject) and upload it to
+                                        the
+                                        School
+                                        Reminder website.
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="border-t border-gray-200 my-6"></div>
+
+                                <!-- Teacher Information -->
+                                <div class="mb-6">
+                                    <h3 class="font-semibold text-gray-700 mb-3">Teacher</h3>
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                                            <i class="fas fa-user text-gray-500"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Mr. Mulyono</h4>
+                                            <p class="text-gray-600 text-sm">informaticsacher@gmail.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="border-t border-gray-200 my-6"></div>
+
+                                <!-- Deadline Information -->
+                                <div class="mb-6">
+                                    <h3 class="font-semibold text-gray-700 mb-3">Deadline</h3>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                            <div class="text-sm text-gray-500 mb-1">Date</div>
+                                            <div class="font-semibold text-gray-800">25-07-2025</div>
+                                        </div>
+                                        <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                            <div class="text-sm text-gray-500 mb-1">Time</div>
+                                            <div class="font-semibold text-gray-800">9.00 PM</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Information -->
+                                <div class="mb-6">
+                                    <h3 class="font-semibold text-gray-700 mb-3">Project Details</h3>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                            <div class="text-sm text-gray-500 mb-1">Code Platform</div>
+                                            <div class="font-semibold text-gray-800">Github</div>
+                                        </div>
+                                        <div class="info-box bg-gray-50 p-4 rounded-lg">
+                                            <div class="text-sm text-gray-500 mb-1">Time Left</div>
+                                            <div class="font-semibold text-gray-800">H-4</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- View Details Button -->
+                                <div class="mt-8">
+                                    <button
+                                        class="w-full bg-informatics-red text-white px-4 py-3 rounded-lg hover:bg-red-500 transition-colors flex items-center justify-center">
+                                        <i class="fas fa-external-link-alt mr-2"></i>
+                                        View Full Task Details
+                                    </button>
+                                </div>
+
+                                <!-- Information Note -->
+                                <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-info-circle text-blue-500 mr-2 mt-0.5"></i>
+                                        <p class="text-xs text-blue-700">
+                                            This calendar view is for deadline tracking only. To submit your project,
+                                            please go
+                                            to
+                                            the Tasks page.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Informatics Project Task Detail -->
-                <div id="informaticsTask" class="task-detail">
-                    <div class="bg-informatics-red h-2 w-full"></div>
-                    <div class="p-6">
-                        <!-- Task Header -->
-                        <div class="mb-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <span
-                                    class="inline-block bg-informatics-red text-white text-sm font-medium px-3 py-1 rounded-full">Informatics</span>
-                                <span
-                                    class="inline-block bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded deadline-badge">
-                                    <i class="fas fa-clock mr-1"></i>Due: 4 days
-                                </span>
-                            </div>
-                            <h2 class="text-2xl font-bold text-gray-800 mb-3">Informatics Project</h2>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Create a simple website layout using HTML and CSS — Write your code in Visual Studio
-                                Code
-                                and make sure your page includes a header, navigation bar, main content, and footer.
-                                Save
-                                your project folder with your name (example: Name_WebProject) and upload it to the
-                                School
-                                Reminder website.
-                            </p>
-                        </div>
-
-                        <!-- Divider -->
-                        <div class="border-t border-gray-200 my-6"></div>
-
-                        <!-- Teacher Information -->
-                        <div class="mb-6">
-                            <h3 class="font-semibold text-gray-700 mb-3">Teacher</h3>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-gray-500"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Mr. Mulyono</h4>
-                                    <p class="text-gray-600 text-sm">informaticsacher@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Divider -->
-                        <div class="border-t border-gray-200 my-6"></div>
-
-                        <!-- Deadline Information -->
-                        <div class="mb-6">
-                            <h3 class="font-semibold text-gray-700 mb-3">Deadline</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="info-box bg-gray-50 p-4 rounded-lg">
-                                    <div class="text-sm text-gray-500 mb-1">Date</div>
-                                    <div class="font-semibold text-gray-800">25-07-2025</div>
-                                </div>
-                                <div class="info-box bg-gray-50 p-4 rounded-lg">
-                                    <div class="text-sm text-gray-500 mb-1">Time</div>
-                                    <div class="font-semibold text-gray-800">9.00 PM</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Information -->
-                        <div class="mb-6">
-                            <h3 class="font-semibold text-gray-700 mb-3">Project Details</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="info-box bg-gray-50 p-4 rounded-lg">
-                                    <div class="text-sm text-gray-500 mb-1">Code Platform</div>
-                                    <div class="font-semibold text-gray-800">Github</div>
-                                </div>
-                                <div class="info-box bg-gray-50 p-4 rounded-lg">
-                                    <div class="text-sm text-gray-500 mb-1">Time Left</div>
-                                    <div class="font-semibold text-gray-800">H-4</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- View Details Button -->
-                        <div class="mt-8">
-                            <button
-                                class="w-full bg-informatics-red text-white px-4 py-3 rounded-lg hover:bg-red-500 transition-colors flex items-center justify-center">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                View Full Task Details
-                            </button>
-                        </div>
-
-                        <!-- Information Note -->
-                        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                            <div class="flex items-start">
-                                <i class="fas fa-info-circle text-blue-500 mr-2 mt-0.5"></i>
-                                <p class="text-xs text-blue-700">
-                                    This calendar view is for deadline tracking only. To submit your project, please go
-                                    to
-                                    the Tasks page.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
     <!-- Footer -->
