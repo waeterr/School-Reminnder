@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Reminder - Task</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif !important;">
+  <!-- NAVBAR -->
+  <nav class="flex justify-between items-center px-6 py-4 shadow md:px-12 md:py-6">
+    <div class="text-xl flex items-center">
+        <img src="pic/logo.png" alt="school logo" class="h-10 w-auto md:h-12" />
+    </div>
+    <ul class="hidden md:flex gap-10 font-semibold">
+      <li><a href="hs-teach2.html" class="hover:text-blue-600">Home</a></li>
+      <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">Task</a></li>
+      <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
+      <li><a href="#" class="hover:text-blue-600">Features</a></li>
+      <li><a href="as.html" class="hover:text-blue-600">About Us</a></li>
+    </ul>
+    <a class="hidden md:block border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition" href="#">My Account</a>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden border border-gray-800 px-4 py-2 rounded-lg">Menu</button>
+  </nav>
+
+    <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="hidden flex flex-col bg-gray-100 px-6 py-4 shadow md:hidden text-sm font-semibold">
+    <a href="hs-teach2.html" class="py-2">Home</a>
+    <a href="#" class="py-2">Task</a>
+    <a href="#" class="py-2">Calendar</a>
+    <a href="#" class="py-2">Features</a>
+    <a href="about-us.html" class="py-2">About Us</a>
+    <a href="#" class="py-2 border border-gray-800 rounded-lg text-center mt-2">My Account</a>
+  </div>
+
+  <div class="md:p-10 p-6">
+    <!-- PAGE TITLE -->
+    <h1 class="text-3xl font-semibold mb-6 ml-6">Math XI PPLG 3</h1>
+
+    <!-- CARD WRAPPER -->
+    <div class="bg-[#F3F3F3] shadow-md rounded-xl p-4 m-3 md:p-8 md:m-6">
+
+      <!-- TABS -->
+      <div class="grid grid-cols-3 text-center">
+        <button class="py-2 px-4 mx-auto border-b-2 border-[#132442] text-[#132442] font-medium">Task</button>
+        <a href="grading.html">
+        <button class="py-2 inline-block mx-auto text-gray-500">Grading</button></a>
+        <a href="student.html">
+        <button class="py-2 inline-block mx-auto text-gray-500">Student</button></a>
+      </div>
+
+      <!-- SEARCH BAR -->
+      <div class="mt-5">
+        <div class="flex items-center bg-white border rounded-lg px-3 py-2 shadow-sm">
+          <img src="pic/search.svg" alt="search icon" class="w-5 h-5">
+          <input type="text" placeholder="Search task..."
+            class="w-full ml-3 focus:outline-none text-gray-700">
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="mt-5 border rounded-lg overflow-hidden">
+
+        <!-- HEADER -->
+        <div class="grid grid-cols-5 bg-[#B5B5B5] text-gray-700 font-medium py-2 px-3 text-sm">
+          <p class="mx-20 text-white font-semibold text-base">Task Name</p>
+          <p class="mx-20 text-white font-semibold text-base">Deadline</p>
+          <p class="mx-20 text-white font-semibold text-base">Status</p>
+          <p class="mx-20 text-white font-semibold text-base">Submissions</p>
+          <p class="mx-20 text-white font-semibold text-base">Actions</p>
+        </div>
+
+        <!-- EMPTY ROW -->
+        <div class="bg-white text-center py-8 text-[#868282] font-semibold">
+          No tasks created
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+      <div class="mt-6">
+        <a href="#">
+            <button class="w-full bg-[#24447D] text-white text-sm py-3 rounded-lg flex items-center justify-center gap-2 transition duration-300 ease-in-out font-bold hover:scale-105">
+            <img src="pic/+.png" alt="" class="w-5 items-center justify-center">Create New Task
+            </button>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- POPUP NEW TASK -->
+  <div id="popupOverlay" class="fixed inset-0 bg-black bg-opacity-40 hidden justify-center items-center z-50">
+    
+    <!-- POPUP BOX -->
+    <div class="bg-white rounded-2xl shadow-xl w-[650px] p-10">
+        <h2 class="text-center text-2xl font-semibold mb-8">New Task</h2>
+
+        <form id="taskForm" class="space-y-5">
+
+          <!-- TASK NAME -->
+          <div>
+            <label class="text-gray-600 text-sm font-medium">Task Name:</label>
+            <input type="text" id="taskName" 
+              class="w-full border mt-1 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
+              placeholder="Enter task name..." required>
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div>
+            <label class="text-gray-600 text-sm font-medium">Description:</label>
+            <textarea id="taskDesc" rows="3"
+              class="w-full border mt-1 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
+              placeholder="Enter task details..." required></textarea>
+          </div>
+
+          <!-- DEADLINE -->
+          <div>
+            <label class="text-gray-600 text-sm font-medium">Deadline:</label>
+            <input type="datetime-local" id="taskDeadline"
+              class="w-full border mt-1 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
+              required>
+            <p class="text-xs text-gray-500 mt-1">Format: month/day/year, hour</p>
+          </div>
+
+          <!-- STATUS -->
+          <div>
+            <label class="text-gray-600 text-sm font-medium">Status:</label>
+            <div class="flex gap-3 mt-2">
+                <button type="button" id="statusActive"
+                  class="statusBtn px-5 py-1 rounded-full text-sm font-medium border border-[#132442] text-[#132442] hover:bg-[#132442] hover:text-white transition">
+                    Active
+                </button>
+
+                <button type="button" id="statusSchedule"
+                  class="statusBtn px-5 py-1 rounded-full text-sm font-medium border border-gray-400 text-gray-600 hover:bg-gray-300 transition">
+                    Schedule
+                </button>
+            </div>
+          </div>
+
+          <!-- SCHEDULE DATE (HIDDEN FIRST) -->
+          <div id="scheduleDateWrapper" class="hidden">
+            <label class="text-gray-600 text-sm font-medium">Schedule Upload Date:</label>
+            <input type="datetime-local" id="scheduleDate"
+              class="w-full border mt-1 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700">
+            <p class="text-xs text-gray-500 mt-1">Format: month/day/year, hour</p>
+          </div>
+
+          <!-- BUTTON -->
+          <div class="flex justify-end pt-2">
+            <button id="saveTask"
+              class="bg-[#24447D] text-white px-8 py-2 rounded-lg font-semibold hover:scale-105 transition">
+              Save
+            </button>
+          </div>
+
+        </form>
+
+    </div>
+
+  </div>
+
+  
+
+  <!-- SCRIPT UNTUK POPUP -->
+  <script>
+    const popup = document.getElementById('popupOverlay');
+    const openBtn = document.querySelector('a button'); 
+    const closeBtn = document.getElementById('saveTask');
+
+    const activeBtn = document.getElementById('statusActive');
+    const scheduleBtn = document.getElementById('statusSchedule');
+    const scheduleWrapper = document.getElementById('scheduleDateWrapper');
+
+    let selectedStatus = "Active";
+
+    /* BUKA POPUP */
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      popup.classList.remove('hidden');
+      popup.classList.add('flex');
+    });
+
+    /* STATUS BUTTON LOGIC */
+    activeBtn.addEventListener('click', () => {
+      selectedStatus = "Active";
+      scheduleWrapper.classList.add("hidden");
+
+      activeBtn.classList.add("bg-[#132442]", "text-white");
+      activeBtn.classList.remove("text-[#132442]");
+
+      scheduleBtn.classList.remove("bg-gray-400", "text-white");
+      scheduleBtn.classList.add("text-gray-600");
+    });
+
+    scheduleBtn.addEventListener('click', () => {
+      selectedStatus = "Schedule";
+      scheduleWrapper.classList.remove("hidden");
+
+      scheduleBtn.classList.add("bg-gray-400", "text-white");
+      activeBtn.classList.remove("bg-[#132442]", "text-white");
+      activeBtn.classList.add("text-[#132442]");
+    });
+
+    /* SAVE BUTTON MENUTUP POPUP */
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      popup.classList.add('hidden');
+      popup.classList.remove('flex');
+
+      // Ambil data form (nanti bisa kamu kirim ke backend)
+      const data = {
+        taskName: document.getElementById("taskName").value,
+        description: document.getElementById("taskDesc").value,
+        deadline: document.getElementById("taskDeadline").value,
+        status: selectedStatus,
+        scheduleDate: selectedStatus === "Schedule" ? document.getElementById("scheduleDate").value : null
+      };
+
+      console.log("Task Saved:", data); // debug
+    });
+  </script>
+
+
+
+</body>
+</html>
