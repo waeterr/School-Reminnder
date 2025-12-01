@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class tasks extends Model
+class Tasks extends Model
 {
     use HasFactory;
 
@@ -13,16 +13,17 @@ class tasks extends Model
         'class_id',
         'title',
         'description',
+        'file_path',
         'deadline',
     ];
 
-    public function classRoom()
+    public function classroom()
     {
-        return $this->belongsTo(classroom::class, 'class_id');
+        return $this->belongsTo(Classroom::class, 'class_id');
     }
 
     public function submissions()
     {
-        return $this->hasMany(taskSubmissions::class, 'task_id');
+        return $this->hasMany(TaskSubmissions::class, 'task_id');
     }
 }

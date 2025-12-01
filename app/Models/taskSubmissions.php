@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class taskSubmissions extends Model
+class TaskSubmissions extends Model
 {
     use HasFactory;
 
@@ -21,7 +21,7 @@ class taskSubmissions extends Model
 
     public function task()
     {
-        return $this->belongsTo(tasks::class, 'task_id');
+        return $this->belongsTo(Tasks::class, 'task_id');
     }
 
     public function student()
