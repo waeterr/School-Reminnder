@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Dashboard</title>
+    <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar" aria-label="Sidebar navigation">
+    <div class="logo">
+        <img src="picture/logo.png" alt="Today's Classes Icon" /> 
+    </div> 
+      <button title="Today's Classes" type="button" class="active">
+        <img src="picture/today's classes.png" alt="Today's Classes Icon" />
+        <span class="sidebar-label">Today's Classes</span>
+      </button>
+      <button title="Calendar" type="button">
+        <img src="picture/calender.png" alt="Calendar Icon" />
+        <span class="sidebar-label">Calendar</span>
+      </button>
+      <button title="Task" type="button">
+        <img src="picture/task.png" alt="Task Icon" />
+        <span class="sidebar-label">Task</span>
+      </button>
+      <button title="Friends" type="button">
+        <img src="picture/friends.png" alt="Friends Icon" />
+        <span class="sidebar-label">Friends</span>
+      </button>
+      <button title="Reminder" type="button">
+        <img src="picture/reminder.png" alt="Reminder Icon" />
+        <span class="sidebar-label">Reminder</span>
+      </button>
+
+    <div class="home">
+      <button title="Back Home" type="button">
+        <img src="picture/home.png" alt="Back Home Icon" />
+        <span class="sidebar-label">Back Home</span>
+      </button>
+    </div>
+    </aside>
+
+    <main class="main-content">
+        <h1 class="page-title">Profile</h1>
+
+        <div class="dashboard-grid">
+            
+            <section class="profile-card">
+                <div class="profile-header">
+                    <img src="picture/profile1.jpg" alt="Profile Picture Vica Allistya M." class="profile-pic">
+                    <button class="edit-btn" aria-label="Edit Profile">
+                        <img src="picture/pen.png" alt="Edit Icon">
+                    </button>
+                </div>
+                <div class="profile-info">
+                    <h2 class="profile-name">Vica Allistya M.</h2>
+                    <span class="profile-class">XI PPLG 3</span>
+                </div>
+                <div class="profile-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Email</span>
+                        <input type="text" value="Vicaallistya@gmail.com" readonly>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Gender</span>
+                        <input type="text" value="Female" readonly>
+                    </div>
+                    <div class="detail-row"> 
+                        <span class="detail-label">Email</span>
+                        <input type="text" value="Vicaallistya@gmail.com" readonly>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">School Name</span>
+                        <input type="text" value="SMK 8 Semarang" readonly>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="report-card deadline-card info-bg">
+                <div class="deadline-icon">
+                    <img src="picture/warning.png" alt="Warning Icon">
+                </div>
+                <div class="deadline-content">
+                    <p class="deadline-title">Informatics Report</p>
+                    <span class="deadline-time">Deadline: Tomorrow</span>
+                </div>
+            </div>
+
+            <div class="report-card deadline-card essay-bg">
+                <div class="deadline-icon">
+                    <img src="picture/warning.png" alt="Warning Icon">
+                </div>
+                <div class="deadline-content">
+                    <p class="deadline-title">Essay PAI</p>
+                    <span class="deadline-time">Deadline: Tomorrow</span>
+                </div>
+            </div>
+
+            <section class="classes-card">
+                <h2 class="card-heading">Today's Classes</h2>
+                <div class="class-list">
+                    <div class="class-item math-bg">
+                        <div class="class-time">7.00 am</div>
+                        <div class="class-details">
+                            <p class="class-name">Mathematics</p>
+                            <span class="class-teacher">Mr. Bambang</span>
+                        </div>
+                    </div>
+                    <div class="class-item english-bg">
+                        <div class="class-time">9.00 am</div>
+                        <div class="class-details">
+                            <p class="class-name">English</p>
+                            <span class="class-teacher">Mr. Aji</span>
+                        </div>
+                    </div>
+                    <div class="class-item informatics-bg">
+                        <div class="class-time">11.00 am</div>
+                        <div class="class-details">
+                            <p class="class-name">Informatics</p>
+                            <span class="class-teacher">Mrs. Dian</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+  </div>
+</body>
+</html>
