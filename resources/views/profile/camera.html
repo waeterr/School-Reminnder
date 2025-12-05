@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Camera</title>
+    <link rel="stylesheet" href="Edit.css">
+
+    <style>
+
+        /* TOMBOL BACK */
+        .back-btn {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+            font-weight: 500;
+            position: absolute;
+            top: 20px;
+            left: 250px; /* disesuaikan karena ada sidebar */
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #e3e3e3;
+        }
+
+        .camera-container {
+            padding: 40px;
+            padding-top: 80px; /* supaya tidak ketutup tombol back */
+        }
+
+        .camera-title {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .camera-wrapper {
+            margin-top: 30px;
+            width: 100%;
+            height: 380px;
+            background: #d8d8d8;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .camera-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .take-photo-btn {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .take-photo-btn button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: none;
+            background: #1e3a8a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar sama -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="picture/logo.png" alt="">
+        </div>
+
+        <button class="active">
+            <img src="picture/today's classes.png">
+            <span>Today's Classes</span>
+        </button>
+
+        <button>
+            <img src="picture/calender.png">
+            <span>Calendar</span>
+        </button>
+
+        <button>
+            <img src="picture/task.png">
+            <span>Task</span>
+        </button>
+
+        <button>
+            <img src="picture/friends.png">
+            <span>Friends</span>
+        </button>
+
+        <button>
+            <img src="picture/reminder.png">
+            <span>Reminder</span>
+        </button>
+
+        <div class="home">
+            <button onclick="history.back()">
+                <img src="picture/home.png">
+                <span>Back Home</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOMBOL BACK -->
+        <a href="Edit.html" class="back-btn">← Back</a>
+
+        <div class="camera-container">
+            <h1 class="camera-title">Camera</h1>
+            <p>Take Your Photo</p>
+
+            <div class="camera-wrapper">
+                <img src="picture/profile1.jpg">
+            </div>
+
+            <div class="take-photo-btn">
+                <button>
+                    <img src="picture/camera.png" width="35">
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+<script>
+document.querySelector(".take-photo-btn button").addEventListener("click", function () {
+    
+    // contoh → saat tombol diklik, ambil foto dari wrapper (sementara)
+    let takenPhoto = document.querySelector(".camera-wrapper img").src;
+
+    // simpan ke temp
+    localStorage.setItem("tempPhoto", takenPhoto);
+
+    // arahkan ke crop
+    window.location.href = "crop.html";
+});
+</script>
+
+</body>
+</html>

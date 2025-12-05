@@ -1,0 +1,217 @@
+/* ===== SIDEBAR (COPY FROM EDIT.css) ===== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 100vh;
+  background: #ffffff;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  border-right: 1px solid #f0f0f0;
+  z-index: 999;
+}
+
+.sidebar button {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+  width: 78px;
+  height: 78px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 6px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  transition: 0.25s ease;
+  position: relative;
+}
+
+.sidebar button:hover img {
+  transform: translateY(-2px);
+}
+
+/* ICON BACKGROUND COLORS LIKE EDIT PAGE */
+.sidebar button:nth-of-type(1) img { background-color: #e64aa5; }
+.sidebar button:nth-of-type(2) img { background-color: #b0c1ff; }
+.sidebar button:nth-of-type(3) img { background-color: #fec075; }
+.sidebar button:nth-of-type(4) img { background-color: #f1d3ff; }
+.sidebar button:nth-of-type(5) img { background-color: #4dd0cc; }
+.home button img                { background-color: #dabfd5; }
+
+.sidebar button.active {
+  background: #ecc8ff;
+  border-color:#ecc8ff;
+  box-shadow: 0 4px 16px rgba(160, 100, 255, 0.18);
+}
+
+.sidebar button.active img {
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(160, 100, 255, 0.4);
+}
+
+.sidebar button.active::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  width: 5px;
+  height: 55px;
+  background: #b344ff;
+  border-radius: 10px;
+}
+
+.sidebar button img {
+  width: 28px;
+  height: 28px;
+  padding: 10px;
+  border-radius: 14px;
+  background: #f8f8f8;
+  transition: 0.2s ease;
+}
+
+.sidebar-label {
+  font-size: 0.62rem;
+  margin-top: 4px;
+  color: #222;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+}
+
+.home {
+  margin-top: auto;
+  padding-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+  height: 60px;
+  pointer-events: none;
+    margin-bottom: 25px;
+}
+
+.logo img {
+  width: 48px;
+  height: auto;
+  object-fit: contain;
+  padding: 4px;
+}
+
+/* ===== MAIN CONTENT ===== */
+
+.friends-container {
+  margin-left: 140px;
+  padding: 40px 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info h2 {
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.class-badge {
+  display: inline-block;
+  background: #c4f981;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 200px 200px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding: 0 10px;
+  color: #333;
+}
+
+/* Friend Cards */
+.friend-card {
+  background: #ffffff;
+  padding: 18px 25px;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 200px 250px;
+  align-items: center;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.friend-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.friend-photo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.friend-name {
+  font-weight: 600;
+}
+
+/* Class badge colors */
+.friend-class {
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+}
+
+.green { background: #b2ff82; color: #1a1a1a; }
+.blue  { background: #26b2ff; }
+
+/* Status */
+.friend-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+}
+
+.online-dot,
+.offline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.online-dot { background: #1aff00; }
+.offline-dot { background: red; }

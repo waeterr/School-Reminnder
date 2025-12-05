@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends</title>
+    <link rel="stylesheet" href="Friends.css" />
+</head>
+<body>
+
+<div class="container">
+    <!-- SIDEBAR (sama seperti Edit.html) -->
+    <aside class="sidebar" aria-label="Sidebar navigation">
+
+        <div class="logo">
+            <img src="picture/logo.png" alt="Logo" />
+        </div>
+
+        <button title="Today's Classes" type="button">
+            <img src="picture/today's classes.png" />
+            <span class="sidebar-label">Today's Classes</span>
+        </button>
+
+        <button title="Calendar" type="button">
+            <img src="picture/calender.png" />
+            <span class="sidebar-label">Calendar</span>
+        </button>
+
+        <button title="Task" type="button">
+            <img src="picture/task.png" />
+            <span class="sidebar-label">Task</span>
+        </button>
+
+        <button title="Friends" type="button" class="active">
+            <img src="picture/friends.png" />
+            <span class="sidebar-label">Friends</span>
+        </button>
+
+        <button title="Reminder" type="button">
+            <img src="picture/reminder.png" />
+            <span class="sidebar-label">Reminder</span>
+        </button>
+
+        <div class="home">
+            <button title="Back Home" type="button">
+                <img src="picture/home.png" />
+                <span class="sidebar-label">Back Home</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="friends-container">
+
+        <h1>Friends</h1>
+
+        <!-- PROFILE SECTION -->
+        <section class="profile-header">
+            <img src="picture/profile1.jpg" class="profile-img" />
+
+            <div class="profile-info">
+                <h2>Vica Allistya</h2>
+                <span class="class-badge">XI PPLG 3</span>
+                <p>SMK N Semarang</p>
+            </div>
+        </section>
+
+        <div class="table-header">
+            <span>Full Name</span>
+            <span>Class</span>
+            <span>Status</span>
+        </div>
+
+        <!-- FRIEND LIST -->
+        <div class="friend-card">
+            <div class="friend-info">
+                <img src="picture/profile2.jpg" class="friend-photo">
+                <span class="friend-name">Adinda Octaviannisa</span>
+            </div>
+
+            <div class="friend-class green">XI LK 2</div>
+
+            <div class="friend-status">
+                <span class="online-dot"></span>
+                Active
+            </div>
+        </div>
+
+        <div class="friend-card">
+            <div class="friend-info">
+                <img src="picture/profile3.jpg" class="friend-photo">
+                <span class="friend-name">Saprillia Wardani</span>
+            </div>
+
+            <div class="friend-class blue">XI PPLG 3</div>
+
+            <div class="friend-status">
+                <span class="offline-dot"></span>
+                Last seen today at 3:15 pm
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="Friends.js"></script>
+
+</body>
+</html>
