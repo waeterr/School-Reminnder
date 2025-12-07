@@ -53,40 +53,39 @@
 
     <nav class="w-full flex justify-between items-center px-10 py-4 shadow-sm">
         <div class="flex items-center space-x-2">
-
-            <!-- LOGO -->
-            <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
-            <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
-
+            <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
             <h1 class="font-semibold text-[#1B2A4E] text-lg">
                 School <span class="text-[#3A71C1]">Reminder</span>
             </h1>
         </div>
 
+        <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
-            <a href="{{ route('welcome') }}" class="hover:text-[#3A71C1]">Home</a>
+            <a href="{{ route('homestudent') }}" class="hover:text-[#3A71C1]">Home</a>
             <a href="{{ route('task') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Task</a>
             <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
-            <a href="#" class="hover:text-[#3A71C1]">Features</a>
-            <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
-            <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
+            <a href="{{ route('about-uslog') }}" class="hover:text-[#3A71C1]">About Us</a>
         </div>
 
+        <!-- Desktop My Account -->
+        <a class="hidden md:block border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition"
+            href="{{ route('profile') }}">My Account</a>
 
-
-
-        <button
-            class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-            My Account
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn" class="md:hidden border border-gray-800 p-3 rounded-lg text-xl">
+            <i class="fa-solid fa-bars"></i>
         </button>
-
-
-        <button id="mobile-menu-button" class="md:hidden text-gray-600">
-            <i class="fas fa-bars text-xl"></i>
-        </button>
-        </div>
     </nav>
 
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden flex flex-col bg-gray-100 px-6 py-4 shadow md:hidden text-sm font-semibold">
+        <a href="{{ route('homestudent') }}" class="py-2">Home</a>
+        <a href="{{ route('task') }}" class="py-2">Task</a>
+        <a href="{{ route('calendar') }}" class="py-2">Calendar</a>
+        <a href="#" class="py-2">Features</a>
+        <a href="{{ route('about-uslog') }}" class="py-2">About Us</a>
+        <a href="#" class="py-2 border border-gray-800 rounded-lg text-center mt-2">My Account</a>
+    </div>
 
     <div id="mobile-menu" class="md:hidden bg-white shadow-md py-2 px-4 hidden">
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Home</a>
@@ -584,12 +583,18 @@
 
     <script>
 
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        let isOpen = false;
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            isOpen = !isOpen;
+
+            menuBtn.innerHTML = isOpen
+                ? '<i class="fa-solid fa-xmark text-xl"></i>'
+                : '<i class="fa-solid fa-bars text-xl"></i>';
         });
-
-
 
 
         const statusFilterBtn = document.getElementById('status-filter-btn');

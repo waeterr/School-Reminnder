@@ -32,7 +32,7 @@
 
   <!-- Logo -->
   <div class="mb-6">
-    <img src="{{ asset('school-reminder-logo.jpg') }}" alt="School Reminder Logo" class="h-10">
+    <img src="{{ asset('images/logo.png') }}" alt="School Reminder Logo" class="h-10">
 
   </div>
 

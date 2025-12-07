@@ -56,8 +56,7 @@
             class="flex-1 py-2 rounded-xl font-bold text-[16px] active-role flex items-center justify-center gap-2">
 
             <!-- Teacher WHITE icon -->
-            <img id="teacherIcon" src="fa-solid_chalkboard-teacher(1).png" class="w-5 h-5">
-
+            <img src="{{ asset('images/fa-solid_chalkboard-teacher.png') }}" class="w-5 h-5 mr-2">
             Teacher
           </button>
 
@@ -66,8 +65,7 @@
             class="flex-1 py-2 rounded-xl font-bold text-[16px] inactive-role flex items-center justify-center gap-2">
 
             <!-- Student BLUE icon -->
-            <img id="studentIcon" src="hugeicons_student-card.png" class="w-5 h-5">
-
+            <img src="{{ asset('images/hugeicons_student-card.png') }}" class="w-5 h-5 mr-2">
             Student
           </button>
 
@@ -83,34 +81,26 @@
 
       <!-- Email -->
       <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
-        <img src="mi_email.png" class="w-5 h-5 mr-2">
+        <img src={{ asset('images/mi_email.png') }} class="w-5 h-5 mr-2">
         <input type="email" name="email" placeholder="Email"
           class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium" required>
       </div>
 
       <!-- Password -->
       <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
-        <img src="ri_lock-password-line.png" class="w-5 h-5 mr-2">
+        <img src="{{ asset('images/ri_lock-password-line.png') }}" class="w-5 h-5 mr-2">
         <input id="password" name="password" type="password" placeholder="Password"
           class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium" required>
         <button type="button" id="togglePassword">
-          <img src="solar_eye-bold.png" class="w-5 h-5 ml-2">
+          <img src="{{ asset('images/solar_eye-bold.png') }}" class="w-5 h-5 ml-2">
         </button>
       </div>
 
-      <!-- Confirm Password -->
-      <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
-        <img src="ri_lock-password-line.png" class="w-5 h-5 mr-2">
-        <input id="password_confirmation" name="password_confirmation" type="password" placeholder="Confirm Password"
-          class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium" required>
-        <button type="button" id="togglePasswordConfirm">
-          <img src="solar_eye-bold.png" class="w-5 h-5 ml-2">
-        </button>
-      </div>
+
 
       <!-- School Name -->
       <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-1">
-        <img id="schoolIcon" src="icon-park-solid_school.png" class="w-5 h-5 mr-2">
+        <img src="{{ asset('images/icon-park-solid_school.png') }}" class="w-5 h-5 mr-2">
         <input type="text" placeholder="School name"
           class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium">
       </div>

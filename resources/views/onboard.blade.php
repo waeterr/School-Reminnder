@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Reminder - Onboarding</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-        /* Fade transition */
         .fade {
             transition: opacity 0.8s ease-in-out;
         }
 
-        /* Fade in-out splash animation */
         @keyframes fadeSplash {
 
             0%,
@@ -36,34 +35,28 @@
 
     <!-- SPLASH SCREEN -->
     <div id="splash" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 splash-animate">
-        <!-- Ganti src dengan logo kamu -->
         <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
-
     </div>
 
-    <!-- MAIN CONTENT (HIDDEN BY DEFAULT) -->
+    <!-- MAIN CONTENT -->
     <div id="main" class="hidden">
 
         <!-- NAVBAR -->
-        <nav class="w-full flex justify-between items-center px-10 py-4 shadow-sm">
-            <div class="flex items-center space-x-2">
-
-                <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
-                <h1 class="font-semibold text-[#1B2A4E] text-lg">
-                    School <span class="text-[#3A71C1]">Reminder</span>
-                </h1>
+        <nav class="flex justify-between items-center px-6 py-6 shadow md:px-12 md:py-6">
+            <div class="text-xl flex items-center">
+                <img src="{{ asset('images/logo.png') }}" alt="school logo" class="h-10 w-auto md:h-12" />
             </div>
 
-            <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
-                <a href="#" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Home</a>
-                <a href="#" class="hover:text-[#3A71C1]">Task</a>
-                <a href="#" class="hover:text-[#3A71C1]">Calendar</a>
-                <a href="#" class="hover:text-[#3A71C1]">Features</a>
+            {{-- Desktop Menu --}}
+            <ul class="hidden md:flex gap-10 font-semibold">
+                <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white rounded-full">Home</a></li>
+                <li><a href="{{ url('task2') }}" class="hover:text-blue-600">Task</a></li>
+                <li><a href="{{ url('welcome') }}" class="hover:text-blue-600">Calendar</a></li>
+                <li><a href="#" class="hover:text-blue-600">Features</a></li>
+                <li><a href="{{ url('as') }}" class="hover:text-blue-600">About Us</a></li>
+            </ul>
 
-                <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
-            </div>
-
-            <div class="flex items-center space-x-3">
+            <div class="hidden md:flex items-center space-x-3">
                 <a href="{{ route('login') }}"
                     class="border border-[#3A71C1] px-4 py-1 rounded-full hover:bg-[#3A71C1] hover:text-white transition">
                     Log in
@@ -73,31 +66,78 @@
                     Get Started
                 </a>
             </div>
+
+            <!-- MOBILE BUTTON -->
+            <button id="hamburger" class="md:hidden p-2 focus:outline-none">
+                <svg class="w-7 h-7 text-[#1B2A4E]" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </nav>
+
+        <!-- MOBILE MENU -->
+        <div id="mobileMenu"
+            class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 md:hidden">
+
+            <div class="p-5 flex justify-between items-center border-b">
+                <div class="flex items-center space-x-2">
+                    <img src="{{'images/logo.png'}}" class="h-8">
+                    <p class="font-semibold text-[#1B2A4E] text-lg">Menu</p>
+                </div>
+
+                <button id="closeMenu">
+                    <svg class="w-7 h-7 text-[#1B2A4E]" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <ul class="flex flex-col space-y-4 p-6 text-[#1B2A4E] font-medium">
+                <li><a href="#" class="text-white bg-[#3A71C1] px-4 py-2 block rounded-lg">Home</a></li>
+                <li><a href="#" class="hover:text-[#3A71C1] block">Task</a></li>
+                <li><a href="#" class="hover:text-[#3A71C1] block">Calendar</a></li>
+                <li><a href="#" class="hover:text-[#3A71C1] block">Features</a></li>
+                <li><a href="{{ route('about-us') }}" class="hover:text-[#3A71C1] block">About Us</a></li>
+
+                <hr class="my-3">
+
+                <li><a href="{{ route('login') }}"
+                        class="border border-[#3A71C1] px-4 py-2 block rounded-lg text-center hover:bg-[#3A71C1] hover:text-white transition">
+                        Log In
+                    </a>
+                </li>
+                <li><a href="{{ route('signup') }}"
+                        class="bg-[#1B2A4E] text-white px-4 py-2 block rounded-lg text-center hover:opacity-80 transition">
+                        Get Started
+                    </a>
+                </li>
+            </ul>
+        </div>
 
 
         <!-- ONBOARDING SECTION -->
-        <section class="flex flex-col justify-center items-start px-20 flex-grow relative overflow-hidden h-screen">
-            <!-- Slides Container -->
-            <div id="slides" class="w-full max-w-4xl fade opacity-100 transition-opacity duration-700">
+        <section
+            class="flex flex-col justify-center items-start px-6 md:px-20 flex-grow relative overflow-hidden h-screen">
+
+            <div id="slides" class="w-full max-w-4xl fade opacity-100">
                 <!-- Slide 1 -->
                 <div class="slide active">
-                    <h2 class="text-2xl text-[#3A71C1] font-semibold">Online Education</h2>
-                    <h1 class="text-4xl font-bold text-black">Feels Like Real Classroom</h1>
+                    <h2 class="text-xl md:text-2xl text-[#3A71C1] font-semibold">Online Education</h2>
+                    <h1 class="text-3xl md:text-4xl font-bold">Feels Like Real Classroom</h1>
                 </div>
 
                 <!-- Slide 2 -->
                 <div class="slide hidden">
-                    <h2 class="text-2xl text-[#3A71C1] font-semibold">Innovative Learning</h2>
-                    <h1 class="text-4xl font-bold text-black">for a Changing World</h1>
+                    <h2 class="text-xl md:text-2xl text-[#3A71C1] font-semibold">Innovative Learning</h2>
+                    <h1 class="text-3xl md:text-4xl font-bold">for a Changing World</h1>
                 </div>
 
                 <!-- Slide 3 -->
                 <div class="slide hidden">
-                    <h2 class="text-2xl text-[#3A71C1] font-semibold">“Unlock your Potential with us”</h2>
-                    <h1 class="text-3xl font-bold text-black leading-snug">
-                        –Explore, Learn, and Grow!
-                    </h1>
+                    <h2 class="text-xl md:text-2xl text-[#3A71C1] font-semibold">“Unlock your Potential with us”</h2>
+                    <h1 class="text-2xl md:text-3xl font-bold leading-snug">–Explore, Learn, and Grow!</h1>
                     <p class="mt-4 text-gray-500 max-w-md leading-relaxed">
                         Welcome to SchoolReminder, where your journey to knowledge begins!
                         Join our community and unlock your full potential with interactive
@@ -118,37 +158,41 @@
     <script>
         const splash = document.getElementById('splash');
         const main = document.getElementById('main');
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const slideContainer = document.getElementById('slides');
-        let index = 0;
 
-        // Show main after splash
         setTimeout(() => {
             splash.classList.add('hidden');
             main.classList.remove('hidden');
         }, 2500);
 
-        // Slide change logic
+        // SLIDER
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const slideContainer = document.getElementById('slides');
+        let index = 0;
+
         function showSlide(n) {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('hidden', i !== n);
                 dots[i].classList.toggle('bg-[#3A71C1]', i === n);
                 dots[i].classList.toggle('bg-gray-300', i !== n);
             });
-            slideContainer.classList.remove('opacity-0');
-            setTimeout(() => slideContainer.classList.add('opacity-100'), 100);
         }
 
         function nextSlide() {
-            slideContainer.classList.add('opacity-0');
-            setTimeout(() => {
-                index = (index + 1) % slides.length;
-                showSlide(index);
-            }, 500);
+            index = (index + 1) % slides.length;
+            showSlide(index);
         }
 
         setInterval(nextSlide, 4000);
+
+
+        // MOBILE MENU
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        hamburger.onclick = () => mobileMenu.classList.remove("-translate-x-full");
+        closeMenu.onclick = () => mobileMenu.classList.add("-translate-x-full");
     </script>
 
 </body>

@@ -70,7 +70,6 @@
                 <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
                 <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
                 <a href="#" class="hover:text-[#3A71C1]">Features</a>
-                <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
                 <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
             </div>
 

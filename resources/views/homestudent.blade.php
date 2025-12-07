@@ -37,6 +37,38 @@
         .splash-animate {
             animation: fadeSplash 2.5s ease-in-out forwards;
         }
+
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+
+            nav .menu-btn {
+                display: block;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-img {
+                width: 250px;
+                height: 250px;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 
@@ -70,19 +102,14 @@
                 <a href="{{ route('homestudent') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Home</a>
                 <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
                 <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
-                <a href="#" class="hover:text-[#3A71C1]">Features</a>
-                <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
+                <a href="{{ route('about-uslog') }}" class="hover:text-[#3A71C1]">About Us</a>
             </div>
 
-            <div class="flex items-center space-x-3">
+
+            <div class="flex items-center space-x-3" id="auth-links">
                 <span id="sr-username" class="hidden text-sm font-medium text-[#1B2A4E]"></span>
-                <a href="#"
-                    class="border border-[#3A71C1] px-4 py-1 rounded-full hover:bg-[#3A71C1] hover:text-white transition">
-                    Sign In
-                </a>
-                <a href="#" class="bg-[#1B2A4E] text-white px-4 py-1 rounded-full hover:opacity-80 transition">
-                    Log In
-                </a>
+                <a class="border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition"
+                    href="{{ route('profile') }}">My Account</a>
             </div>
         </nav>
 
@@ -313,11 +340,26 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const username = localStorage.getItem('sr_user');
-                if (username) {
-                    const el = document.getElementById('sr-username');
-                    if (el) {
-                        el.textContent = `Welcome, ${username}`;
-                        el.classList.remove('hidden');
+                const role = localStorage.getItem('sr_role');
+                const el = document.getElementById('sr-username');
+                const authLinks = document.getElementById('auth-links');
+                const studentUrl = "{{ route('homestudent.guest') }}";
+
+
+                if (username && el) {
+                    el.textContent = `Welcome, ${username}`;
+                    el.classList.remove('hidden');
+                }
+
+                if (role === 'student') {
+                    // show My Account for students
+                    if (authLinks) {
+                        authLinks.innerHTML = `<a href="${studentUrl}" class="text-sm font-medium text-[#1B2A4E]">My Account</a>`;
+                    }
+                } else if (role === 'teacher') {
+                    // show My Account for teachers
+                    if (authLinks) {
+                        authLinks.innerHTML = `<a href="${teacherUrl}" class="text-sm font-medium text-[#1B2A4E]">My Account</a>`;
                     }
                 }
             });

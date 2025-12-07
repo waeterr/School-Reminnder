@@ -1,52 +1,201 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Reminder - Sign Up</title>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #ffffff;
+        }
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+        .active-role {
+            background-color: #132442;
+            color: white;
+            border-color: #132442;
+        }
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        .inactive-role {
+            background-color: white;
+            color: #132442;
+            border: 1.5px solid #132442;
+        }
+    </style>
+</head>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+<body class="flex flex-col items-center justify-center min-h-screen">
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+    <!-- Logo -->
+    <div class="mb-6">
+        <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
+    </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+    <div class="bg-white shadow-lg rounded-3xl p-10 w-96 flex flex-col items-center">
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+        <h2 class="text-[#132442] font-bold text-[32px] text-center mb-6">
+            Sign Up
+        </h2>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        <form method="POST" action="{{ route('register') }}" class="w-full">
+            @csrf
+
+            <!-- Login As -->
+            <div class="w-full mb-2">
+                <p class="text-[#132442] font-bold text-[16px] mb-2">Login as:</p>
+
+                <div class="flex gap-3 w-full">
+
+                    <!-- TEACHER BUTTON -->
+                    <button type="button" id="teacherBtn"
+                        class="flex-1 py-2 rounded-xl font-bold text-[16px] active-role flex items-center justify-center gap-2">
+
+                        <!-- Teacher WHITE icon -->
+                        <img id="teacherIcon" src="fa-solid_chalkboard-teacher(1).png" class="w-5 h-5">
+
+                        Teacher
+                    </button>
+
+                    <!-- STUDENT BUTTON -->
+                    <button type="button" id="studentBtn"
+                        class="flex-1 py-2 rounded-xl font-bold text-[16px] inactive-role flex items-center justify-center gap-2">
+
+                        <!-- Student BLUE icon -->
+                        <img id="studentIcon" src="hugeicons_student-card.png" class="w-5 h-5">
+
+                        Student
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Name -->
+            <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mt-4 mb-3">
+                <img src="{{ asset('images/gridicons_user.png') }}" class="w-5 h-5 mr-2">
+                <input type="text" name="name" placeholder="Full Name"
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
+                    required>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
+                <img src="mi_email.png" class="w-5 h-5 mr-2">
+                <input type="email" name="email" placeholder="Email"
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
+                    required>
+            </div>
+
+            <!-- Password -->
+            <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
+                <img src="ri_lock-password-line.png" class="w-5 h-5 mr-2">
+                <input id="password" name="password" type="password" placeholder="Password"
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
+                    required>
+                <button type="button" id="togglePassword">
+                    <img src="solar_eye-bold.png" class="w-5 h-5 ml-2">
+                </button>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
+                <img src="ri_lock-password-line.png" class="w-5 h-5 mr-2">
+                <input id="password_confirmation" name="password_confirmation" type="password"
+                    placeholder="Confirm Password"
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
+                    required>
+                <button type="button" id="togglePasswordConfirm">
+                    <img src="solar_eye-bold.png" class="w-5 h-5 ml-2">
+                </button>
+            </div>
+
+            <!-- School Name -->
+            <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-1">
+                <img id="schoolIcon" src="icon-park-solid_school.png" class="w-5 h-5 mr-2">
+                <input type="text" placeholder="School name"
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium">
+            </div>
+
+            <!-- Remember Me -->
+            <label class="flex items-center w-full mt-1 mb-4 text-[14px] text-[#C1C1C1]">
+                <input type="checkbox" class="mr-2 accent-[#132442]"> Remember me
+            </label>
+
+            <!-- Sign Up Button -->
+            <button type="submit"
+                class="bg-[#132442] text-white w-full py-2 rounded-full font-medium text-[14px] hover:opacity-90 transition">
+                Sign Up
+            </button>
+
+            <!-- Login Link -->
+            <p class="text-graycustom text-[14px] font-medium mt-4">
+                Already have an account?
+                <a href="{{ route('login') }}" class="text-[#132442] font-medium">Login</a>
+            </p>
+        </form>
+
+    </div>
+
+    <script>
+        const teacherBtn = document.getElementById("teacherBtn");
+        const studentBtn = document.getElementById("studentBtn");
+
+        const teacherIcon = document.getElementById("teacherIcon");
+        const studentIcon = document.getElementById("studentIcon");
+        const schoolIcon = document.getElementById("schoolIcon");
+
+        // Toggle Role + Change Icons
+        teacherBtn.onclick = () => {
+            teacherBtn.classList.add("active-role");
+            teacherBtn.classList.remove("inactive-role");
+
+            studentBtn.classList.remove("active-role");
+            studentBtn.classList.add("inactive-role");
+
+            // Button icon switch
+            teacherIcon.src = "fa-solid_chalkboard-teacher(1).png";
+            studentIcon.src = "hugeicons_student-card.png";
+
+            // School Name icon (Teacher)
+            schoolIcon.src = "icon-park-solid_school.png";
+        };
+
+        studentBtn.onclick = () => {
+            studentBtn.classList.add("active-role");
+            studentBtn.classList.remove("inactive-role");
+
+            teacherBtn.classList.remove("active-role");
+            teacherBtn.classList.add("inactive-role");
+
+            // Button icon switch
+            teacherIcon.src = "fa-solid_chalkboard-teacher.png";
+            studentIcon.src = "hugeicons_student-card(1).png";
+
+            // School Name icon (Student)
+            schoolIcon.src = "hugeicons_student-card.png";
+        };
+
+        // Toggle Password Visibility
+        const password = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
+
+        togglePassword.addEventListener('click', () => {
+            password.type = password.type === "password" ? "text" : "password";
+        });
+
+        // Toggle Password Confirmation Visibility
+        const passwordConfirm = document.getElementById("password_confirmation");
+        const togglePasswordConfirm = document.getElementById("togglePasswordConfirm");
+
+        togglePasswordConfirm.addEventListener('click', () => {
+            passwordConfirm.type = passwordConfirm.type === "password" ? "text" : "password";
+        });
+    </script>
+
+</body>
+
+</html>

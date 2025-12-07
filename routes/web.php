@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Public Routes - Onboarding Flow
+
 Route::get('/', function () {
     return view('onboard');
 })->name('home');
@@ -16,14 +16,14 @@ Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
-// Public guest view (optional)
+
 Route::get('/homestudent-guest', function () {
     return view('homestudent');
 })->name('homestudent.guest');
 
-route::get('/log2', function () {
+Route::get('/log2', function () {
     return view('login2');
-});
+})->name('log2');
 // homestudent for logged-in users will be defined inside the protected group
 // Protected Routes - User harus sudah login
 // Public pages (accessible without login)
@@ -39,24 +39,39 @@ Route::get('/task', function () {
     return view('task');
 })->name('task');
 
-// Protected Routes - User harus sudah login
+Route::get('/about-us', function () {
+    return view('about-us');
+})->name('about-us');
+route::get('/about-uslog', function () {
+    return view('about-uslog');
+})->name('about-uslog');
+
+route::get('/home-teacher', function () {
+    return view('home-teacher');
+})->name('home-teacher');
+
+route::get('/task-teacher', function () {
+    return view('task-teacher');
+})->name('task.teacher');
+
+route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+// Protected Routes - User must be logged in
 Route::middleware(['auth', 'verified'])->group(function () {
     // Protected homestudent for logged-in users
+    // Use the same `homestudent` view for both guest and authenticated users
     Route::get('/homestudent', function () {
-        return view('homestudentlog');
+        return view('homestudent');
     })->name('homestudent');
+    
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+    // Profile routes
+    Route::get('/profile', function () {
+        return view('profile.profile');
+    })->name('profile');
 });
-
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 require __DIR__.'/auth.php';

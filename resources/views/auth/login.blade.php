@@ -32,7 +32,7 @@
 
     <!-- Logo -->
     <div class="mb-6">
-        <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
+        <img src="{{ asset('school-reminder-logo.jpg') }}" alt="School Reminder Logo" class="h-10">
 
     </div>
 
@@ -46,63 +46,73 @@
             make your school schedule,<br> assignments and exams easy to do.
         </p>
 
-        <form method="POST" action="{{ route('login') }}" class="w-full">
-            @csrf
-
-            <!-- Email -->
+        <!-- Frontend-only login (username) - no server POST -->
+        <form id="loginForm" action="#" class="w-full">
+            <!-- Username -->
             <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-4">
                 <img src="{{ asset('images/gridicons_user.png') }}" class="w-5 h-5 mr-2">
-                <input type="email" name="email" id="email" placeholder="Email"
+                <input type="text" name="username" id="username" placeholder="Username"
                     class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
                     required>
             </div>
 
-            <!-- Password -->
+            <!-- Password (optional, client-side only) -->
             <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-2">
-                <img src="{{ asset('images/ri_lock-password-line.png') }}" class="w-5 h-5 mr-2">
+                <img src="{{ asset('icons/ri_lock-password-line.png') }}" class="w-5 h-5 mr-2">
                 <input id="password" name="password" type="password" placeholder="Password"
-                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium"
-                    required>
+                    class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium">
 
                 <button type="button" id="togglePassword">
-                    <img id="eyeIcon" src="{{ asset('images/solar_eye-bold.png') }}" class="w-5 h-5 ml-2">
+                    <img id="eyeIcon" src="{{ asset('icons/solar_eye-bold.png') }}" class="w-5 h-5 ml-2">
                 </button>
             </div>
 
-            <!-- Remember me + Forgot -->
-            <div class="flex justify-between items-center w-full mb-4 text-[14px] font-medium">
-                <label class="flex items-center text-graycustom">
-                    <input type="checkbox" name="remember" class="mr-2 accent-[#132442]"> Remember me
-                </label>
-                <a href="#" class="text-graycustom hover:text-[#132442]">Forgot password?</a>
-            </div>
-
-            <!-- Button -->
-            <button type="submit"
+            <!-- Button (handled client-side) -->
+            <button type="submit" id="loginBtn"
                 class="bg-[#132442] text-white w-full py-2 rounded-full font-medium text-[14px] hover:opacity-90 transition">
                 Login
             </button>
-
-            <!-- Sign Up -->
-            <p class="text-graycustom text-[14px] font-medium mt-4">
-                Don't have an account?
-                <a href="{{ route('signup') }}" class="text-[#132442] font-medium">Sign Up</a>
-            </p>
         </form>
+
+        <!-- Sign Up -->
+        <p class="text-graycustom text-[14px] font-medium mt-4">
+            Don’t have an account?
+            <a href="{{ route('signup') }}" class="text-[#132442] font-medium">Sign Up</a>
+        </p>
 
     </div>
 
-    <!-- Toggle Password -->
+    <!-- Toggle Password + Frontend login handler -->
     <script>
         const togglePassword = document.getElementById('togglePassword');
         const passwordInput = document.getElementById('password');
         const eyeIcon = document.getElementById('eyeIcon');
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
 
         let visible = false;
 
         togglePassword.addEventListener('click', () => {
             visible = !visible;
             passwordInput.type = visible ? 'text' : 'password';
+        });
+
+        // Frontend-only login: store username in localStorage and redirect to guest homestudent
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            if (!username) {
+                alert('Please enter a username');
+                return;
+            }
+            // store for simple demo usage
+            try {
+                localStorage.setItem('sr_user', username);
+            } catch (err) {
+                // ignore storage errors
+            }
+            // redirect to public guest homestudent page
+            window.location.href = "{{ route('homestudent.guest') }}";
         });
     </script>
 

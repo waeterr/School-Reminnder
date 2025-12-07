@@ -1,272 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School Reminder - About Us</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Reminder - About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
-    @keyframes progress {
-      0% { --percentage: 0; }
-      100% { --percentage: var(--value); }
-    }
+        @keyframes progress {
+            0% {
+                --percentage: 0;
+            }
 
-    @property --percentage {
-      syntax: '<number>';
-      inherits: true;
-      initial-value: 0;
-    }
+            100% {
+                --percentage: var(--value);
+            }
+        }
 
-    [role="progressbar"] {
-      --percentage: var(--value);
-      --primary: #132442;
-      --secondary: #A1B0CB;
-      --size: 150px;
-      animation: progress 2s 0.5s forwards;
-      width: var(--size);
-      aspect-ratio: 2 / 1;
-      border-radius: 50% / 100% 100% 0 0;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
+        @property --percentage {
+            syntax: '<number>';
+            inherits: true;
+            initial-value: 0;
+        }
 
-    [role="progressbar3"] {
-      --percentage: var(--value);
-      --primary: #132442;
-      --secondary: #A1B0CB;
-      --size: 150px;
-      animation: progress 2s 0.5s forwards;
-      width: var(--size);
-      aspect-ratio: 2 / 1;
-      border-radius: 50% / 100% 100% 0 0;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
+        [role="progressbar"] {
+            --percentage: var(--value);
+            --primary: #132442;
+            --secondary: #A1B0CB;
+            --size: 150px;
+            animation: progress 2s 0.5s forwards;
+            width: var(--size);
+            aspect-ratio: 2 / 1;
+            border-radius: 50% / 100% 100% 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
 
-    [role="progressbar2"] {
-      --percentage: var(--value);
-      --primary: #B0C635;
-      --secondary: #D7E299;
-      --size: 150px;
-      animation: progress 2s 0.5s forwards;
-      width: var(--size);
-      aspect-ratio: 2 / 1;
-      border-radius: 50% / 100% 100% 0 0;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
+        [role="progressbar3"] {
+            --percentage: var(--value);
+            --primary: #132442;
+            --secondary: #A1B0CB;
+            --size: 150px;
+            animation: progress 2s 0.5s forwards;
+            width: var(--size);
+            aspect-ratio: 2 / 1;
+            border-radius: 50% / 100% 100% 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
 
-    [role="progressbar"]::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
-      mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
-      mask-mode: alpha;
-      -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
-      -webkit-mask-mode: alpha;
-    }
+        [role="progressbar2"] {
+            --percentage: var(--value);
+            --primary: #B0C635;
+            --secondary: #D7E299;
+            --size: 150px;
+            animation: progress 2s 0.5s forwards;
+            width: var(--size);
+            aspect-ratio: 2 / 1;
+            border-radius: 50% / 100% 100% 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
 
-    [role="progressbar2"]::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
-      mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
-      mask-mode: alpha;
-      -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
-      -webkit-mask-mode: alpha;
-    }
+        [role="progressbar"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+            mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
+            mask-mode: alpha;
+            -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
+            -webkit-mask-mode: alpha;
+        }
 
-    [role="progressbar3"]::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
-      mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
-      mask-mode: alpha;
-      -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
-      -webkit-mask-mode: alpha;
-    }
+        [role="progressbar2"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+            mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
+            mask-mode: alpha;
+            -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
+            -webkit-mask-mode: alpha;
+        }
 
-    [role="progressbar"]::after {
-      counter-reset: percentage var(--value);
-      content: counter(percentage) '%';
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: calc(var(--size) / 5);
-      color: var(--primary);
-    }
-    
-    [role="progressbar2"]::after {
-      content: var(--label);
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: calc(var(--size) / 5);
-      color: var(--primary);
-    }
+        [role="progressbar3"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+            mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
+            mask-mode: alpha;
+            -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);
+            -webkit-mask-mode: alpha;
+        }
 
+        [role="progressbar"]::after {
+            counter-reset: percentage var(--value);
+            content: counter(percentage) '%';
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: calc(var(--size) / 5);
+            color: var(--primary);
+        }
 
-    [role="progressbar3"]::after {
-      content: var(--label);
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: calc(var(--size) / 5);
-      color: var(--primary);
-    }
+        [role="progressbar2"]::after {
+            content: var(--label);
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: calc(var(--size) / 5);
+            color: var(--primary);
+        }
 
-  </style>
+        [role="progressbar3"]::after {
+            content: var(--label);
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: calc(var(--size) / 5);
+            color: var(--primary);
+        }
+    </style>
 </head>
-<body class="text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif !important;">
-  <!-- NAVBAR -->
-  <nav class="flex justify-between items-center px-12 py-6 shadow">
-    <div class="text-xl">
-        <img src="pic/logo.png" alt="school logo" class="h-12 w-auto inline-block mr-2" />
-    </div>
-    <ul class="flex gap-10 font-semibold">
-      <li><a href="hs-teach2.html" class="hover:text-blue-600">Home</a></li>
-      <li><a href="task2.html" class="hover:text-blue-600">Task</a></li>
-      <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
-      <li><a href="#" class="hover:text-blue-600">Features</a></li>
-      <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">About Us</a></li>
-    </ul>
-    <a class="border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition" href="#">My Account</a>
-  </nav>
 
-  <!-- HERO -->
-  <section class="bg-[#28477E] text-white px-12 py-12 flex justify-between items-center">
-    <div class="max-w-xl justify-between items-center px-12 gap-12">
-      <h1 class="text-4xl font-extrabold leading-tight mb-6">Making Homework Management Smarter into Organized Success</h1>
-      <a href="#" class="transition delay-150 duration-300 ease-in-out bg-[#132442] text-[#FFFFF] px-6 py-3 rounded-lg font-bold inline-block hover:scale-110">Get Started Now</a>
-    </div>
-    <div class="flex justify-center">
-        <img src="pic/1.png" alt="1" class="w-96 h-100 object-cover" />
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section class="flex justify-between items-center px-12 py-24 gap-12">
-    <div class="w-1/2 flex justify-center">
-      <img src="pic/2.png" alt="" class="w-96 h-100 object-cover">
-    </div>
-    <div class="w-1/2 flex flex-col mr-8 justify-center">
-      <h2 class="text-3xl font-extrabold mb-4">We're Your Strategic Academic Partner</h2>
-      <p class="text-justify text-lg text-gray-1000 leading-relaxed font-semibold">Our platform helps you manage your time through smart reminders and healthy habit with building routines, empowering you to consistently prioritize what matters most, maintain balance throughout your school life, and track your progress with clarity</p>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="flex justify-center gap-36 py-10 text-center mb-10">
-    
-    <div class="box">
-        <div class="shadow"></div>
-        <div class="ml-5" role="progressbar"  style="--value: 90"></div> 
-        <h2 class="text-[#132442] font-semibold mt-4 text-xl">Assignments<br>Submitted On Time</h2>
-    </div>   
-    <div class="box">
-        <div class="shadow"></div>
-        <div class="ml-3" role="progressbar2" style="--value: 80; --label: '500+';"></div>
-        <h2 class="text-[#B0C635] font-semibold mt-4 text-xl">Students Enrolled</h2>
-    </div>   
-    <div class="box">
-        <div class="shadow"></div>
-        <div class="ml-6" role="progressbar3" style="--value: 60; --label: '150+';"></div>
-        <h2 class="text-[#132442] font-semibold mt-4 text-xl">Teachers Registered</h2>
-    </div>   
-
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="bg-[#B0C635] py-20 px-12 text-center">
-    <h2 class="text-4xl font-extrabold mb-20 text-white">How School Reminder Works</h2>
-    <div class="flex justify-center gap-24">
-      
-      <div class="w-40">
-        <img src="pic/3.png" alt="" class="w-20 h-20 mb-2 mx-auto">
-        <p class="text-lg font-bold text-white">Create & Assign Tasks</p>
-      </div>
-      <div class="w-40">
-        <img src="pic/4.png" alt="" class="w-20 h-20 mb-2 mx-auto">
-        <p class="text-lg font-bold text-white">Receive Instant Notifications</p>
-      </div>
-      <div class="w-40">
-        <img src="pic/5.png" alt="" class="w-20 h-20 mb-2 mx-auto">
-        <p class="text-lg font-bold text-white">Manage & Complete</p>
-      </div>
-      <div class="w-40">
-        <img src="pic/6.png" alt="" class="w-20 h-20 mb-2 mx-auto">
-        <p class="text-lg font-bold text-white">Grade & Provide Feedback</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY CHOOSE US -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 px-36 py-24">
-    <div>
-      <h2 class="text-4xl font-bold text-[#9AB236] mb-8">Why Choose Us?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-16">
-        <div class="flex items-center gap-4">
-          <img src="pic/8.png" class="w-20" alt="">
-          <div>
-            <h3 class="text-[#9AB236] text-xl font-semibold">Student Growth</h3>
-            <p class="text-[#9AB236]">Fosters Academic Progress</p>
-          </div>
+<body class="text-gray-900" style="font-family: 'Plus Jakarta Sans', sans-serif !important;"> <!-- NAVBAR -->
+    <nav class="flex justify-between items-center px-12 py-6 shadow">
+        <div class="text-xl"> <img src="pic/logo.png" alt="school logo" class="h-12 w-auto inline-block mr-2" /> </div>
+        <ul class="flex gap-10 font-semibold">
+            <li><a href="hs-teach2.html" class="hover:text-blue-600">Home</a></li>
+            <li><a href="task2.html" class="hover:text-blue-600">Task</a></li>
+            <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
+            <li><a href="#" class="hover:text-blue-600">Features</a></li>
+            <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">About Us</a></li>
+        </ul> <a
+            class="border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition"
+            href="#">My Account</a>
+    </nav> <!-- HERO -->
+    <section class="bg-[#28477E] text-white px-12 py-12 flex justify-between items-center">
+        <div class="max-w-xl justify-between items-center px-12 gap-12">
+            <h1 class="text-4xl font-extrabold leading-tight mb-6">Making Homework Management Smarter into Organized
+                Success</h1> <a href="#"
+                class="transition delay-150 duration-300 ease-in-out bg-[#132442] text-[#FFFFF] px-6 py-3 rounded-lg font-bold inline-block hover:scale-110">Get
+                Started Now</a>
         </div>
-
-        <div class="flex items-center gap-4">
-          <img src="pic/9.png" class="w-20" alt="">
-          <div>
-            <h3 class="text-[#9AB236] text-xl font-semibold">User-Friendly</h3>
-            <p class="text-[#9AB236]">Clean & Intuitive Design</p>
-          </div>
+        <div class="flex justify-center"> <img src="pic/1.png" alt="1" class="w-96 h-100 object-cover" /> </div>
+    </section> <!-- ABOUT SECTION -->
+    <section class="flex justify-between items-center px-12 py-24 gap-12">
+        <div class="w-1/2 flex justify-center"> <img src="pic/2.png" alt="" class="w-96 h-100 object-cover"> </div>
+        <div class="w-1/2 flex flex-col mr-8 justify-center">
+            <h2 class="text-3xl font-extrabold mb-4">We're Your Strategic Academic Partner</h2>
+            <p class="text-justify text-lg text-gray-1000 leading-relaxed font-semibold">Our platform helps you manage
+                your time through smart reminders and healthy habit with building routines, empowering you to
+                consistently prioritize what matters most, maintain balance throughout your school life, and track your
+                progress with clarity</p>
         </div>
-
-        <div class="flex items-center gap-4">
-          <img src="pic/10.png" class="w-20" alt="">
-          <div>
-            <h3 class="text-[#9AB236] text-xl font-semibold">Real–time</h3>
-            <p class="text-[#9AB236]">Accurate Deadline Alerts</p>
-          </div>
+    </section> <!-- STATS -->
+    <section class="flex justify-center gap-36 py-10 text-center mb-10">
+        <div class="box">
+            <div class="shadow"></div>
+            <div class="ml-5" role="progressbar" style="--value: 90"></div>
+            <h2 class="text-[#132442] font-semibold mt-4 text-xl">Assignments<br>Submitted On Time</h2>
         </div>
-
-        <div class="flex items-center gap-4">
-          <img src="pic/11.png" class="w-20" alt="">
-          <div>
-            <h3 class="text-[#9AB236] text-xl font-semibold">Collaboration</h3>
-            <p class="text-[#9AB236]">Seamless Teacher–Student Feedback</p>
-          </div>
+        <div class="box">
+            <div class="shadow"></div>
+            <div class="ml-3" role="progressbar2" style="--value: 80; --label: '500+';"></div>
+            <h2 class="text-[#B0C635] font-semibold mt-4 text-xl">Students Enrolled</h2>
         </div>
-
-      </div>
-    </div>
-
-    <div class="flex justify-center lg:justify-end ml-60">
-      <img src="pic/7.png" class="h-100 lg:h-[420px] object-contain mx-auto" alt="">
-    </div>
-
-  </section>
+        <div class="box">
+            <div class="shadow"></div>
+            <div class="ml-6" role="progressbar3" style="--value: 60; --label: '150+';"></div>
+            <h2 class="text-[#132442] font-semibold mt-4 text-xl">Teachers Registered</h2>
+        </div>
+    </section> <!-- HOW IT WORKS -->
+    <section class="bg-[#B0C635] py-20 px-12 text-center">
+        <h2 class="text-4xl font-extrabold mb-20 text-white">How School Reminder Works</h2>
+        <div class="flex justify-center gap-24">
+            <div class="w-40"> <img src="pic/3.png" alt="" class="w-20 h-20 mb-2 mx-auto">
+                <p class="text-lg font-bold text-white">Create & Assign Tasks</p>
+            </div>
+            <div class="w-40"> <img src="pic/4.png" alt="" class="w-20 h-20 mb-2 mx-auto">
+                <p class="text-lg font-bold text-white">Receive Instant Notifications</p>
+            </div>
+            <div class="w-40"> <img src="pic/5.png" alt="" class="w-20 h-20 mb-2 mx-auto">
+                <p class="text-lg font-bold text-white">Manage & Complete</p>
+            </div>
+            <div class="w-40"> <img src="pic/6.png" alt="" class="w-20 h-20 mb-2 mx-auto">
+                <p class="text-lg font-bold text-white">Grade & Provide Feedback</p>
+            </div>
+        </div>
+    </section> <!-- WHY CHOOSE US -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 px-36 py-24">
+        <div>
+            <h2 class="text-4xl font-bold text-[#9AB236] mb-8">Why Choose Us?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-16">
+                <div class="flex items-center gap-4"> <img src="pic/8.png" class="w-20" alt="">
+                    <div>
+                        <h3 class="text-[#9AB236] text-xl font-semibold">Student Growth</h3>
+                        <p class="text-[#9AB236]">Fosters Academic Progress</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4"> <img src="pic/9.png" class="w-20" alt="">
+                    <div>
+                        <h3 class="text-[#9AB236] text-xl font-semibold">User-Friendly</h3>
+                        <p class="text-[#9AB236]">Clean & Intuitive Design</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4"> <img src="pic/10.png" class="w-20" alt="">
+                    <div>
+                        <h3 class="text-[#9AB236] text-xl font-semibold">Real–time</h3>
+                        <p class="text-[#9AB236]">Accurate Deadline Alerts</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4"> <img src="pic/11.png" class="w-20" alt="">
+                    <div>
+                        <h3 class="text-[#9AB236] text-xl font-semibold">Collaboration</h3>
+                        <p class="text-[#9AB236]">Seamless Teacher–Student Feedback</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center lg:justify-end ml-60"> <img src="pic/7.png"
+                class="h-100 lg:h-[420px] object-contain mx-auto" alt=""> </div>
+    </section>
 </body>
-</html>
+
+</html> 
