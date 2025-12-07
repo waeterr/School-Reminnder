@@ -42,6 +42,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'birth_date' => 'date'
+    ];
+
+    protected $appends = ['profile_picture_url'];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -55,29 +63,96 @@ class User extends Authenticatable
         ];
     }
 
-    public function classroomTeaching()
+    // Relationships
+    public function classroomsAsTeacher()
     {
-        return $this->hasMany(classroom::class, 'teacher_id');
+        return $this->hasMany(Classroom::class, 'teacher_id');
     }
 
-    public function classroomJoined()
+    public function classMemberships()
     {
-        return $this->belongsToMany(classroom ::class, 'classroom_students', 'student_id', 'class_id');
+        return $this->hasMany(ClassMember::class);
     }
 
-    public function submissions()
+    public function enrolledClassrooms()
     {
-        return $this->hasMany(taskSubmissions::class, 'student_id');
-
-    }
-        public function isActive()
-    {
-        return $this->status === 'active';
+        return $this->belongsToMany(Classroom::class, 'class_members')
+            ->withPivot('role', 'joined_at')
+            ->withTimestamps();
     }
 
-    public function lastSeenHuman()
+    public function taskCreated()
     {
-        return $this->last_seen ? $this->last_seen->diffForHumans() : 'Never';
+        return $this->hasMany(Assignment::class, 'created_by');
     }
 
+    public function taskSubmissions()
+    {
+        return $this->hasMany(Submission::class, 'student_id');
+    }
+
+    public function announcements()
+    {
+        return $this->hasMany(Announcement::class, 'created_by');
+    }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class, 'created_by');
+    }
+
+
+    // Scopes
+    public function scopeTeachers($query)
+    {
+        return $query->where('role', 'teacher');
+    }
+
+    public function scopeStudents($query)
+    {
+        return $query->where('role', 'student');
+    }
+
+    public function scopeAdmins($query)
+    {
+        return $query->where('role', 'admin');
+    }
+
+    // Helper Methods
+    public function isTeacher()
+    {
+        return $this->role === 'teacher';
+    }
+
+    public function isStudent()
+    {
+        return $this->role === 'student';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function getInitialsAttribute()
+    {
+        $names = explode(' ', $this->name);
+        $initials = '';
+        
+        foreach ($names as $name) {
+            $initials .= strtoupper(substr($name, 0, 1));
+        }
+        
+        return substr($initials, 0, 2);
+    }
+
+    public function getProfilePictureUrlAttribute()
+    {
+        if ($this->profile_picture) {
+            return asset('storage/profile_pictures/' . $this->profile_picture);
+        }
+        
+        // Generate avatar dengan inisial
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=FFFFFF&background=4F46E5';
+    }
 }

@@ -15,7 +15,7 @@ class Classroom extends Model
         'teacher_id',
         'name',
         'subject',
-        'code'
+        'class_code'
     ];
 
     public function teacher()
@@ -23,14 +23,58 @@ class Classroom extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
-    public function students()
-    {
-        return $this->belongsToMany(User::class, 'classroom_students', 'class_id', 'student_id');
+    public function members(){
+        return $this->hasMany(ClassMember::class);
+
     }
 
-
-    public function tasks()
+    public function students()
     {
-        return $this->hasMany(Tasks::class, 'class_id');
+        return $this->belongsToMany(User::class, 'classmembers')
+            ->wherePivot('role', 'student')
+            ->withTimestamps();
+    }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class, 'class_id');
+    }
+
+    public function announcements()
+    {
+        return $this->hasMany(Announcement::class);
+    }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
+
+    // Methods
+    public function generateClassCode()
+    {
+        do {
+            $code = strtoupper(substr(md5(uniqid()), 0, 6));
+        } while (self::where('class_code', $code)->exists());
+
+        return $code;
+    }
+
+    public function isMember($userId)
+    {
+        return $this->members()
+            ->where('user_id', $userId)
+            ->where('status', 'active')
+            ->exists();
+    }
+
+    public function getStudentCountAttribute()
+    {
+        return $this->members()->where('role', 'student')->where('status', 'active')->count();
+    }
+
+    public function getAssignmentCountAttribute()
+    {
+        return $this->tasks()->count();
     }
 }
