@@ -33,7 +33,7 @@
 
   <!-- Logo -->
   <div class="mb-6">
-    <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
+    <img src="{{'icon/school-reminder.png'}}" alt="School Reminder Logo" class="h-10">
   </div>
 
   <div class="bg-white shadow-lg rounded-3xl p-10 w-96 flex flex-col items-center">

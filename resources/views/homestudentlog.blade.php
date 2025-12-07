@@ -69,9 +69,8 @@
                 <a href="{{ route('homestudent') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Home</a>
                 <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
                 <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
-                <a href="#" class="hover:text-[#3A71C1]">Features</a>
-                <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
-                <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
+                <a href="#" class="hover:text-[#3A71C1]">Reminder</a>
+                <a href="#" class="hover:text-[#3A71C1]">About Us</a>
             </div>
 
             <div class="flex items-center space-x-3">

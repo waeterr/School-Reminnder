@@ -106,9 +106,8 @@
             <a href="{{ route('welcome') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Home</a>
             <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
             <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
-            <a href="#" class="hover:text-[#3A71C1]">Features</a>
-            <a href="#" class="hover:text-[#3A71C1]">How it Works</a>
-            <a href="#" class="hover:text-[#3A71C1]">Contact Us</a>
+            <a href="#" class="hover:text-[#3A71C1]">Reminder</a>
+            <a href="#" class="hover:text-[#3A71C1]">About Us</a>
         </div>
 
         <!-- My Account Button -->
@@ -129,9 +128,8 @@
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Home</a>
         <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Task</a>
         <a href="#" class="block py-2 text-primary font-medium">Calendar</a>
-        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Features</a>
-        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">How it Works</a>
-        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">About</a>
+        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Reminder</a>
+        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">About Us</a>
     </div>
 
     <!-- Main Section -->

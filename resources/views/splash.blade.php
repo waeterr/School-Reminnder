@@ -425,14 +425,14 @@ Main Content - Home Page -->
                     <li><a href="#" class="hover:text-primary transition-colors">Home</a></li>
                     <li><a href="#" class="hover:text-primary transition-colors">Tasks</a></li>
                     <li><a href="#" class="hover:text-primary transition-colors">Calendar</a></li>
-                    <li><a href="#" class="hover:text-primary transition-colors">Features</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Reminder</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="font-bold text-lg mb-4">Support</h3>
                 <ul class="space-y-2 text-gray-600">
                     <li><a href="#" class="hover:text-primary transition-colors">Help Center</a></li>
-                    <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">About Us</a></li>
                     <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
                 </ul>
             </div>

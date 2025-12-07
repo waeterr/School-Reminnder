@@ -59,4 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/reminder/by/{subject}', [ReminderController::class, 'filterBySubject']);
+
+
 require __DIR__.'/auth.php';
