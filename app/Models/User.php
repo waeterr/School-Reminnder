@@ -2,36 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
-        'photo',
-        'gender',
-        'address',
-        'phone_number',
-        'date_of_birth',
-        'school',
-        'status',
-        'last_seen_at',
+        'name', 'email', 'phone', 'address', 'birth_date', 'profile_picture', 'password', 'student_id',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -43,9 +26,8 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
+        'birth_date' => 'date',
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'birth_date' => 'date'
     ];
 
     protected $appends = ['profile_picture_url'];
@@ -64,7 +46,10 @@ class User extends Authenticatable
     }
 
     // Relationships
-    public function classroomsAsTeacher()
+    /**
+     * Classrooms where this user is the teacher.
+     */
+    public function classroomsAsTeacher(): HasMany
     {
         return $this->hasMany(Classroom::class, 'teacher_id');
     }
@@ -74,11 +59,20 @@ class User extends Authenticatable
         return $this->hasMany(ClassMember::class);
     }
 
-    public function enrolledClassrooms()
+    /**
+     * Classrooms this user is enrolled in (via class_members pivot).
+     * Adjust pivot name/columns if your schema differs.
+     */
+    public function enrolledClassrooms(): BelongsToMany
     {
-        return $this->belongsToMany(Classroom::class, 'class_members')
-            ->withPivot('role', 'joined_at')
-            ->withTimestamps();
+        return $this->belongsToMany(
+            Classroom::class,
+            'class_members',     // pivot table
+            'user_id',           // FK on pivot pointing to this model
+            'classroom_id'       // FK on pivot pointing to Classroom
+        )
+        ->withPivot('role', 'status', 'joined_at')
+        ->wherePivot('status', 'active');
     }
 
     public function taskCreated()
@@ -119,19 +113,38 @@ class User extends Authenticatable
     }
 
     // Helper Methods
-    public function isTeacher()
+    /**
+     * Simple helper to check teacher role.
+     * Adjust to your role system (role column, permissions, etc.).
+     */
+    public function isTeacher(): bool
     {
-        return $this->role === 'teacher';
+        if (array_key_exists('role', $this->attributes)) {
+            return $this->role === 'teacher';
+        }
+
+        // Fallback: consider user a teacher if they own any classrooms
+        return $this->classroomsAsTeacher()->exists();
     }
 
-    public function isStudent()
+    /**
+     * Return true when this user is a student.
+     * Adjust to your app's role system (role field, relation, permissions).
+     */
+    public function isStudent(): bool
     {
-        return $this->role === 'student';
+        // If you have a 'role' attribute:
+        if (array_key_exists('role', $this->attributes)) {
+            return $this->role === 'student';
+        }
+
+        // Fallback: you can also check a roles relation or permission gate here
+        return false;
     }
 
     public function isAdmin()
     {
-        return $this->role === 'admin';
+        return $this->role === 'admin' || $this->type === 'admin';
     }
 
     public function getInitialsAttribute()

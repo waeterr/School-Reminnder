@@ -9,8 +9,6 @@ class Classroom extends Model
 {
     use HasFactory;
 
-    protected $table = 'classroom';
-
     protected $fillable = [
         'teacher_id',
         'name',
@@ -30,7 +28,7 @@ class Classroom extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class, 'classmembers')
+        return $this->belongsToMany(User::class, 'class_members')
             ->wherePivot('role', 'student')
             ->withTimestamps();
     }
@@ -75,6 +73,6 @@ class Classroom extends Model
 
     public function getAssignmentCountAttribute()
     {
-        return $this->tasks()->count();
+        return $this->assignments()->count();
     }
 }

@@ -85,7 +85,12 @@ class AssignmentController extends Controller
             ->where('classroom_id', $classroomId)
             ->findOrFail($id);
 
+        /** @var \App\Models\User|null $user */
         $user = Auth::user();
+        if (! $user instanceof \App\Models\User) {
+            return response()->json(['success' => false, 'message' => 'Unauthenticated'], 401);
+        }
+
         $classroom = $assignment->classroom;
 
         if (!$classroom->isMember($user->id)) {

@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function show()
     {
+        /** @var \App\Models\User|null $user */
         $user = Auth::user();
+        if (! $user instanceof \App\Models\User) {
+            return response()->json(['success' => false, 'message' => 'Unauthenticated'], 401);
+        }
+
         return response()->json([
             'success' => true,
             'data' => $user
@@ -21,11 +27,15 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
+        /** @var \App\Models\User|null $user */
         $user = Auth::user();
+        if (! $user instanceof \App\Models\User) {
+            return response()->json(['success' => false, 'message' => 'Unauthenticated'], 401);
+        }
 
         $validator = Validator::make($request->all(), [
             'name' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|string|email|max:255|unique:users,email,' . $user->id,
+            'email' => "sometimes|required|string|email|max:255|unique:users,email,{$user->id}",
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:500',
             'birth_date' => 'nullable|date',
@@ -68,8 +78,7 @@ class ProfileController extends Controller
         $user->fill($request->only(['name', 'email', 'phone', 'address', 'birth_date']));
         
         if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-            // TODO: Send verification email
+            $user->forceFill(['email_verified_at' => null]);
         }
 
         $user->save();
@@ -83,9 +92,13 @@ class ProfileController extends Controller
 
     public function updateStudentId(Request $request)
     {
+        /** @var \App\Models\User|null $user */
         $user = Auth::user();
+        if (! $user instanceof \App\Models\User) {
+            return response()->json(['success' => false, 'message' => 'Unauthenticated'], 401);
+        }
 
-        if (!$user->isStudent()) {
+        if (! $user->isStudent()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Only students can update student ID'
@@ -93,7 +106,7 @@ class ProfileController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'student_id' => 'required|string|max:20|unique:users,student_id,' . $user->id,
+            'student_id' => "required|string|max:20|unique:users,student_id,{$user->id}",
         ]);
 
         if ($validator->fails()) {

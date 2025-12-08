@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+
 class ClassroomController extends Controller
 {
     public function index()
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();
         
         $classrooms = $user->enrolledClassrooms()
@@ -29,6 +31,7 @@ class ClassroomController extends Controller
 
     public function store(Request $request)
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();
         
         if (!$user->isTeacher()) {
@@ -252,8 +255,12 @@ class ClassroomController extends Controller
 
     public function myClassrooms()
     {
+        /** @var \App\Models\User|null $user */
         $user = Auth::user();
-        
+        if (! $user instanceof \App\Models\User) {
+            return response()->json(['success' => false, 'message' => 'Unauthenticated'], 401);
+        }
+
         if ($user->isTeacher()) {
             $classrooms = $user->classroomsAsTeacher()
                 ->withCount(['students', 'assignments'])
