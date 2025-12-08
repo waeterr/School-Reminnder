@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Remind3r - Dashboard</title>
+    <link rel="stylesheet" href="Reminder.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!-- NAVBAR ATAS -->
+<nav class="top-navbar">
+  <div class="nav-left">
+    <img src="picture/logo.png" class="nav-logo">
+    <span class="brand-text">School Reminder</span>
+  </div>
+
+  <ul class="nav-menu">
+    <li>Home</li>
+    <li>Task</li>
+    <li>Calendar</li>
+    <li class="active">Reminder</li>
+    <li>About Us</li>
+  </ul>
+
+  <button class="account-btn">My Account</button>
+</nav>
+
+    <div class="home">
+      <button title="Back Home" type="button">
+        <img src="picture/home.png" alt="Back Home Icon" />
+        <span class="sidebar-label">Back Home</span>
+      </button>
+    </div>
+    </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Reminder</h1>
+                <p>Don't Miss Anything</p>
+                <div class="search-box">
+                    <input type="text" placeholder="Search for anythings">
+                    <i class="fas fa-search"></i>
+                </div>
+            </header>
+
+            <div class="content-grid">
+
+                <section class="left-section">
+                    
+                    <div class="subject-cards">
+                        <div class="card math-card">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Math</h3>
+                            <p>4 Tasks Remaining</p>
+                            <button class="view-tasks-btn">View Tasks</button>
+                        </div>
+                        <div class="card english-card">
+                            <i class="fas fa-language"></i>
+                            <h3>English</h3>
+                            <p>3 Tasks Remaining</p>
+                            <button class="view-tasks-btn">View Tasks</button>
+                        </div>
+                        <div class="card informatics-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Informatics</h3>
+                            <p>No assignment yet</p>
+                            <button class="view-tasks-btn">View Tasks</button>
+                        </div>
+                    </div>
+                    
+                    <div class="scheduled-tasks">
+                        <div class="task-item">
+                            <div class="task-info">
+                                <h4>Theory of Algebraic properties</h4>
+                                <p>Mathematics · Mrs. Cantik</p>
+                            </div>
+                            <div class="task-actions">
+                                <span>- Task</span>
+                                <button class="add-create-btn"> + Add or Create</button>
+                            </div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-info">
+                                <h4>Adjective Clauses</h4>
+                                <p>English · Mr. Bambang</p>
+                            </div>
+                            <div class="task-actions">
+                                <span>- Task</span>
+                                <button class="add-create-btn"> + Add or Create</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="right-section">
+                    
+                    <div class="calendar-widget">
+                        <h2>January 2025</h2>
+                        <div class="calendar-grid">
+                            <span class="day-label">Sun</span>
+                            <span class="day-label">Mon</span>
+                            <span class="day-label">Tue</span>
+                            <span class="day-label">Wed</span>
+                            <span class="day-label">Thu</span>
+                            <span class="day-label">Fri</span>
+                            <span class="day-label">Sat</span>
+                            
+                            <span class="date inactive">29</span>
+                            <span class="date inactive">30</span>
+                            <span class="date inactive">31</span>
+                            <span class="date">01</span>
+                            <span class="date">02</span>
+                            <span class="date">03</span>
+                            <span class="date">04</span>
+                            <span class="date">05</span>
+                            <span class="date">06</span>
+                            <span class="date">07</span>
+                            <span class="date">08</span>
+                            <span class="date">09</span>
+                            <span class="date">10</span>
+                            <span class="date">11</span>
+                            <span class="date">12</span>
+                            <span class="date">13</span>
+                            <span class="date">14</span>
+                            <span class="date">15</span>
+                            <span class="date">16</span>
+                            <span class="date">17</span>
+                            <span class="date">18</span>
+                            <span class="date">19</span>
+                            <span class="date current-day">20</span> 
+                            <span class="date">21</span>
+                            <span class="date">22</span>
+                            <span class="date">23</span>
+                            <span class="date">24</span>
+                            <span class="date">25</span>
+                            <span class="date">26</span>
+                            <span class="date">27</span>
+                            <span class="date">28</span>
+                            <span class="date">29</span>
+                            <span class="date">30</span>
+                            <span class="date">31</span>
+                            <span class="date inactive">01</span>
+                            <span class="date inactive">02</span>
+                        </div>
+                    </div>
+
+                    <div class="todays-classes">
+                        <h2>Today's Classes</h2>
+                        <div class="class-item">
+                            <div class="class-info">
+                                <h4>Mathematica Theory</h4>
+                                <p>Carry out writing summary in school</p>
+                            </div>
+                            <div class="class-icon math">
+                                <div class="today-img"><img src="picture/paper.png" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-info">
+                                <h4>English Teory</h4>
+                                <p>Carry out writing summary in school</p>
+                            </div>
+                            <div class="class-icon english">
+                                <div class="today-img"><img src="picture/paper.png" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-info">
+                                <h4>Informatic Exam</h4>
+                                <p>Carry out writing summary in school</p>
+                            </div>
+                            <div class="class-icon informatics">
+                                <div class="today-img"> <img src="picture/exam.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+    </div>
+    
+</body>
+</html>
