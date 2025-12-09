@@ -329,33 +329,49 @@ body {
 <body>
 <div class="container">
 
-    <!-- NAVBAR -->
-    <nav class="flex justify-between items-center px-6 py-4 shadow md:px-12 md:py-6">
-        <div class="text-xl flex items-center">
-            <img src="picture/picture/logo copy.png" alt="school logo" class="h-10 w-auto md:h-12" />
+    <nav class="w-full flex justify-between items-center px-10 py-4 shadow-sm">
+        <div class="flex items-center space-x-2">
+
+            <!-- LOGO -->
+            <div class="w-10 h-10 rounded-md">
+                <img src="images/logo.png" alt="">
+            </div>
+
+            <h1 class="font-semibold text-[#1B2A4E] text-lg">
+                School <span class="text-[#3A71C1]">Reminder</span>
+            </h1>
         </div>
 
-        <ul class="hidden md:flex gap-10 font-semibold">
-            <li><a href="hs-teach2.html" class="hover:text-blue-600">Home</a></li>
-            <li><a href="#" class="hover:text-blue-600">Task</a></li>
-            <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
-            <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">Reminder</a></li>
-            <li><a href="as.html" class="hover:text-blue-600">About Us</a></li>
-        </ul>
+        <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
+            <a href="{{ route('welcome') }}" class="hover:text-[#3A71C1]">Home</a>
+            <a href="{{ route('task') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Task</a>
+            <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
+            <a href="{{ route('reminder') }}" class="hover:text-[#3A71C1]">Reminder</a>
+            <a href="#" class="hover:text-[#3A71C1]">About Us</a>
+        </div>
 
-        <a class="hidden md:block border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition" href="#">My Account</a>
 
-        <button id="menuBtn" class="md:hidden border border-gray-800 px-4 py-2 rounded-lg">Menu</button>
+
+
+        <button
+            class="border border-[#446298] text-[#446298] px-4 py-2 rounded-lg hover:bg-[#446298] hover:text-white transition-colors">
+            My Account
+        </button>
+
+
+        <button id="mobile-menu-button" class="md:hidden text-gray-600">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+        </div>
     </nav>
 
-    <!-- MOBILE MENU -->
-    <div id="mobileMenu" class="hidden flex flex-col bg-gray-100 px-6 py-4 shadow md:hidden text-sm font-semibold">
-        <a href="hs-teach2.html" class="py-2">Home</a>
-        <a href="#" class="py-2">Task</a>
-        <a href="#" class="py-2">Calendar</a>
-        <a href="#" class="py-2">Reminder</a>
-        <a href="about-us.html" class="py-2">About Us</a>
-        <a href="#" class="py-2 border border-gray-800 rounded-lg text-center mt-2">My Account</a>
+
+    <div id="mobile-menu" class="md:hidden bg-white shadow-md py-2 px-4 hidden">
+        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Home</a>
+        <a href="#" class="block py-2 text-primary font-medium">Task</a>
+        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Calendar</a>
+        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">Reminder</a>
+        <a href="#" class="block py-2 text-gray-600 hover:text-primary transition-colors">About Us</a>
     </div>
 
     <main class="main-content">

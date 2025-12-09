@@ -39,6 +39,10 @@ Route::get('/task', function () {
     return view('task');
 })->name('task');
 
+Route::get('/reminder', function () {
+    return view('reminder-student');
+})->name('reminder');
+
 // Protected Routes - User harus sudah login
 Route::middleware(['auth', 'verified'])->group(function () {
     // Protected homestudent for logged-in users
