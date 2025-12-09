@@ -50,10 +50,10 @@
             {{-- Desktop Menu --}}
             <ul class="hidden md:flex gap-10 font-semibold">
                 <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white rounded-full">Home</a></li>
-                <li><a href="{{ url('task2') }}" class="hover:text-blue-600">Task</a></li>
-                <li><a href="{{ url('welcome') }}" class="hover:text-blue-600">Calendar</a></li>
-                <li><a href="#" class="hover:text-blue-600">Features</a></li>
-                <li><a href="{{ url('as') }}" class="hover:text-blue-600">About Us</a></li>
+                <li><a href="{{ url('login') }}" class="hover:text-blue-600">Task</a></li>
+                <li><a href="{{ url('login') }}" class="hover:text-blue-600">Calendar</a></li>
+                <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
+                <li><a href="{{ url('about-us') }}" class="hover:text-blue-600">About Us</a></li>
             </ul>
 
             <div class="hidden md:flex items-center space-x-3">
@@ -95,10 +95,11 @@
             </div>
 
             <ul class="flex flex-col space-y-4 p-6 text-[#1B2A4E] font-medium">
-                <li><a href="#" class="text-white bg-[#3A71C1] px-4 py-2 block rounded-lg">Home</a></li>
-                <li><a href="#" class="hover:text-[#3A71C1] block">Task</a></li>
-                <li><a href="#" class="hover:text-[#3A71C1] block">Calendar</a></li>
-                <li><a href="#" class="hover:text-[#3A71C1] block">Features</a></li>
+                <li><a href="{{ route('onboard') }}" class="text-white bg-[#3A71C1] px-4 py-2 block rounded-lg">Home</a>
+                </li>
+                <li><a href="{{ route('login') }}" class="hover:text-[#3A71C1] block">Task</a></li>
+                <li><a href="{{ route('login') }}" class="hover:text-[#3A71C1] block">Calendar</a></li>
+                <li><a href="#" class="hover:text-[#3A71C1] block">Reminder</a></li>
                 <li><a href="{{ route('about-us') }}" class="hover:text-[#3A71C1] block">About Us</a></li>
 
                 <hr class="my-3">

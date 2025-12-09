@@ -40,6 +40,7 @@
             <a href="{{ route('onboard') }}">Home</a>
             <a href="{{ route('task') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Task</a>
             <a href="{{ route('login') }}">Calendar</a>
+            <a href="#" class="hover:text-blue-600">Reminder</a>
             <a href="{{ route('about-us') }}">About Us</a>
         </div>
 
@@ -59,12 +60,13 @@
         <a href="{{ route('onboard') }}">Home</a>
         <a href="{{ route('task') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-lg w-max">Task</a>
         <a href="{{ route('welcome') }}">Calendar</a>
+        <a href="#" class="hover:text-blue-600">Reminder</a>
         <a href="{{ route('about-us') }}">About Us</a>
 
         <hr>
 
         <a class="border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition w-max"
-            href="#">My Account</a>
+            href="{{ route('profile') }}">My Account</a>
     </div>
 
 

@@ -27,8 +27,8 @@
         <ul class="hidden md:flex gap-10 font-semibold">
             <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white rounded-full">Home</a></li>
             <li><a href="{{ url('task-teacher') }}" class="hover:text-blue-600">Task</a></li>
-            <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
-            <li><a href="#" class="hover:text-blue-600">Features</a></li>
+            <li><a href="{{ url('welcome') }}" class="hover:text-blue-600">Calendar</a></li>
+            <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
             <li><a href="{{ url('aboutuslog') }}" class="hover:text-blue-600">About Us</a></li>
         </ul>
 
@@ -50,8 +50,9 @@
         class="hidden flex flex-col bg-white shadow-lg px-6 py-4 space-y-4 text-[#132442] font-medium md:hidden">
     
         <a href="{{ route('home-teacher') }}">Home</a>
-        <a href="#" class="text-white bg-[#3A71C1] px-4 py-1 rounded-lg w-max">Task</a>
+        <a href="{{ route('task-teacher') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-lg w-max">Task</a>
         <a href="{{ route('welcome') }}">Calendar</a>
+        <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
         <a href="{{ route('about-uslog') }}">About Us</a>
     
         <hr>

@@ -36,8 +36,9 @@
     <!-- DESKTOP MENU -->
     <ul class="hidden md:flex gap-10 font-semibold items-center">
       <li><a href="{{ route('onboard') }}" class="hover:text-blue-600">Home</a></li>
-      <li><a href="{{ route('task') }}" class="hover:text-blue-600">Task</a></li>
-      <li><a href="{{ route('welcome') }}" class="hover:text-blue-600">Calendar</a></li>
+      <li><a href="{{ route('login') }}" class="hover:text-blue-600">Task</a></li>
+      <li><a href="{{ route('login') }}" class="hover:text-blue-600">Calendar</a></li>
+      <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
 
 
       <li>
@@ -70,6 +71,8 @@
       <li><a href="{{ route('onboard') }}">Home</a></li>
       <li><a href="{{ route('login') }}">Task</a></li>
       <li><a href="{{ route('login') }}">Calendar</a></li>
+      <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
+
       <li><a href="{{ route('about-us') }}" class="font-bold text-blue-700">About Us</a></li>
       <li class="flex flex-col gap-3 mt-2">
         <a href="{{ route('login') }}" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-center font-semibold">

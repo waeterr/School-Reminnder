@@ -11,7 +11,7 @@
 <!-- NAVBAR ATAS -->
 <nav class="top-navbar">
   <div class="nav-left">
-    <img src="picture/logo.png" class="nav-logo">
+    <img src="images/logo.png" class="nav-logo">
     <span class="brand-text">School Reminder</span>
   </div>
 

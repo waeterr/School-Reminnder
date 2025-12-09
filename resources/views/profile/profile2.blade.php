@@ -40,7 +40,7 @@
                                 <div>
                                     <label class="block text-xs font-semibold text-gray-600 mb-1">Email</label>
                                     <input class="w-full bg-white border border-gray-300 rounded-lg p-2 text-sm"
-                                        value="{{ Auth::user()->email }}" readonly>
+                                        readonly>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold text-gray-600 mb-1">School</label>

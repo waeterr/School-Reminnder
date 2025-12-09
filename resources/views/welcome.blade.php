@@ -103,6 +103,7 @@
             <a href="{{ route('homestudent') }}" class="hover:text-[#3A71C1]">Home</a>
             <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
             <a href="{{ route('calendar') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Calendar</a>
+            <a href="#" class="hover:text-blue-600">Reminder</a>
             <a href="{{ route('about-uslog') }}" class="hover:text-[#3A71C1]">About Us</a>
         </div>
 
@@ -122,6 +123,7 @@
             class="block py-2 text-gray-600 hover:text-primary transition-colors">Home</a>
         <a href="{{ route('task') }}" class="block py-2 text-gray-600 hover:text-primary transition-colors">Task</a>
         <a href="#" class="block py-2 text-primary font-medium">Calendar</a>
+        <a href="#" class="hover:text-blue-600">Reminder</a>
         <a href="{{ route('about-uslog') }}" class="block py-2 text-gray-600 hover:text-primary transition-colors">About
             us</a>
         <a href=""

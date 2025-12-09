@@ -54,9 +54,14 @@ route::get('/task-teacher', function () {
     return view('task-teacher');
 })->name('task.teacher');
 
-route::get('/profile', function () {
-    return view('profile');
+route::get('/profile11', function () {
+    return view('profile2');
 })->name('profile');
+
+
+route::get('/Reminder', function () {
+    return view('Reminder');
+})->name('Reminder');
 // Protected Routes - User must be logged in
 Route::middleware(['auth', 'verified'])->group(function () {
     // Protected homestudent for logged-in users
@@ -70,8 +75,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
     
     // Profile routes
-    Route::get('/profile', function () {
-        return view('profile.profile');
-    })->name('profile');
+    
 });
 require __DIR__.'/auth.php';

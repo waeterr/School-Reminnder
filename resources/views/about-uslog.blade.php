@@ -36,10 +36,10 @@
       <li><a href="{{ route('homestudent') }}" class="hover:text-blue-600">Home</a></li>
       <li><a href="{{ route('task') }}" class="hover:text-blue-600">Task</a></li>
       <li><a href="{{ route('calendar') }}" class="hover:text-blue-600">Calendar</a></li>
-
+      <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
 
       <li>
-        <a href="{{ route('aboutuslog') }}" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">About
+        <a href="#" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">About
           Us</a>
       </li>
     </ul>
@@ -60,6 +60,7 @@
       <li><a href="{{ route('homestudent') }}">Home</a></li>
       <li><a href="{{ route('task') }}">Task</a></li>
       <li><a href="{{ route('calendar') }}">Calendar</a></li>
+      <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
       <li><a href="{{ route('about-us') }}" class="font-bold text-blue-700">About Us</a></li>
       <li><a href="#" class="border border-gray-800 px-4 py-2 rounded-lg text-center">My Account</a></li>
     </ul>
