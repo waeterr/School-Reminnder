@@ -23,13 +23,46 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $role = $this->faker->randomElement(['student', 'teacher']);
+        
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => Hash::make('password123'),
+            'gender' => $this->faker->randomElement(['male', 'female', 'unknown']),
+            'school' => null,
+            'role' => $this->faker->randomElement(['admin', 'teacher', 'student']),
+            'phone_number' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+            'date_of_birth' => $this->faker->dateTimeBetween('-30 years', '-18 years')->format('Y-m-d'),
+            'photo' => null,
             'remember_token' => Str::random(10),
         ];
+    }
+
+    public function teacher(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'teacher',
+            'student_id' => null,
+        ]);
+    }
+
+    public function student(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'student',
+            'student_id' => 'STD' . $this->faker->unique()->numberBetween(10000, 99999),
+        ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'admin',
+            'student_id' => null,
+        ]);
     }
 
     /**
