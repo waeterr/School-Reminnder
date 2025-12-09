@@ -55,8 +55,9 @@
         <div class="flex items-center space-x-2">
 
             <!-- LOGO -->
-            <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
-            <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
+            <div class="w-10 h-10 rounded-md">
+                <img src="images/logo.png" alt="">
+            </div>
 
             <h1 class="font-semibold text-[#1B2A4E] text-lg">
                 School <span class="text-[#3A71C1]">Reminder</span>
