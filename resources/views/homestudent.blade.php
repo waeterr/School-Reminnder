@@ -56,7 +56,7 @@
             <div class="flex items-center space-x-2">
 
                 <!-- LOGO -->
-                <div class="w-10 h-10 bg-gray-300 rounded-md">
+                <div class="w-10 h-10 rounded-md">
                     <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
                 </div>
 
@@ -92,9 +92,9 @@
             <!-- LEFT TEXT -->
             <div class="max-w-xl">
                 <div class="flex items-center gap-2 bg-[#3A71C1] text-white rounded-full px-4 py-1 w-fit">
-                    <!-- ICON roket ganti manual -->
-                    <div class="w-4 h-4 bg-white rounded-full"></div>
-                    <!-- ganti pakai <img src=""> -->
+                    <div class="w-4 h-4 rounded-full">
+                        <img src="{{'images/rocket.png'}}" alt="Rocket Icon" class="w-4 h-4">
+                    </div>
                     <span>No. 1 platform for learning</span>
                 </div>
 
@@ -142,7 +142,7 @@
                         class="w-16 h-16 mx-auto rounded-full bg-gradient-to-b from-white to-gray-300 flex items-center justify-center shadow">
                         <img src="{{ asset('images/bell.png') }}" alt="Bell" class="w-8">
                     </div>
-                    <p class="#1E505E font-semibold mt-4">DeadlineBuzz</p>
+                    <p class="text-white font-semibold mt-4">DeadlineBuzz</p>
                     <p class="text-gray-300 text-sm mt-2">Reminder otomatis disaat dekat deadline tugas siswa!</p>
                 </div>
 
@@ -229,7 +229,7 @@
 
                 <h2 class="text-center text-2xl font-semibold mb-8">Today’s Classes</h2>
 
-                <div class="flex gap-6 overflow-x-auto px-6 pb-4">
+                <div class="flex gap-6 overflow-x-auto px-6 pb-4 justify-center mb-4">
 
                     <!-- CARD 1 -->
                     <div class="min-w-[180px] bg-[#8DB9D6] rounded-2xl p-6 text-center text-white">
@@ -282,22 +282,13 @@
 
             <!-- MENU -->
             <div class="flex justify-center gap-6 mt-3 text-sm font-medium text-[#132442]">
-                <a href="#" class="hover:underline">About</a>
-                <a href="#" class="hover:underline">Contact</a>
-                <a href="#" class="hover:underline">Terms Of Service</a>
-                <a href="#" class="hover:underline">Privacy Policy</a>
+                <p class="hover:underline">About</p>
+                <p class="hover:underline">Contact</p>
+                <p class="hover:underline">Terms Of Service</p>
+                <p class="hover:underline">Privacy Policy</p>
             </div>
 
-            <!-- SOCIAL ICONS -->
-            <div class="flex justify-center gap-4 mt-6">
-                <img src="{{ asset('images/X-logo.png') }}" alt="X" class="w-6">
-                <img src="{{ asset('images/instagram.png') }}" alt="Instagram" class="w-6">
-                <img src="{{ asset('images/facebook.png') }}" alt="Facebook" class="w-6">
-            </div>
-            <!-- COPYRIGHT -->
-            <p class="text-[#132442] text-sm mt-6">
-                All Rights Reserved
-            </p>
+            <p class="text-[#132442] text-sm mt-6"> © All Rights Reserved</p>
         </footer>
 
         <script>

@@ -94,8 +94,9 @@
         <div class="flex items-center space-x-2">
 
             <!-- LOGO -->
-            <div class="w-10 h-10 bg-gray-300 rounded-md"></div>
-            <!-- GANTI kotak abu ini dengan logo: <img src=""> -->
+            <div class="w-10 h-10 rounded-md">
+                <img src="images/logo.png" alt="">
+            </div>
 
             <h1 class="font-semibold text-[#1B2A4E] text-lg">
                 School <span class="text-[#3A71C1]">Reminder</span>
@@ -103,9 +104,9 @@
         </div>
 
         <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
-            <a href="{{ route('welcome') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Home</a>
+            <a href="{{ route('welcome') }}" class="hover:text-[#3A71C1]">Home</a>
             <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
-            <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
+            <a href="{{ route('calendar') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Calendar</a>
             <a href="#" class="hover:text-[#3A71C1]">Reminder</a>
             <a href="#" class="hover:text-[#3A71C1]">About Us</a>
         </div>
@@ -241,8 +242,8 @@
                                     <div class="font-semibold text-gray-800">PNG, JPG, JPEG</div>
                                 </div>
                                 <div class="info-box bg-gray-50 p-4 rounded-lg">
-                                    <div class="text-sm text-gray-500 mb-1">Task Code</div>
-                                    <div class="font-semibold text-gray-800">H-T</div>
+                                    <div class="text-sm text-gray-500 mb-1">Deadline</div>
+                                    <div class="font-semibold text-gray-800">H-3</div>
                                 </div>
                             </div>
                         </div>

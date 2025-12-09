@@ -9,300 +9,196 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
- <div class="container">
-    <!-- NAVBAR -->
-  <nav class="flex justify-between items-center px-6 py-4 shadow md:px-12 md:py-6">
-    <div class="text-xl flex items-center">
-        <img src="picture/picture/logo copy.png" alt="school logo" class="h-10 w-auto md:h-12" />
-    </div>
-    <ul class="hidden md:flex gap-10 font-semibold">
-      <li><a href="hs-teach2.html" class="hover:text-blue-600">Home</a></li>
-      <li><a href="#" class="hover:text-blue-600">Task</a></li>
-      <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
-      <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">Reminder</a></li>
-      <li><a href="as.html" class="hover:text-blue-600">About Us</a></li>
-    </ul>
-    <a class="hidden md:block border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition" href="#">My Account</a>
+<div class="container">
 
-    <!-- Mobile Menu Button -->
-    <button id="menuBtn" class="md:hidden border border-gray-800 px-4 py-2 rounded-lg">Menu</button>
-  </nav>
+    <!-- NAVBAR -->
+    <nav class="flex justify-between items-center px-6 py-4 shadow md:px-12 md:py-6">
+        <div class="text-xl flex items-center">
+            <img src="picture/picture/logo copy.png" alt="school logo" class="h-10 w-auto md:h-12" />
+        </div>
+
+        <ul class="hidden md:flex gap-10 font-semibold">
+            <li><a href="hs-teach2.html" class="hover:text-blue-600">Home</a></li>
+            <li><a href="#" class="hover:text-blue-600">Task</a></li>
+            <li><a href="#" class="hover:text-blue-600">Calendar</a></li>
+            <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white font-semibold rounded-full">Reminder</a></li>
+            <li><a href="as.html" class="hover:text-blue-600">About Us</a></li>
+        </ul>
+
+        <a class="hidden md:block border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition" href="#">My Account</a>
+
+        <button id="menuBtn" class="md:hidden border border-gray-800 px-4 py-2 rounded-lg">Menu</button>
+    </nav>
 
     <!-- MOBILE MENU -->
-  <div id="mobileMenu" class="hidden flex flex-col bg-gray-100 px-6 py-4 shadow md:hidden text-sm font-semibold">
-    <a href="hs-teach2.html" class="py-2">Home</a>
-    <a href="#" class="py-2">Task</a>
-    <a href="#" class="py-2">Calendar</a>
-    <a href="#" class="py-2">Reminder</a>
-    <a href="about-us.html" class="py-2">About Us</a>
-    <a href="#" class="py-2 border border-gray-800 rounded-lg text-center mt-2">My Account</a>
-  </div>
-    <div>
-        <main class="main-content">
-            <header class="main-header">
-                <h1>Reminder</h1><br>
-                <p>Don't Miss Anything</p>
-                <div class="search-box">
-                    <input type="text" placeholder="Search for anythings">
-                    <i class="fas fa-search"></i>
-                </div>
-            </header>
-
-            <div class="content-grid">
-
-                <section class="left-section">
-                    <div class="filter-reminder">
-                        <select id="subjectFilter">
-                            <option value="">All Subjects</option>
-                            <option value="math">Math</option>
-                            <option value="english">English</option>
-                            <option value="informatics">Informatics</option>
-                        </select>
-
-                        <button id="todayBtn">Today Tasks</button>
-                        <button id="upcomingBtn">Upcoming Tasks</button>
-                    </div>
-                    <div class="subject-cards">
-                        <div class="card math-card">
-                            <i class="fas fa-calculator"></i>
-                            <h3>Math</h3>
-                            <p>4 Tasks Remaining</p>
-                            <button class="view-tasks-btn">View Tasks</button>
-                        </div>
-                        <div class="card english-card">
-                            <i class="fas fa-language"></i>
-                            <h3>English</h3>
-                            <p>3 Tasks Remaining</p>
-                            <button class="view-tasks-btn">View Tasks</button>
-                        </div>
-                        <div class="card informatics-card">
-                            <i class="fas fa-laptop-code"></i>
-                            <h3>Informatics</h3>
-                            <p>No assignment yet</p>
-                            <button class="view-tasks-btn">View Tasks</button>
-                        </div>
-                    </div>
-                    
-
-                    <div class="scheduled-tasks">
-                        <div class="task-item">
-                            <div class="task-info">
-                                <h4>Theory of Algebraic properties</h4>
-                                <p>Mathematics · Mrs. Cantik</p>
-                            </div>
-                            <div class="task-actions">
-                                <button class="add-create-btn"> + Add or Create</button>
-                            </div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-info">
-                                <h4>Adjective Clauses</h4>
-                                <p>English · Mr. Bambang</p>
-                            </div>
-                            <div class="task-actions">
-                                <button class="add-create-btn"> + Add or Create</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-
-                <section class="right-section">
-                    
-                    <div class="calendar-widget">
-                        <h2>January 2025</h2>
-                        <div class="calendar-grid">
-                            <span class="day-label">Sun</span>
-                            <span class="day-label">Mon</span>
-                            <span class="day-label">Tue</span>
-                            <span class="day-label">Wed</span>
-                            <span class="day-label">Thu</span>
-                            <span class="day-label">Fri</span>
-                            <span class="day-label">Sat</span>
-                            
-                            <span class="date inactive">29</span>
-                            <span class="date inactive">30</span>
-                            <span class="date inactive">31</span>
-                            <span class="date">01</span>
-                            <span class="date">02</span>
-                            <span class="date">03</span>
-                            <span class="date">04</span>
-                            <span class="date">05</span>
-                            <span class="date">06</span>
-                            <span class="date">07</span>
-                            <span class="date">08</span>
-                            <span class="date">09</span>
-                            <span class="date">10</span>
-                            <span class="date">11</span>
-                            <span class="date">12</span>
-                            <span class="date">13</span>
-                            <span class="date">14</span>
-                            <span class="date">15</span>
-                            <span class="date">16</span>
-                            <span class="date">17</span>
-                            <span class="date">18</span>
-                            <span class="date">19</span>
-                            <span class="date current-day">20</span> 
-                            <span class="date">21</span>
-                            <span class="date">22</span>
-                            <span class="date">23</span>
-                            <span class="date">24</span>
-                            <span class="date">25</span>
-                            <span class="date">26</span>
-                            <span class="date">27</span>
-                            <span class="date">28</span>
-                            <span class="date">29</span>
-                            <span class="date">30</span>
-                            <span class="date">31</span>
-                            <span class="date inactive">01</span>
-                            <span class="date inactive">02</span>
-                        </div>
-                    </div>
-
-                    <div class="todays-classes">
-                        <h2>Today's Classes</h2>
-                        <div class="class-item">
-                            <div class="class-info">
-                                <h4>Mathematica Theory</h4>
-                                <p>Carry out writing summary in school</p>
-                            </div>
-                            <div class="class-icon math"></div>
-                        </div>
-                        <div class="class-item">
-                            <div class="class-info">
-                                <h4>English Teory</h4>
-                                <p>Carry out writing summary in school</p>
-                            </div>
-                            <div class="class-icon english"></div>
-                        </div>
-                        <div class="class-item">
-                            <div class="class-info">
-                                <h4>Informatic Exam</h4>
-                                <p>Carry out writing summary in school</p>
-                            </div>
-                            <div class="class-icon informatics"></div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
+    <div id="mobileMenu" class="hidden flex flex-col bg-gray-100 px-6 py-4 shadow md:hidden text-sm font-semibold">
+        <a href="hs-teach2.html" class="py-2">Home</a>
+        <a href="#" class="py-2">Task</a>
+        <a href="#" class="py-2">Calendar</a>
+        <a href="#" class="py-2">Reminder</a>
+        <a href="about-us.html" class="py-2">About Us</a>
+        <a href="#" class="py-2 border border-gray-800 rounded-lg text-center mt-2">My Account</a>
     </div>
-    
-    <script>
-// Ambil token login user
-const token = localStorage.getItem("token");
 
-// Kalau token kosong → suruh login
-if (!token) {
-    alert("You must login first!");
-}
+    <main class="main-content">
+        <header class="main-header">
+            <h1>Reminder</h1><br>
+            <p>Don't Miss Anything</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search for anythings">
+                <i class="fas fa-search"></i>
+            </div>
+        </header>
+
+        <div class="content-grid">
+
+            <!-- LEFT SECTION -->
+            <section class="left-section">
+
+                <!-- FILTER UI -->
+                <div class="filter-reminder flex gap-3 mb-4">
+                    <select id="subjectFilter" class="border px-3 py-2 rounded">
+                        <option value="">All Subjects</option>
+                        <option value="math">Math</option>
+                        <option value="english">English</option>
+                        <option value="informatics">Informatics</option>
+                    </select>
+
+                    <button id="todayBtn" class="bg-blue-600 text-white px-4 py-2 rounded">
+                        Today Tasks
+                    </button>
+
+                    <button id="upcomingBtn" class="bg-green-600 text-white px-4 py-2 rounded">
+                        Upcoming Tasks
+                    </button>
+                </div>
+
+                <!-- SUBJECT CARDS -->
+                <div class="subject-cards">
+                    <div class="card math-card">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Math</h3>
+                        <p>4 Tasks Remaining</p>
+                        <button class="view-tasks-btn">View Tasks</button>
+                    </div>
+                    <div class="card english-card">
+                        <i class="fas fa-language"></i>
+                        <h3>English</h3>
+                        <p>3 Tasks Remaining</p>
+                        <button class="view-tasks-btn">View Tasks</button>
+                    </div>
+                    <div class="card informatics-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Informatics</h3>
+                        <p>No assignment yet</p>
+                        <button class="view-tasks-btn">View Tasks</button>
+                    </div>
+                </div>
+
+                <!-- TASK LIST -->
+                <div class="scheduled-tasks">
+                    <div class="task-item">
+                        <div class="task-info">
+                            <h4>Theory of Algebraic Properties</h4>
+                            <p>Mathematics · Mrs. Cantik</p>
+                        </div>
+                        <div class="task-actions">
+                            <button class="add-create-btn"> + Add or Create</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- RIGHT SECTION -->
+            <section class="right-section">
+                <div class="calendar-widget">
+                    <h2>January 2025</h2>
+                    <div class="calendar-grid">
+                        <span class="day-label">Sun</span>
+                        <span class="day-label">Mon</span>
+                        <span class="day-label">Tue</span>
+                        <span class="day-label">Wed</span>
+                        <span class="day-label">Thu</span>
+                        <span class="day-label">Fri</span>
+                        <span class="day-label">Sat</span>
+
+                        <span class="date inactive">29</span>
+                        <span class="date inactive">30</span>
+                        <span class="date inactive">31</span>
+                        <span class="date">01</span>
+                        <span class="date">02</span>
+                        <span class="date">03</span>
+                        <span class="date">04</span>
+                        <span class="date">05</span>
+                        <span class="date">06</span>
+                        <span class="date">07</span>
+                        <span class="date">08</span>
+                        <span class="date">09</span>
+                        <span class="date">10</span>
+                        <span class="date">11</span>
+                        <span class="date">12</span>
+                        <span class="date">13</span>
+                        <span class="date">14</span>
+                        <span class="date">15</span>
+                        <span class="date">16</span>
+                        <span class="date">17</span>
+                        <span class="date">18</span>
+                        <span class="date">19</span>
+                        <span class="date current-day">20</span>
+                        <span class="date">21</span>
+                        <span class="date">22</span>
+                        <span class="date">23</span>
+                        <span class="date">24</span>
+                        <span class="date">25</span>
+                        <span class="date">26</span>
+                        <span class="date">27</span>
+                        <span class="date">28</span>
+                        <span class="date">29</span>
+                        <span class="date">30</span>
+                        <span class="date">31</span>
+                        <span class="date inactive">01</span>
+                        <span class="date inactive">02</span>
+                    </div>
+                </div>
+
+                <div class="todays-classes">
+                    <h2>Today's Classes</h2>
+                </div>
+            </section>
+
+        </div>
+    </main>
+</div>
+
+<script>
+// Ambil token user
+const token = localStorage.getItem("token");
+if (!token) alert("You must login first!");
+
 
 // =====================
-// 1. Jumlah tugas per mapel
+// 1. Fetch COUNT per Mapel
 // =====================
 fetch("http://127.0.0.1:8000/api/assignments-count", {
     headers: { "Authorization": "Bearer " + token }
 })
 .then(res => res.json())
 .then(data => {
-    document.querySelector(".math-card p").innerText =
-        data.Math + " Tasks Remaining";
-
-    document.querySelector(".english-card p").innerText =
-        data.English + " Tasks Remaining";
-
+    document.querySelector(".math-card p").innerText = data.Math + " Tasks Remaining";
+    document.querySelector(".english-card p").innerText = data.English + " Tasks Remaining";
     document.querySelector(".informatics-card p").innerText =
-        data.Informatics > 0 ? 
-        data.Informatics + " Tasks Remaining" :
-        "No assignment yet";
+        data.Informatics > 0 ? data.Informatics + " Tasks Remaining" : "No assignment yet";
 })
 .catch(err => console.error("Error Count:", err));
 
 
 // =====================
-// 2. Upcoming assignments
+// Fungsi umum render reminder
 // =====================
-fetch("http://127.0.0.1:8000/api/assignments-upcoming", {
-    headers: { "Authorization": "Bearer " + token }
-})
-.then(res => res.json())
-.then(tasks => {
-    const container = document.querySelector(".scheduled-tasks");
-    container.innerHTML = "";
-
-    if (tasks.length === 0) {
-        container.innerHTML = `
-            <div class="task-item">
-                <div class="task-info">
-                    <h4>No upcoming assignments</h4>
-                    <p>Everything looks clean 🎉</p>
-                </div>
-            </div>
-        `;
-        return;
-    }
-
-    tasks.forEach(t => {
-        container.innerHTML += `
-            <div class="task-item">
-                <div class="task-info">
-                    <h4>${t.title}</h4>
-                    <p>${t.subject} · ${t.teacher ?? "Teacher"}</p>
-                </div>
-                <div class="task-actions">
-                    <span>${t.deadline}</span>
-                    <button class="add-create-btn"> + Add or Create</button>
-                </div>
-            </div>
-        `;
-    });
-})
-.catch(err => console.error("Error Upcoming:", err));
-
-
-// =====================
-// 3. Today’s Classes
-// =====================
-fetch("http://127.0.0.1:8000/api/today-classes", {
-    headers: { "Authorization": "Bearer " + token }
-})
-.then(res => res.json())
-.then(classes => {
-    const container = document.querySelector(".todays-classes");
-    container.innerHTML = "<h2>Today's Classes</h2>";
-
-    if (classes.length === 0) {
-        container.innerHTML += `
-            <div class="class-item">
-                <div class="class-info">
-                    <h4>No Classes Today</h4>
-                    <p>Enjoy your free time ✨</p>
-                </div>
-            </div>
-        `;
-        return;
-    }
-
-    classes.forEach(c => {
-        container.innerHTML += `
-            <div class="class-item">
-                <div class="class-info">
-                    <h4>${c.subject}</h4>
-                    <p>Period ${c.start_period} - ${c.end_period}</p>
-                </div>
-                <div class="class-icon ${c.subject.toLowerCase()}"></div>
-            </div>
-        `;
-    });
-})
-.catch(err => console.error("Error Today Classes:", err));
-
-// Fungsi fetch reminder
 function fetchReminder(url) {
     fetch(url, {
-        headers: {
-            "Authorization": "Bearer " + token
-        }
+        headers: { "Authorization": "Bearer " + token }
     })
     .then(res => res.json())
     .then(tasks => {
@@ -316,8 +212,7 @@ function fetchReminder(url) {
                         <h4>No tasks found</h4>
                         <p>Try another filter</p>
                     </div>
-                </div>
-            `;
+                </div>`;
             return;
         }
 
@@ -332,46 +227,75 @@ function fetchReminder(url) {
                         <span>${t.deadline}</span>
                         <button class="add-create-btn"> + Add or Create</button>
                     </div>
-                </div>
-            `;
+                </div>`;
         });
     })
-    .catch(err => console.error("Reminder Filter Error:", err));
+    .catch(err => console.error("Reminder Error:", err));
 }
 
 
-// ========== DROPDOWN SUBJECT FILTER ==========
+// =====================
+// FILTERS
+// =====================
 
+// Dropdown subject
 document.getElementById("subjectFilter").addEventListener("change", function () {
-    let subject = this.value;
+    let subject = this.value.toLowerCase();
 
-    // Normalize subject → lowercase
-    subject = subject.toLowerCase();
-
-    // Jika "All Subjects" → gunakan endpoint semua reminder
     if (subject === "") {
         fetchReminder("http://127.0.0.1:8000/api/assignments-upcoming");
         return;
     }
-
-    // Kalau subject terpilih → filter by subject
     fetchReminder(`http://127.0.0.1:8000/api/reminder/by/${subject}`);
 });
 
-
-// ========== TODAY FILTER ==========
+// Today filter
 document.getElementById("todayBtn").addEventListener("click", function () {
     fetchReminder("http://127.0.0.1:8000/api/reminder/today");
 });
 
-
-// ========== UPCOMING FILTER ==========
+// Upcoming filter
 document.getElementById("upcomingBtn").addEventListener("click", function () {
     fetchReminder("http://127.0.0.1:8000/api/reminder/upcoming");
 });
 
-</script>
 
+// =====================
+// TODAY’S CLASSES
+// =====================
+fetch("http://127.0.0.1:8000/api/today-classes", {
+    headers: { "Authorization": "Bearer " + token }
+})
+.then(res => res.json())
+.then(classes => {
+    const container = document.querySelector(".todays-classes");
+    container.innerHTML = "<h2>Today's Classes</h2>";
+
+    if (!classes || classes.length === 0) {
+        container.innerHTML += `
+        <div class="class-item">
+            <div class="class-info">
+                <h4>No Classes Today</h4>
+                <p>Enjoy your free time ✨</p>
+            </div>
+        </div>`;
+        return;
+    }
+
+    classes.forEach(c => {
+        container.innerHTML += `
+        <div class="class-item">
+            <div class="class-info">
+                <h4>${c.subject}</h4>
+                <p>Period ${c.start_period} - ${c.end_period}</p>
+            </div>
+            <div class="class-icon ${c.subject.toLowerCase()}"></div>
+        </div>`;
+    });
+})
+.catch(err => console.error("Today Classes Error:", err));
+
+</script>
 
 </body>
 </html>

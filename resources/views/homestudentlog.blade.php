@@ -90,9 +90,8 @@
             <!-- LEFT TEXT -->
             <div class="max-w-xl">
                 <div class="flex items-center gap-2 bg-[#3A71C1] text-white rounded-full px-4 py-1 w-fit">
-                    <!-- ICON roket ganti manual -->
-                    <div class="w-4 h-4 bg-white rounded-full"></div>
-                    <!-- ganti pakai <img src=""> -->
+                    <div class="w-4 h-4 rounded-full"></div>
+                        <img src="{{'images/rocket.png'}}" alt="Rocket Icon" class="w-4 h-4">
                     <span>No. 1 platform for learning</span>
                 </div>
 
