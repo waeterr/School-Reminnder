@@ -72,7 +72,14 @@
 
     <!-- MAIN CONTENT -->
     <div class="px-4 sm:px-6 md:px-10 lg:px-16 py-8">
-        <h1 class="text-2xl sm:text-3xl font-semibold mb-6">Math XI PPLG 3</h1>
+        <h1 class="text-2xl sm:text-3xl font-semibold mb-6">
+            @forelse($classrooms as $classroom)
+                {{ $classroom->name }}
+                @break
+            @empty
+                My Class
+            @endforelse
+        </h1>
 
         <div class="bg-[#F3F3F3] shadow-md rounded-xl p-4 sm:p-6 md:p-8">
 
@@ -102,28 +109,48 @@
                         <div>Actions</div>
                     </div>
 
-                    <div class="grid grid-cols-5 min-w-[700px] items-center px-4 py-4 border-t text-sm">
+                    @forelse($assignments as $assignment)
+                        @php
+                            $dueDate = \Carbon\Carbon::parse($assignment->due_date);
+                            $now = \Carbon\Carbon::now();
+                            $status = $dueDate->isPast() ? 'Overdue' : ($dueDate->isToday() ? 'Due Today' : 'Active');
+                            $statusColor = $status === 'Active' ? 'bg-green-500' : ($status === 'Due Today' ? 'bg-orange-500' : 'bg-red-500');
+                            $submissions = $assignment->submissions()->count();
+                            $totalStudents = $assignment->classroom->members()->count();
+                        @endphp
+                        <div class="grid grid-cols-5 min-w-[700px] items-center px-4 py-4 border-t text-sm">
 
-                        <div class="font-medium">Exercise matriks 3–7</div>
+                            <div class="font-medium">{{ Str::limit($assignment->title, 30) }}</div>
 
-                        <div class="text-gray-700 leading-tight">
-                            Monday, 28 July 2025 <br>
-                            01.00 PM
+                            <div class="text-gray-700 leading-tight">
+                                {{ $dueDate->format('l, d M Y') }} <br>
+                                {{ $dueDate->format('h:i A') }}
+                            </div>
+
+                            <div>
+                                <span
+                                    class="{{ $statusColor }} text-white text-xs px-3 py-1 rounded-full">{{ $status }}</span>
+                            </div>
+
+                            <div class="text-gray-700">{{ $submissions }}/{{ $totalStudents }} Students</div>
+
+                            <div class="flex gap-2">
+                                <button class="bg-[#0F2348] text-white text-xs px-3 py-1 rounded-lg">Grade</button>
+                                <button class="openEditBtn bg-[#0F2348] text-white text-xs px-3 py-1 rounded-lg"
+                                    data-id="{{ $assignment->id }}" data-title="{{ $assignment->title }}"
+                                    data-desc="{{ $assignment->description }}"
+                                    data-deadline="{{ $assignment->due_date }}">Edit</button>
+                                <button class="viewBtn bg-[#0F2348] text-white text-xs px-3 py-1 rounded-lg"
+                                    data-title="{{ $assignment->title }}" data-desc="{{ $assignment->description }}"
+                                    data-deadline="{{ $dueDate->format('l, d M Y – h:i A') }}"
+                                    data-status="{{ $status }}">View</button>
+                            </div>
                         </div>
-
-                        <div>
-                            <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full">Active</span>
+                    @empty
+                        <div class="grid grid-cols-5 min-w-[700px] items-center px-4 py-4 border-t text-sm text-center">
+                            <div colspan="5" class="text-gray-500">No assignments found for this classroom.</div>
                         </div>
-
-                        <div class="text-gray-700">25/30 Students</div>
-
-                        <div class="flex gap-2">
-                            <button class="bg-[#0F2348] text-white text-xs px-3 py-1 rounded-lg">Grade</button>
-                            <button id="openEditPopup"
-                                class="bg-[#0F2348] text-white text-xs px-3 py-1 rounded-lg">Edit</button>
-                            <button class="bg-[#0F2348] text-white text-xs px-3 py-1 rounded-lg">View</button>
-                        </div>
-                    </div>
+                    @endforelse
 
                 </div>
 
@@ -592,15 +619,21 @@
 
         // Popup Edit
         const editPopup = document.getElementById("editPopup");
-        const openEditPopup = document.getElementById("openEditPopup");
 
-        openEditPopup.addEventListener("click", () => {
-            editPopup.classList.remove("hidden");
-            editPopup.classList.add("flex");
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("openEditBtn")) {
+                const taskId = e.target.getAttribute("data-id");
+                const taskTitle = e.target.getAttribute("data-title");
+                const taskDesc = e.target.getAttribute("data-desc");
+                const taskDeadline = e.target.getAttribute("data-deadline");
 
-            document.getElementById("editTaskName").value = "Exercise matriks 3–7";
-            document.getElementById("editTaskDesc").value = "Kerjakan soal matriks halaman 3–7 secara lengkap.";
-            document.getElementById("editTaskDeadline").value = "2025-07-28T13:00";
+                document.getElementById("editTaskName").value = taskTitle;
+                document.getElementById("editTaskDesc").value = taskDesc;
+                document.getElementById("editTaskDeadline").value = taskDeadline;
+
+                editPopup.classList.remove("hidden");
+                editPopup.classList.add("flex");
+            }
         });
 
         editPopup.addEventListener("click", (e) => {
@@ -670,18 +703,22 @@
         const viewPopup = document.getElementById("viewPopup");
         const closeViewPopup = document.getElementById("closeViewPopup");
 
-        // Tombol View (ambil button yang ada di baris)
-        const viewBtn = document.querySelector("#contentTask button:nth-child(3)");
+        // Handle View buttons dynamically
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("viewBtn")) {
+                const taskTitle = e.target.getAttribute("data-title");
+                const taskDesc = e.target.getAttribute("data-desc");
+                const taskDeadline = e.target.getAttribute("data-deadline");
+                const taskStatus = e.target.getAttribute("data-status");
 
-        viewBtn.addEventListener("click", () => {
-            // Data dummy (bisa nanti lo ganti dari backend)
-            document.getElementById("viewTaskName").textContent = "Exercise matriks 3–7";
-            document.getElementById("viewTaskDesc").textContent = "Kerjakan soal matriks halaman 3–7 secara lengkap.";
-            document.getElementById("viewTaskDeadline").textContent = "Monday, 28 July 2025 – 01.00 PM";
-            document.getElementById("viewTaskStatus").textContent = "Active";
+                document.getElementById("viewTaskName").textContent = taskTitle;
+                document.getElementById("viewTaskDesc").textContent = taskDesc;
+                document.getElementById("viewTaskDeadline").textContent = taskDeadline;
+                document.getElementById("viewTaskStatus").textContent = taskStatus;
 
-            viewPopup.classList.remove("hidden");
-            viewPopup.classList.add("flex");
+                viewPopup.classList.remove("hidden");
+                viewPopup.classList.add("flex");
+            }
         });
 
         viewPopup.addEventListener("click", (e) => {

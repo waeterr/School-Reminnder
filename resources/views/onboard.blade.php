@@ -52,7 +52,7 @@
                 <li><a href="#" class="px-6 py-2 bg-[#28477E] text-white rounded-full">Home</a></li>
                 <li><a href="{{ url('login') }}" class="hover:text-blue-600">Task</a></li>
                 <li><a href="{{ url('login') }}" class="hover:text-blue-600">Calendar</a></li>
-                <li><a href="#" class="hover:text-blue-600">Reminder</a></li>
+                <li><a href="{{ url('Reminder') }}" class="hover:text-blue-600">Reminder</a></li>
                 <li><a href="{{ url('about-us') }}" class="hover:text-blue-600">About Us</a></li>
             </ul>
 

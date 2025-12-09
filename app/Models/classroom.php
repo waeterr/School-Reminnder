@@ -35,7 +35,7 @@ class Classroom extends Model
 
     public function assignments()
     {
-        return $this->hasMany(Assignment::class, 'class_id');
+        return $this->hasMany(Assignment::class, 'classroom_id');
     }
 
     public function announcements()

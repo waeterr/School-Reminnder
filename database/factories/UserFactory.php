@@ -28,7 +28,6 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
             'password' => Hash::make('password123'),
             'gender' => $this->faker->randomElement(['male', 'female', 'unknown']),
             'school' => null,
@@ -45,7 +44,6 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'role' => 'teacher',
-            'student_id' => null,
         ]);
     }
 
@@ -53,7 +51,6 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'role' => 'student',
-            'student_id' => 'STD' . $this->faker->unique()->numberBetween(10000, 99999),
         ]);
     }
 
@@ -61,7 +58,6 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'role' => 'admin',
-            'student_id' => null,
         ]);
     }
 
@@ -71,7 +67,7 @@ class UserFactory extends Factory
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+            // email_verified_at is not used in this schema
         ]);
     }
 }

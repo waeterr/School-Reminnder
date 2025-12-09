@@ -39,13 +39,19 @@ class Assignment extends Model
         return $this->hasMany(Submission::class);
     }
 
+    // Alias for convenience
+    public function submissions()
+    {
+        return $this->taskSubmissions();
+    }
+
     public function isPastDue()
     {
-        return now()->greaterThan($this->deadline);
+        return now()->greaterThan($this->due_date);
     }
 
     public function getGradedCountAttribute()
     {
-        return $this->submissions()->where('status', 'graded')->count();
+        return $this->taskSubmissions()->where('status', 'graded')->count();
     }
 }

@@ -208,259 +208,92 @@
 
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            @forelse ($assignments as $assignment)
+                @php
+                    $colors = [
+                        'english' => 'english',
+                        'informatics' => 'informatics',
+                        'math' => 'math',
+                        'history' => 'history',
+                        'physics' => 'physics',
+                        'chemistry' => 'chemistry',
+                    ];
+                    $subject = strtolower($assignment->subject ?? 'math');
+                    $color = $colors[$subject] ?? 'primary';
+                    $dueDate = \Carbon\Carbon::parse($assignment->due_date);
+                    $now = \Carbon\Carbon::now();
+                    $daysUntilDue = $now->diffInDays($dueDate);
 
-            <div class="task-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-english"
-                data-status="pending" data-subject="english">
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-3">
-                        <span
-                            class="subject-tag bg-english text-white text-xs font-medium px-2 py-1 rounded-full">English</span>
-                        <span class="inline-block bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded">Due
-                            Tomorrow</span>
-                    </div>
+                    if ($dueDate->isPast()) {
+                        $statusText = 'Overdue';
+                        $statusClass = 'bg-red-100 text-red-800';
+                        $status = 'overdue';
+                    } elseif ($daysUntilDue === 0) {
+                        $statusText = 'Due Today';
+                        $statusClass = 'bg-orange-100 text-orange-800';
+                        $status = 'due-today';
+                    } elseif ($daysUntilDue === 1) {
+                        $statusText = 'Due Tomorrow';
+                        $statusClass = 'bg-red-100 text-red-800';
+                        $status = 'due-tomorrow';
+                    } elseif ($daysUntilDue <= 7) {
+                        $statusText = "Due in $daysUntilDue days";
+                        $statusClass = 'bg-yellow-100 text-yellow-800';
+                        $status = 'pending';
+                    } else {
+                        $statusText = "Due in $daysUntilDue days";
+                        $statusClass = 'bg-green-100 text-green-800';
+                        $status = 'pending';
+                    }
+                @endphp
 
-                    <h2 class="text-lg font-bold mb-2">Adjective Clauses</h2>
-
-                    <div class="mb-4">
-                        <div class="flex items-center text-gray-600 mb-2 text-sm">
-                            <i class="fas fa-user mr-2"></i>
-                            <span>Mr. Bambang</span>
+                <div class="task-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-{{ $color }}"
+                    data-status="{{ $status }}" data-subject="{{ $subject }}">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="subject-tag bg-{{ $color }} text-white text-xs font-medium px-2 py-1 rounded-full">
+                                {{ ucfirst($subject) }}
+                            </span>
+                            <span class="inline-block {{ $statusClass }} text-xs font-medium px-2 py-1 rounded">
+                                {{ $statusText }}
+                            </span>
                         </div>
-                        <p class="text-gray-700 text-sm">
-                            Exercise 1 on page 15 – Write all the questions and your answers neatly in your notebook.
-                        </p>
-                    </div>
 
-                    <div class="flex justify-between items-center text-xs text-gray-500 mb-4">
-                        <div class="flex items-center">
-                            <i class="far fa-calendar-alt mr-1"></i>
-                            <span>22 Jul 2025</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="far fa-clock mr-1"></i>
-                            <span>11:59 PM</span>
-                        </div>
-                    </div>
+                        <h2 class="text-lg font-bold mb-2">{{ $assignment->title }}</h2>
 
-                    <button
-                        class="w-full bg-english text-white px-3 py-2 rounded-lg hover:bg-pink-500 transition-colors flex items-center justify-center text-sm">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        View Task Detail
-                    </button>
+                        <div class="mb-4">
+                            <div class="flex items-center text-gray-600 mb-2 text-sm">
+                                <i class="fas fa-user mr-2"></i>
+                                <span>{{ $assignment->classroom->teacher->name ?? 'Teacher' }}</span>
+                            </div>
+                            <p class="text-gray-700 text-sm">
+                                {{ Str::limit($assignment->description, 100) }}
+                            </p>
+                        </div>
+
+                        <div class="flex justify-between items-center text-xs text-gray-500 mb-4">
+                            <div class="flex items-center">
+                                <i class="far fa-calendar-alt mr-1"></i>
+                                <span>{{ $dueDate->format('d M Y') }}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="far fa-clock mr-1"></i>
+                                <span>{{ $dueDate->format('h:i A') }}</span>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full bg-{{ $color }} text-white px-3 py-2 rounded-lg hover:opacity-90 transition-colors flex items-center justify-center text-sm">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Task Detail
+                        </button>
+                    </div>
                 </div>
-            </div>
-
-
-            <div class="task-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-informatics"
-                data-status="pending" data-subject="informatics">
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-3">
-                        <span
-                            class="subject-tag bg-informatics text-white text-xs font-medium px-2 py-1 rounded-full">Informatics</span>
-                        <span
-                            class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">Due
-                            in 3 days</span>
-                    </div>
-
-                    <h2 class="text-lg font-bold mb-2">Front End</h2>
-
-                    <div class="mb-4">
-                        <div class="flex items-center text-gray-600 mb-2 text-sm">
-                            <i class="fas fa-user mr-2"></i>
-                            <span>Mr. Mulyono</span>
-                        </div>
-                        <p class="text-gray-700 text-sm">
-                            Create a simple website layout using HTML and CSS with header, navigation, content, and
-                            footer.
-                        </p>
-                    </div>
-
-                    <div class="flex justify-between items-center text-xs text-gray-500 mb-4">
-                        <div class="flex items-center">
-                            <i class="far fa-calendar-alt mr-1"></i>
-                            <span>25 Jul 2025</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="far fa-clock mr-1"></i>
-                            <span>09:00 PM</span>
-                        </div>
-                    </div>
-
-                    <button
-                        class="w-full bg-informatics text-white px-3 py-2 rounded-lg hover:bg-red-500 transition-colors flex items-center justify-center text-sm">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        View Task Detail
-                    </button>
+            @empty
+                <div class="col-span-full text-center py-12">
+                    <p class="text-gray-500 text-lg">No assignments yet. Check back soon!</p>
                 </div>
-            </div>
-
-
-            <div class="task-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-math"
-                data-status="pending" data-subject="math">
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-3">
-                        <span
-                            class="subject-tag bg-math text-white text-xs font-medium px-2 py-1 rounded-full">Math</span>
-                        <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">Due
-                            in 6 days</span>
-                    </div>
-
-                    <h2 class="text-lg font-bold mb-2">Matrix</h2>
-
-                    <div class="mb-4">
-                        <div class="flex items-center text-gray-600 mb-2 text-sm">
-                            <i class="fas fa-user mr-2"></i>
-                            <span>Mrs. Cantik</span>
-                        </div>
-                        <p class="text-gray-700 text-sm">
-                            Solve Exercises 3 to 7 on page 42. Show all calculation steps clearly.
-                        </p>
-                    </div>
-
-                    <div class="flex justify-between items-center text-xs text-gray-500 mb-4">
-                        <div class="flex items-center">
-                            <i class="far fa-calendar-alt mr-1"></i>
-                            <span>28 Jul 2025</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="far fa-clock mr-1"></i>
-                            <span>01:00 PM</span>
-                        </div>
-                    </div>
-
-                    <button
-                        class="w-full bg-math text-white px-3 py-2 rounded-lg hover:bg-green-500 transition-colors flex items-center justify-center text-sm">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        View Task Detail
-                    </button>
-                </div>
-            </div>
-
-
-            <div class="task-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-history"
-                data-status="completed" data-subject="history">
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-3">
-                        <span
-                            class="subject-tag bg-history text-white text-xs font-medium px-2 py-1 rounded-full">History</span>
-                        <span
-                            class="inline-block bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded">Completed</span>
-                    </div>
-
-                    <h2 class="text-lg font-bold mb-2">World War II Essay</h2>
-
-                    <div class="mb-4">
-                        <div class="flex items-center text-gray-600 mb-2 text-sm">
-                            <i class="fas fa-user mr-2"></i>
-                            <span>Mr. Wijaya</span>
-                        </div>
-                        <p class="text-gray-700 text-sm">
-                            Write a 1000-word essay about the causes and consequences of World War II.
-                        </p>
-                    </div>
-
-                    <div class="flex justify-between items-center text-xs text-gray-500 mb-4">
-                        <div class="flex items-center">
-                            <i class="far fa-calendar-alt mr-1"></i>
-                            <span>26 Jul 2025</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="far fa-clock mr-1"></i>
-                            <span>03:00 PM</span>
-                        </div>
-                    </div>
-
-                    <button
-                        class="w-full bg-history text-white px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors flex items-center justify-center text-sm">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        View Task Detail
-                    </button>
-                </div>
-            </div>
-
-
-            <div class="task-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-physics"
-                data-status="pending" data-subject="physics">
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-3">
-                        <span
-                            class="subject-tag bg-physics text-white text-xs font-medium px-2 py-1 rounded-full">Physics</span>
-                        <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">Due
-                            in 8 days</span>
-                    </div>
-
-                    <h2 class="text-lg font-bold mb-2">Newton's Laws</h2>
-
-                    <div class="mb-4">
-                        <div class="flex items-center text-gray-600 mb-2 text-sm">
-                            <i class="fas fa-user mr-2"></i>
-                            <span>Mr. Surya</span>
-                        </div>
-                        <p class="text-gray-700 text-sm">
-                            Solve problems 5-12 from chapter 3. Include free-body diagrams for each problem.
-                        </p>
-                    </div>
-
-                    <div class="flex justify-between items-center text-xs text-gray-500 mb-4">
-                        <div class="flex items-center">
-                            <i class="far fa-calendar-alt mr-1"></i>
-                            <span>30 Jul 2025</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="far fa-clock mr-1"></i>
-                            <span>10:00 AM</span>
-                        </div>
-                    </div>
-
-                    <button
-                        class="w-full bg-physics text-white px-3 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center text-sm">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        View Task Detail
-                    </button>
-                </div>
-            </div>
-
-
-            <div class="task-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-chemistry"
-                data-status="overdue" data-subject="chemistry">
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-3">
-                        <span
-                            class="subject-tag bg-chemistry text-white text-xs font-medium px-2 py-1 rounded-full">Chemistry</span>
-                        <span
-                            class="inline-block bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded">Overdue</span>
-                    </div>
-
-                    <h2 class="text-lg font-bold mb-2">Periodic Table</h2>
-
-                    <div class="mb-4">
-                        <div class="flex items-center text-gray-600 mb-2 text-sm">
-                            <i class="fas fa-user mr-2"></i>
-                            <span>Mrs. Dewi</span>
-                        </div>
-                        <p class="text-gray-700 text-sm">
-                            Memorize elements 1-20 with their symbols and atomic numbers. Quiz tomorrow.
-                        </p>
-                    </div>
-
-                    <div class="flex justify-between items-center text-xs text-gray-500 mb-4">
-                        <div class="flex items-center">
-                            <i class="far fa-calendar-alt mr-1"></i>
-                            <span>23 Jul 2025</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="far fa-clock mr-1"></i>
-                            <span>08:30 AM</span>
-                        </div>
-                    </div>
-
-                    <button
-                        class="w-full bg-chemistry text-white px-3 py-2 rounded-lg hover:bg-purple-600 transition-colors flex items-center justify-center text-sm">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        View Task Detail
-                    </button>
-                </div>
-            </div>
+            @endforelse
         </div>
 
 

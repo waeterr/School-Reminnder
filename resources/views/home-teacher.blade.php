@@ -63,7 +63,7 @@
 
     {{-- WELCOME --}}
     <h1 class="font-bold text-3xl ml-6 mt-10 md:text-4xl md:ml-16 md:mt-16">
-        Welcome,<br>Mrs. Cantik!
+        Welcome,<br>{{ auth()->user()->name }}!
     </h1>
 
     {{-- GRID --}}
@@ -73,16 +73,20 @@
         <div class="bg-gray-200 rounded-xl flex flex-col text-center p-6">
             <h2 class="text-xl font-bold text-gray-800 mt-4">My Classes</h2>
 
-            {{-- Class Card --}}
-            <div class="m-4 bg-white border border-[#132442] rounded-lg p-4 flex items-center gap-3 cursor-pointer">
-                <img src="{{ asset('images/calculator.svg') }}" alt="">
-                <div class="text-left">
-                    <p class="font-medium">Math XI PPLG 3</p>
-                    <p class="text-sm text-gray-500">18 student have been joined</p>
+            {{-- Class Cards Loop --}}
+            @forelse($classrooms as $classroom)
+                <div class="m-4 bg-white border border-[#132442] rounded-lg p-4 flex items-center gap-3 cursor-pointer hover:shadow-md transition">
+                    <img src="{{ asset('images/calculator.svg') }}" alt="">
+                    <div class="text-left flex-1">
+                        <p class="font-medium">{{ $classroom->name }}</p>
+                        <p class="text-sm text-gray-500">{{ $classroom->members()->count() }} student{{ $classroom->members()->count() !== 1 ? 's' : '' }} have been joined</p>
+                    </div>
                 </div>
-            </div>
+            @empty
+                <p class="text-gray-500 m-4">No classes created yet.</p>
+            @endforelse
 
-            <a href="{{ url('hs-teach1') }}" class="flex flex-col ml-4 mr-4">
+            <a href="#" onclick="document.getElementById('popupClass').classList.remove('hidden')" class="flex flex-col ml-4 mr-4">
                 <button class="w-full bg-[#132442] text-white text-sm py-3 rounded-lg flex items-center justify-center gap-2 font-bold hover:scale-105 transition">
                     <img src="{{ asset('images/+.png') }}" class="w-5"> Create New Class
                 </button>

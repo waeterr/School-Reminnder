@@ -12,9 +12,20 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = [
-        'name', 'email', 'phone', 'address', 'birth_date', 'profile_picture', 'password', 'student_id',
-    ];
+   protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'role',
+    'photo',
+    'gender',
+    'address',
+    'phone_number',
+    'date_of_birth',
+    'school',
+    'last_seen_at',
+    'status',
+];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -25,10 +36,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'birth_date' => 'date',
-        'email_verified_at' => 'datetime',
-    ];
+
 
     protected $appends = ['profile_picture_url'];
 
@@ -38,12 +46,15 @@ class User extends Authenticatable
      * @return array<string, string>
      */
     protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+{
+    return [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'date_of_birth' => 'date',
+        'last_seen_at' => 'datetime',
+    ];
+}
+
 
     // Relationships
     /**

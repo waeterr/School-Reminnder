@@ -33,17 +33,18 @@
 
   <!-- Logo -->
   <div class="mb-6">
-    <img src="{{'images/logo.png'}}" alt="School Reminder Logo" class="h-10">
+    <img src="{{ asset('images/logo.png') }}" alt="School Reminder Logo" class="h-10">
   </div>
 
   <div class="bg-white shadow-lg rounded-3xl p-10 w-96 flex flex-col items-center">
 
-    <h2 class="text-[#132442] font-bold text-[32px] text-center mb-6">
-      Sign Up
-    </h2>
+    <h2 class="text-[#132442] font-bold text-[32px] text-center mb-6">Sign Up</h2>
 
     <form method="POST" action="{{ route('register') }}" class="w-full">
       @csrf
+
+      <!-- ROLE (HIDDEN) -->
+      <input type="hidden" name="role" id="roleInput" value="teacher">
 
       <!-- Login As -->
       <div class="w-full mb-2">
@@ -54,18 +55,14 @@
           <!-- TEACHER BUTTON -->
           <button type="button" id="teacherBtn"
             class="flex-1 py-2 rounded-xl font-bold text-[16px] active-role flex items-center justify-center gap-2">
-
-            <!-- Teacher WHITE icon -->
-            <img src="{{ asset('images/fa-solid_chalkboard-teacher.png') }}" class="w-5 h-5 mr-2">
+            <img src="{{ asset('images/fa-solid_chalkboard-teacher.png') }}" class="w-5 h-5">
             Teacher
           </button>
 
           <!-- STUDENT BUTTON -->
           <button type="button" id="studentBtn"
             class="flex-1 py-2 rounded-xl font-bold text-[16px] inactive-role flex items-center justify-center gap-2">
-
-            <!-- Student BLUE icon -->
-            <img src="{{ asset('images/hugeicons_student-card.png') }}" class="w-5 h-5 mr-2">
+            <img src="{{ asset('images/hugeicons_student-card.png') }}" class="w-5 h-5">
             Student
           </button>
 
@@ -81,7 +78,7 @@
 
       <!-- Email -->
       <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
-        <img src={{ asset('images/mi_email.png') }} class="w-5 h-5 mr-2">
+        <img src="{{ asset('images/mi_email.png') }}" class="w-5 h-5 mr-2">
         <input type="email" name="email" placeholder="Email"
           class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium" required>
       </div>
@@ -96,12 +93,20 @@
         </button>
       </div>
 
-
+      <!-- Password Confirmation -->
+      <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-3">
+        <img src="{{ asset('images/ri_lock-password-line.png') }}" class="w-5 h-5 mr-2">
+        <input id="password_confirmation" name="password_confirmation" type="password" placeholder="Confirm Password"
+          class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium" required>
+        <button type="button" id="togglePasswordConfirm">
+          <img src="{{ asset('images/solar_eye-bold.png') }}" class="w-5 h-5 ml-2">
+        </button>
+      </div>
 
       <!-- School Name -->
       <div class="flex items-center w-full border border-[#132442] rounded-xl px-3 py-2 mb-1">
         <img src="{{ asset('images/icon-park-solid_school.png') }}" class="w-5 h-5 mr-2">
-        <input type="text" placeholder="School name"
+        <input type="text" name="school_name" placeholder="School name"
           class="w-full focus:outline-none text-[#132442] placeholder-[#C1C1C1] text-[16px] font-medium">
       </div>
 
@@ -125,60 +130,37 @@
 
   </div>
 
+  <!-- SCRIPT -->
   <script>
     const teacherBtn = document.getElementById("teacherBtn");
     const studentBtn = document.getElementById("studentBtn");
+    const roleInput = document.getElementById("roleInput");
 
-    const teacherIcon = document.getElementById("teacherIcon");
-    const studentIcon = document.getElementById("studentIcon");
-    const schoolIcon = document.getElementById("schoolIcon");
-
-    // Toggle Role + Change Icons
+    // ROLE SWITCH
     teacherBtn.onclick = () => {
+      roleInput.value = "teacher";
       teacherBtn.classList.add("active-role");
-      teacherBtn.classList.remove("inactive-role");
-
       studentBtn.classList.remove("active-role");
       studentBtn.classList.add("inactive-role");
-
-      // Button icon switch
-      teacherIcon.src = "fa-solid_chalkboard-teacher(1).png";
-      studentIcon.src = "hugeicons_student-card.png";
-
-      // School Name icon (Teacher)
-      schoolIcon.src = "icon-park-solid_school.png";
     };
 
     studentBtn.onclick = () => {
+      roleInput.value = "student";
       studentBtn.classList.add("active-role");
-      studentBtn.classList.remove("inactive-role");
-
       teacherBtn.classList.remove("active-role");
       teacherBtn.classList.add("inactive-role");
-
-      // Button icon switch
-      teacherIcon.src = "fa-solid_chalkboard-teacher.png";
-      studentIcon.src = "hugeicons_student-card(1).png";
-
-      // School Name icon (Student)
-      schoolIcon.src = "hugeicons_student-card.png";
     };
 
-    // Toggle Password Visibility
-    const password = document.getElementById("password");
-    const togglePassword = document.getElementById("togglePassword");
+    // TOGGLE PASSWORD
+    document.getElementById("togglePassword").onclick = () => {
+      let p = document.getElementById("password");
+      p.type = p.type === "password" ? "text" : "password";
+    };
 
-    togglePassword.addEventListener('click', () => {
-      password.type = password.type === "password" ? "text" : "password";
-    });
-
-    // Toggle Password Confirmation Visibility
-    const passwordConfirm = document.getElementById("password_confirmation");
-    const togglePasswordConfirm = document.getElementById("togglePasswordConfirm");
-
-    togglePasswordConfirm.addEventListener('click', () => {
-      passwordConfirm.type = passwordConfirm.type === "password" ? "text" : "password";
-    });
+    document.getElementById("togglePasswordConfirm").onclick = () => {
+      let p = document.getElementById("password_confirmation");
+      p.type = p.type === "password" ? "text" : "password";
+    };
   </script>
 
 </body>
