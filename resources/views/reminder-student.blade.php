@@ -344,9 +344,9 @@ body {
 
         <div class="hidden md:flex space-x-7 text-[#1B2A4E] font-medium">
             <a href="{{ route('welcome') }}" class="hover:text-[#3A71C1]">Home</a>
-            <a href="{{ route('task') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Task</a>
+            <a href="{{ route('task') }}" class="hover:text-[#3A71C1]">Task</a>
             <a href="{{ route('calendar') }}" class="hover:text-[#3A71C1]">Calendar</a>
-            <a href="{{ route('reminder') }}" class="hover:text-[#3A71C1]">Reminder</a>
+            <a href="{{ route('reminder') }}" class="text-white bg-[#3A71C1] px-4 py-1 rounded-full">Reminder</a>
             <a href="#" class="hover:text-[#3A71C1]">About Us</a>
         </div>
 

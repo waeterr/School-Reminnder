@@ -1,7 +1,23 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReminderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\Api\ScheduleController;
+use App\Http\Controllers\Api\TaskController;
+
+Route::get('/schedule', [ScheduleController::class, 'getByDate']);
+Route::get('/tasks', [TaskController::class, 'getByDate']);
+Route::get('/task/{id}', [TaskController::class, 'getDetail']);
+
+
+Route::get('/calendar', [CalendarController::class, 'index']);
+Route::get('/calendar/events', [CalendarController::class, 'getEvents']);
+
+
+Route::get('/reminder', [ReminderController::class, 'index']);
+Route::get('/reminder/data', [ReminderController::class, 'getReminders']);
 
 // Public Routes - Onboarding Flow
 Route::get('/', function () {
@@ -21,11 +37,10 @@ Route::get('/homestudent-guest', function () {
     return view('homestudent');
 })->name('homestudent.guest');
 
-route::get('/log2', function () {
+Route::get('/log2', function () {
     return view('login2');
 });
-// homestudent for logged-in users will be defined inside the protected group
-// Protected Routes - User harus sudah login
+
 // Public pages (accessible without login)
 Route::get('/welcome', function () {
     return view('welcome');
@@ -45,13 +60,10 @@ Route::get('/reminder', function () {
 
 // Protected Routes - User harus sudah login
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Protected homestudent for logged-in users
     Route::get('/homestudent', function () {
         return view('homestudentlog');
     })->name('homestudent');
 });
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -63,7 +75,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Reminder filter route
 Route::get('/reminder/by/{subject}', [ReminderController::class, 'filterBySubject']);
 
+
+// ==========================
+// ⭐ API ROUTE BARU UNTUK SCHEDULE
+// ==========================
+Route::get('/api/schedule', function () {
+    $date = request('date');
+    $day = strtolower(\Carbon\Carbon::parse($date)->format('l'));
+
+    return \App\Models\Schedule::where('day', $day)
+        ->orderBy('start_time')
+        ->get();
+});
 
 require __DIR__.'/auth.php';

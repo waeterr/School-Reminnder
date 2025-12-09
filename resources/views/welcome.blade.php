@@ -175,6 +175,14 @@
                     <p class="text-gray-400">Click on a date with a red dot to see task details</p>
                 </div>
 
+                 <!-- TODAY SCHEDULE BOX (AUTO SYNC) -->
+                <div id="scheduleBox" class="p-6 bg-white rounded-xl shadow-md mb-6">
+                    <h2 class="font-bold text-lg mb-3">Today Schedule</h2>
+                    <div id="scheduleList" class="space-y-2 text-sm text-gray-700">
+                        <p>Select a date to view schedule.</p>
+                    </div>
+                </div>
+
                 <!-- English Project Task Detail -->
                 <div id="englishTask" class="task-detail">
                     <div class="bg-english-pink h-2 w-full"></div>
@@ -367,150 +375,144 @@
     </footer>
 
     <script>
-        // Calendar data
-        const calendarData = {
-            month: "July 2025",
-            days: [
-                // Week 1 (29 June - 5 July)
-                { day: 29, otherMonth: true },
-                { day: 30, otherMonth: true },
-                { day: 1 },
-                { day: 2 },
-                { day: 3 },
-                { day: 4 },
-                { day: 5 },
+// ===========================
+//        INIT CALENDAR
+// ===========================
+document.addEventListener("DOMContentLoaded", function () {
+    generateCalendar();
+});
 
-                // Week 2 (6-12 July)
-                { day: 6 },
-                { day: 7 },
-                { day: 8 },
-                { day: 9 },
-                { day: 10 },
-                { day: 11 },
-                { day: 12 },
+// ===========================
+// GENERATE CALENDAR
+// ===========================
+function generateCalendar() {
 
-                // Week 3 (13-19 July)
-                { day: 13 },
-                { day: 14 },
-                { day: 15 },
-                { day: 16 },
-                { day: 17 },
-                { day: 18 },
-                { day: 19 },
+    const calendarBody = document.getElementById("calendarDays");
+    calendarBody.innerHTML = "";
 
-                // Week 4 (20-26 July)
-                { day: 20 },
-                { day: 21 },
-                { day: 22, hasTask: true, taskId: "englishTask" },
-                { day: 23 },
-                { day: 24 },
-                { day: 25, hasTask: true, taskId: "informaticsTask" },
-                { day: 26 },
+    const daysInMonth = 31;
+    
+    for (let i = 1; i <= daysInMonth; i++) {
+        let dayElement = document.createElement("div");
 
-                // Week 5 (27 July - 2 August)
-                { day: 27 },
-                { day: 28 },
-                { day: 29 },
-                { day: 30 },
-                { day: 31 },
-                { day: 1, otherMonth: true },
-                { day: 2, otherMonth: true }
-            ]
+        dayElement.className =
+            "calendar-day border rounded-lg p-3 text-center cursor-pointer hover:bg-primary hover:text-white transition";
+
+        dayElement.innerHTML = `
+            <p class="font-bold">${i}</p>
+            <span class="text-xs task-dot hidden">•</span>
+        `;
+
+        // DATA OBJECT
+        let dayData = {
+            day: i,
+            date: 2025-07-${String(i).padStart(2, "0")}
         };
 
-        // Function to render calendar
-        function renderCalendar() {
-            const calendarGrid = document.getElementById('calendarGrid');
-            calendarGrid.innerHTML = '';
+        // CLICK EVENT
+        dayElement.addEventListener("click", () => {
+            document.querySelectorAll(".calendar-day")
+                .forEach(d => d.classList.remove("ring-2", "ring-primary"));
 
-            calendarData.days.forEach(dayData => {
-                const dayElement = document.createElement('div');
-                dayElement.className = 'calendar-day bg-gray-50 rounded-lg p-3 h-28 cursor-pointer hover:bg-gray-100 relative';
+            dayElement.classList.add("ring-2", "ring-primary");
 
-                if (dayData.otherMonth) {
-                    dayElement.classList.add('text-gray-400');
-                }
+            loadSchedule(dayData.date);
+            loadTasks(dayData.date);
+        });
 
-                if (dayData.hasTask) {
-                    dayElement.classList.add('has-task');
-                }
+        calendarBody.appendChild(dayElement);
 
-                // Highlight today's date (12th)
-                if (dayData.day === 12) {
-                    dayElement.classList.remove('bg-gray-50', 'hover:bg-gray-100');
-                    dayElement.classList.add('bg-primary-light', 'text-white', 'hover:bg-primary');
-                }
+        // Periksa apakah ada task (titik merah)
+        checkTaskDot(dayData.date, dayElement);
+    }
+}
 
-                dayElement.innerHTML = `
-                    <div class="day-number">${dayData.day}</div>
+// ===========================
+// LOAD SCHEDULE BY DATE
+// ===========================
+function loadSchedule(date) {
+    fetch(/api/schedule?date=${date})
+        .then(res => res.json())
+        .then(data => {
+            let wrap = document.getElementById("scheduleList");
+            let html = "";
+
+            if (!data || data.length === 0) {
+                wrap.innerHTML = "<p class='text-gray-500'>No schedule today.</p>";
+                return;
+            }
+
+            data.forEach(s => {
+                html += `
+                    <div class="p-3 border rounded-lg shadow-sm bg-gray-50">
+                        <b class="text-primary">${s.subject}</b><br>
+                        ${s.start_time} - ${s.end_time}<br>
+                        <span class="text-gray-600">Teacher:</span> ${s.teacher}<br>
+                        <span class="text-gray-600">Room:</span> ${s.room}
+                    </div>
                 `;
-
-                // Add event listener for clicking on a day
-                dayElement.addEventListener('click', () => {
-                    // Remove active class from all days
-                    document.querySelectorAll('.calendar-day').forEach(day => {
-                        day.classList.remove('ring-2', 'ring-primary');
-                    });
-
-                    // Add active class to clicked day
-                    dayElement.classList.add('ring-2', 'ring-primary');
-
-                    // Show task details if available
-                    if (dayData.hasTask && dayData.taskId) {
-                        showTaskDetail(dayData.taskId);
-                    } else {
-                        showTaskPlaceholder();
-                    }
-                });
-
-                calendarGrid.appendChild(dayElement);
             });
-        }
 
-        // Function to show task placeholder
-        function showTaskPlaceholder() {
-            document.getElementById('taskPlaceholder').style.display = 'flex';
-            document.querySelectorAll('.task-detail').forEach(task => {
-                task.classList.remove('active');
-            });
-        }
-
-        // Function to show task detail
-        function showTaskDetail(taskId) {
-            document.getElementById('taskPlaceholder').style.display = 'none';
-            document.querySelectorAll('.task-detail').forEach(task => {
-                task.classList.remove('active');
-            });
-            document.getElementById(taskId).classList.add('active');
-        }
-
-        // Initialize calendar when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            renderCalendar();
+            wrap.innerHTML = html;
         });
+}
 
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
+// ===========================
+// LOAD TASK BY DATE
+// ===========================
+function loadTasks(date) {
+    fetch(/api/tasks?date=${date})
+        .then(res => res.json())
+        .then(data => {
+            if (!data || data.length === 0) {
+                showTaskPlaceholder();
+                return;
+            }
+
+            let task = data[0];
+            showTaskDetail(task.id);
         });
+}
 
-        // Theme toggle
-        document.getElementById('theme-toggle').addEventListener('click', function () {
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-moon')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                document.body.classList.add('bg-gray-900', 'text-white');
-                document.body.classList.remove('bg-gray-50', 'text-gray-800');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                document.body.classList.remove('bg-gray-900', 'text-white');
-                document.body.classList.add('bg-gray-50', 'text-gray-800');
+// ===========================
+// CEK TASK DOT DI KALENDER
+// ===========================
+function checkTaskDot(date, element) {
+    fetch(/api/tasks?date=${date})
+        .then(res => res.json())
+        .then(data => {
+            if (data.length > 0) {
+                element.querySelector(".task-dot").classList.remove("hidden");
+                element.querySelector(".task-dot").classList.add("text-red-500");
             }
         });
-    </script>
+}
+
+// ===========================
+// TAMPILKAN DETAIL TASK
+// ===========================
+function showTaskDetail(taskId) {
+    fetch(/api/task/${taskId})
+        .then(res => res.json())
+        .then(task => {
+            document.getElementById("taskDetail").innerHTML = `
+                <div class="p-4 border rounded-lg bg-gray-100">
+                    <h3 class="font-bold text-primary">${task.title}</h3>
+                    <p>${task.description}</p>
+                    <p><b>Deadline:</b> ${task.deadline}</p>
+                </div>
+            `;
+        });
+}
+
+// ===========================
+// TASK PLACEHOLDER
+// ===========================
+function showTaskPlaceholder() {
+    document.getElementById("taskDetail").innerHTML =
+        <p class="text-gray-500">No tasks on this date.</p>;
+}
+</script>
 </body>
 
 </html>
