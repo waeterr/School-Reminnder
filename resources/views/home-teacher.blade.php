@@ -58,7 +58,7 @@
         <hr>
     
         <a class="border border-gray-800 px-5 py-2 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition w-max"
-            href="{{ route('profile') }}">My Account</a>
+            href="{{ route('profile1') }}">My Account</a>
     </div>
 
     {{-- WELCOME --}}
